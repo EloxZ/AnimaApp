@@ -31,7 +31,7 @@
                 android:id="@+id/textName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre del personaje"
+                android:text="@string/charactername"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
@@ -54,7 +54,7 @@
                 android:id="@+id/textName2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Clase"
+                android:text="@string/classname"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 

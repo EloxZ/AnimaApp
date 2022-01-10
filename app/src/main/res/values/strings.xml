@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">CharacterApp</string>
+    <string name="app_name" translatable="false">CharacterApp</string>
+    <string name="charactername">Character name</string>
+    <string name="classname">Class</string>
     <string-array name="clases">
         <item>Tao (Domine)</item>
         <item>Technician</item>
