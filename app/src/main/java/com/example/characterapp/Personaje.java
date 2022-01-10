@@ -1,5 +1,7 @@
 package com.example.characterapp;
 
+import com.example.characterapp.clases.*;
+
 public class Personaje {
 
     private Integer id;
