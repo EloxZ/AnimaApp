@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".CreatorActivity" >
         </activity>
+        <activity android:name=".PDsActivity" >
+        </activity>
     </application>
 
 </manifest>
