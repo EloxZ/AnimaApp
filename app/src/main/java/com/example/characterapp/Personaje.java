@@ -40,6 +40,20 @@ public class Personaje {
     private int pdArma;
     private int pdArmadura;
 
+    private int  calcularPDs()
+    {
+        int valor = 0;
+        if (this.nivel == 0)
+        {
+            valor = 400;
+        }
+        else
+        {
+            valor = 600 + (nivel-1)*100;
+        }
+        return valor;
+    }
+
     private int calcularBonoCaracteristica(int caracteristica)
     {
         int bono = 0;
@@ -74,7 +88,7 @@ public class Personaje {
 
     private int tablaDeVidaOZeon(int característica)
     {
-        int valor;
+        int valor = 20;
         switch (característica)
         {
             case 0:  valor = 20; break;
@@ -103,6 +117,7 @@ public class Personaje {
         {
             valor = 265;
         }
+        return valor;
 
     }
 
