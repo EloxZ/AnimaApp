@@ -115,7 +115,7 @@ public class Personaje {
         this.pdArmadura = pdArmadura;
     }
 
-    private Integer  calcularPDs()
+    private Integer calcularPDs()
     {
         Integer valor = 0;
         if (this.nivel == 0)
@@ -151,13 +151,22 @@ public class Personaje {
         return bono;
     }
 
-    private Integer calcularHabilidadFinal(Integer pdshabilidad, Integer costehabilidad, Integer caracteristica, Integer bonoClaseXNivel, Integer nivel)
+    public Integer calcularValorPdsHabilidad(Integer pdshabilidad, Integer costehabilidad)
     {
         Integer coste = costehabilidad;
         if (costehabilidad == 0) { coste = 2; }
+        return pdshabilidad/coste;
+    }
 
+    public Integer calcularBonoHabilidad(Integer caracteristica, Integer bonoClaseXnivel, Integer Nivel)
+    {
         Integer bonocaracteristica = calcularBonoCaracteristica(caracteristica);
-        Integer habilidadFinal = pdshabilidad/coste + bonocaracteristica + (bonoClaseXNivel*nivel);
+        return bonocaracteristica + (bonoClaseXnivel*nivel);
+    }
+
+    private Integer calcularHabilidadFinal(Integer pdshabilidad, Integer costehabilidad, Integer caracteristica, Integer bonoClaseXNivel, Integer nivel)
+    {
+        Integer habilidadFinal = calcularValorPdsHabilidad(pdshabilidad, costehabilidad) + calcularBonoHabilidad(caracteristica, bonoClaseXNivel, nivel);
         return habilidadFinal;
     }
 
