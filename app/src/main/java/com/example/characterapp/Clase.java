@@ -1,6 +1,8 @@
 package com.example.characterapp;
 
-public class Clase {
+public abstract class Clase {
+
+
 
     private String nombre;
 
@@ -40,7 +42,39 @@ public class Clase {
     private int capFisicaNivel;
     private int conocimientoNivel;
     private int sigiloNivel;
-    private int visionMagica;
+    private int visionMagicaNivel;
+
+    public Clase(String nombre, int costeVida, int costeHa, int costeHd, int costeLlevarArmadura, int costeZeon, int costeAct, int costeProyMagica, int costeNivelMagia, int costeCv, int costeProyPsiquica, int costeAdvertir, int costeArte, int costeCapFisica, int costeConocimiento, int costeSigilo, int costeVisionMágica, int vidaNivel, int haNivel, int hdNivel, int llevarArmaduraNivel, int zeonNivel, int cvCadaXNiveles, int advertirNivel, int arteNivel, int capFisicaNivel, int conocimientoNivel, int sigiloNivel, int visionMagicaNivel) {
+        this.nombre = nombre;
+        this.costeVida = costeVida;
+        this.costeHa = costeHa;
+        this.costeHd = costeHd;
+        this.costeLlevarArmadura = costeLlevarArmadura;
+        this.costeZeon = costeZeon;
+        this.costeAct = costeAct;
+        this.costeProyMagica = costeProyMagica;
+        this.costeNivelMagia = costeNivelMagia;
+        this.costeCv = costeCv;
+        this.costeProyPsiquica = costeProyPsiquica;
+        this.costeAdvertir = costeAdvertir;
+        this.costeArte = costeArte;
+        this.costeCapFisica = costeCapFisica;
+        this.costeConocimiento = costeConocimiento;
+        this.costeSigilo = costeSigilo;
+        this.costeVisionMágica = costeVisionMágica;
+        this.vidaNivel = vidaNivel;
+        this.haNivel = haNivel;
+        this.hdNivel = hdNivel;
+        this.llevarArmaduraNivel = llevarArmaduraNivel;
+        this.zeonNivel = zeonNivel;
+        this.cvCadaXNiveles = cvCadaXNiveles;
+        this.advertirNivel = advertirNivel;
+        this.arteNivel = arteNivel;
+        this.capFisicaNivel = capFisicaNivel;
+        this.conocimientoNivel = conocimientoNivel;
+        this.sigiloNivel = sigiloNivel;
+        this.visionMagicaNivel = visionMagicaNivel;
+    }
 
     public String getNombre() {
         return nombre;
@@ -266,11 +300,11 @@ public class Clase {
         this.sigiloNivel = sigiloNivel;
     }
 
-    public int getVisionMagica() {
-        return visionMagica;
+    public int getVisionMagicaNivel() {
+        return visionMagicaNivel;
     }
 
-    public void setVisionMagica(int visionMagica) {
-        this.visionMagica = visionMagica;
+    public void setVisionMagicaNivel(int visionMagica) {
+        this.visionMagicaNivel = visionMagica;
     }
 }

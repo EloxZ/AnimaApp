@@ -40,6 +40,79 @@ public class Personaje {
     private int pdArma;
     private int pdArmadura;
 
+
+
+    public Personaje(String nombre) {
+        this.nombre = nombre;
+        this.raza = "";
+        this.nivel = 1;
+        this.clase = new Guerrero();
+        this.arma = "ESPADA";
+        this.agilidad = 0;
+        this.constitucion = 0;
+        this.destreza = 0;
+        this.fuerza = 0;
+        this.inteligencia = 0;
+        this.percepcion = 0;
+        this.poder = 0;
+        this.voluntad = 0;
+        this.pd = 600;
+        this.pdVida = 0;
+        this.pdHa = 0;
+        this.pdHd = 0;
+        this.pdLlevarArmadura = 0;
+        this.pdZeon = 0;
+        this.pdAct = 0;
+        this.pdProyMagica = 0;
+        this.pdNivelMagia = 0;
+        this.pdCv = 0;
+        this.pdProyPsiquica = 0;
+        this.pdSigilo = 0;
+        this.pdAdvertir = 0;
+        this.pdConocimiento = 0;
+        this.pdArte = 0;
+        this.pdCapFisica = 0;
+        this.pdValoracionMagica = 0;
+        this.pdArma = 0;
+        this.pdArmadura = 0;
+    }
+
+    public Personaje(int id, String nombre, String raza, int nivel, Clase clase, String arma, int agilidad, int constitucion, int destreza, int fuerza, int inteligencia, int percepcion, int poder, int voluntad, int pd, int pdVida, int pdHa, int pdHd, int pdLlevarArmadura, int pdZeon, int pdAct, int pdProyMagica, int pdNivelMagia, int pdCv, int pdProyPsiquica, int pdSigilo, int pdAdvertir, int pdConocimiento, int pdArte, int pdCapFisica, int pdValoracionMagica, int pdArma, int pdArmadura) {
+        this.id = id;
+        this.nombre = nombre;
+        this.raza = raza;
+        this.nivel = nivel;
+        this.clase = clase;
+        this.arma = arma;
+        this.agilidad = agilidad;
+        this.constitucion = constitucion;
+        this.destreza = destreza;
+        this.fuerza = fuerza;
+        this.inteligencia = inteligencia;
+        this.percepcion = percepcion;
+        this.poder = poder;
+        this.voluntad = voluntad;
+        this.pd = pd;
+        this.pdVida = pdVida;
+        this.pdHa = pdHa;
+        this.pdHd = pdHd;
+        this.pdLlevarArmadura = pdLlevarArmadura;
+        this.pdZeon = pdZeon;
+        this.pdAct = pdAct;
+        this.pdProyMagica = pdProyMagica;
+        this.pdNivelMagia = pdNivelMagia;
+        this.pdCv = pdCv;
+        this.pdProyPsiquica = pdProyPsiquica;
+        this.pdSigilo = pdSigilo;
+        this.pdAdvertir = pdAdvertir;
+        this.pdConocimiento = pdConocimiento;
+        this.pdArte = pdArte;
+        this.pdCapFisica = pdCapFisica;
+        this.pdValoracionMagica = pdValoracionMagica;
+        this.pdArma = pdArma;
+        this.pdArmadura = pdArmadura;
+    }
+
     private int  calcularPDs()
     {
         int valor = 0;
