@@ -2,43 +2,43 @@ package com.example.characterapp;
 
 public class Personaje {
 
-    private int id;
+    private Integer id;
     private String nombre;
     private String raza;
-    private int nivel;
+    private Integer nivel;
     private Clase clase;
 
     private String arma;
 
-    private int agilidad;
-    private int constitucion;
-    private int destreza;
-    private int fuerza;
-    private int inteligencia;
-    private int percepcion;
-    private int poder;
-    private int voluntad;
+    private Integer agilidad;
+    private Integer constitucion;
+    private Integer destreza;
+    private Integer fuerza;
+    private Integer inteligencia;
+    private Integer percepcion;
+    private Integer poder;
+    private Integer voluntad;
 
-    private int pd;
+    private Integer pd;
 
-    private int pdVida;
-    private int pdHa;
-    private int pdHd;
-    private int pdLlevarArmadura;
-    private int pdZeon;
-    private int pdAct;
-    private int pdProyMagica;
-    private int pdNivelMagia;
-    private int pdCv;
-    private int pdProyPsiquica;
-    private int pdSigilo;
-    private int pdAdvertir;
-    private int pdConocimiento;
-    private int pdArte;
-    private int pdCapFisica;
-    private int pdValoracionMagica;
-    private int pdArma;
-    private int pdArmadura;
+    private Integer pdVida;
+    private Integer pdHa;
+    private Integer pdHd;
+    private Integer pdLlevarArmadura;
+    private Integer pdZeon;
+    private Integer pdAct;
+    private Integer pdProyMagica;
+    private Integer pdNivelMagia;
+    private Integer pdCv;
+    private Integer pdProyPsiquica;
+    private Integer pdSigilo;
+    private Integer pdAdvertir;
+    private Integer pdConocimiento;
+    private Integer pdArte;
+    private Integer pdCapFisica;
+    private Integer pdValoracionMagica;
+    private Integer pdArma;
+    private Integer pdArmadura;
 
 
 
@@ -77,7 +77,7 @@ public class Personaje {
         this.pdArmadura = 0;
     }
 
-    public Personaje(int id, String nombre, String raza, int nivel, Clase clase, String arma, int agilidad, int constitucion, int destreza, int fuerza, int inteligencia, int percepcion, int poder, int voluntad, int pd, int pdVida, int pdHa, int pdHd, int pdLlevarArmadura, int pdZeon, int pdAct, int pdProyMagica, int pdNivelMagia, int pdCv, int pdProyPsiquica, int pdSigilo, int pdAdvertir, int pdConocimiento, int pdArte, int pdCapFisica, int pdValoracionMagica, int pdArma, int pdArmadura) {
+    public Personaje(Integer id, String nombre, String raza, Integer nivel, Clase clase, String arma, Integer agilidad, Integer constitucion, Integer destreza, Integer fuerza, Integer inteligencia, Integer percepcion, Integer poder, Integer voluntad, Integer pd, Integer pdVida, Integer pdHa, Integer pdHd, Integer pdLlevarArmadura, Integer pdZeon, Integer pdAct, Integer pdProyMagica, Integer pdNivelMagia, Integer pdCv, Integer pdProyPsiquica, Integer pdSigilo, Integer pdAdvertir, Integer pdConocimiento, Integer pdArte, Integer pdCapFisica, Integer pdValoracionMagica, Integer pdArma, Integer pdArmadura) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
@@ -113,9 +113,9 @@ public class Personaje {
         this.pdArmadura = pdArmadura;
     }
 
-    private int  calcularPDs()
+    private Integer  calcularPDs()
     {
-        int valor = 0;
+        Integer valor = 0;
         if (this.nivel == 0)
         {
             valor = 400;
@@ -127,9 +127,9 @@ public class Personaje {
         return valor;
     }
 
-    private int calcularBonoCaracteristica(int caracteristica)
+    private Integer calcularBonoCaracteristica(Integer caracteristica)
     {
-        int bono = 0;
+        Integer bono = 0;
 
         if (caracteristica <= 0)
         {
@@ -149,19 +149,19 @@ public class Personaje {
         return bono;
     }
 
-    private int calcularHabilidadFinal(int pdshabilidad, int costehabilidad, int caracteristica, int bonoClaseXNivel, int nivel)
+    private Integer calcularHabilidadFinal(Integer pdshabilidad, Integer costehabilidad, Integer caracteristica, Integer bonoClaseXNivel, Integer nivel)
     {
-        int coste = costehabilidad;
+        Integer coste = costehabilidad;
         if (costehabilidad == 0) { coste = 2; }
 
-        int bonocaracteristica = calcularBonoCaracteristica(caracteristica);
-        int habilidadFinal = pdshabilidad/coste + bonocaracteristica + (bonoClaseXNivel*nivel);
+        Integer bonocaracteristica = calcularBonoCaracteristica(caracteristica);
+        Integer habilidadFinal = pdshabilidad/coste + bonocaracteristica + (bonoClaseXNivel*nivel);
         return habilidadFinal;
     }
 
-    private int tablaDeVidaOZeon(int característica)
+    private Integer tablaDeVidaOZeon(Integer característica)
     {
-        int valor = 20;
+        Integer valor = 20;
         switch (característica)
         {
             case 0:  valor = 20; break;
@@ -194,18 +194,18 @@ public class Personaje {
 
     }
 
-    public int calcularVida()
+    public Integer calcularVida()
     {
-        int pv = 0;
+        Integer pv = 0;
         pv = tablaDeVidaOZeon(this.constitucion);
         pv += (this.pdVida / this.clase.getCosteVida())*this.constitucion;
         pv += this.clase.getVidaNivel() * this.nivel;
         return pv;
     }
 
-    public int calcularZeon()
+    public Integer calcularZeon()
     {
-        int zeon = 0;
+        Integer zeon = 0;
         zeon = tablaDeVidaOZeon(this.poder);
         zeon += (this.pdVida / this.clase.getCosteVida())*this.constitucion;
         zeon += this.clase.getVidaNivel() * this.nivel;
@@ -215,54 +215,54 @@ public class Personaje {
 
 
 
-    public int calcularHabilidadAtaque()
+    public Integer calcularHabilidadAtaque()
     {
         return calcularHabilidadFinal(this.pdHa, this.clase.getCosteHa(), this.destreza, this.clase.getHaNivel(), this.nivel);
     }
-    public int calcularHabilidadDefensa()
+    public Integer calcularHabilidadDefensa()
     {
         return calcularHabilidadFinal(this.pdHd, this.clase.getCosteHd(),this.agilidad, this.clase.getHdNivel(),this.nivel);
     }
-    public int calcularLlevarArmadura()
+    public Integer calcularLlevarArmadura()
     {
         return calcularHabilidadFinal(this.pdLlevarArmadura, this.clase.getCosteLlevarArmadura(),this.fuerza, this.clase.getLlevarArmaduraNivel(),this.nivel);
     }
-    public int calcularProyMagica()
+    public Integer calcularProyMagica()
     {
         return calcularHabilidadFinal(this.pdProyMagica, this.clase.getCosteProyMagica(),this.destreza, 0, this.nivel);
     }
-    public int calcularProyPsiquica()
+    public Integer calcularProyPsiquica()
     {
         return calcularHabilidadFinal(this.pdProyPsiquica, this.clase.getCosteProyPsiquica(),this.destreza, 0, this.nivel);
     }
-    public int calcularSigilo()
+    public Integer calcularSigilo()
     {
         return calcularHabilidadFinal(this.pdSigilo, this.clase.getCosteSigilo(), this.agilidad, this.clase.getSigiloNivel(), this.nivel);
     }
-    public int calcularAdverir()
+    public Integer calcularAdverir()
     {
         return calcularHabilidadFinal(this.pdAdvertir, this.clase.getCosteAdvertir(), this.percepcion, this.clase.getAdvertirNivel(), this.nivel);
     }
-    public int calcularCapFisica()
+    public Integer calcularCapFisica()
     {
         return calcularHabilidadFinal(this.pdCapFisica, this.clase.getCosteCapFisica(),this.fuerza, this.clase.getCapFisicaNivel(), this.nivel);
     }
-    public int calcularConocimiento()
+    public Integer calcularConocimiento()
     {
         return calcularHabilidadFinal(this.pdConocimiento, this.clase.getCosteConocimiento(),this.inteligencia, this.clase.getConocimientoNivel(), this.nivel);
     }
-    public int calcularArte()
+    public Integer calcularArte()
     {
         return calcularHabilidadFinal(this.pdArte, this.clase.getCosteArte(),this.poder, this.clase.getArteNivel(), this.nivel);
     }
-    public int calcularVisionMagica()
+    public Integer calcularVisionMagica()
     {
         return calcularHabilidadFinal(this.pd, this.clase.getCosteArte(),this.poder, this.clase.getArteNivel(), this.nivel);
     }
 
-    public int getId() { return id; }
+    public Integer getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(Integer id) { this.id = id; }
 
     public String getNombre() { return nombre; }
 
@@ -272,9 +272,9 @@ public class Personaje {
 
     public void setRaza(String raza) { this.raza = raza; }
 
-    public int getNivel() { return nivel; }
+    public Integer getNivel() { return nivel; }
 
-    public void setNivel(int nivel) { this.nivel = nivel; }
+    public void setNivel(Integer nivel) { this.nivel = nivel; }
 
     public Clase getClase() { return clase; }
 
@@ -284,99 +284,143 @@ public class Personaje {
 
     public void setArma(String arma) { this.arma = arma; }
 
-    public int getAgilidad() { return agilidad; }
+    public Integer getAgilidad() { return agilidad; }
 
-    public void setAgilidad(int agilidad) { this.agilidad = agilidad; }
+    public void setAgilidad(Integer agilidad) { this.agilidad = agilidad; }
 
-    public int getConstitucion() { return constitucion; }
+    public Integer getConstitucion() { return constitucion; }
 
-    public void setConstitucion(int constitucion) { this.constitucion = constitucion; }
+    public void setConstitucion(Integer constitucion) { this.constitucion = constitucion; }
 
-    public int getDestreza() { return destreza; }
+    public Integer getDestreza() { return destreza; }
 
-    public void setDestreza(int destreza) { this.destreza = destreza; }
+    public void setDestreza(Integer destreza) { this.destreza = destreza; }
 
-    public int getPercepcion() { return percepcion; }
+    public Integer getPercepcion() { return percepcion; }
 
-    public void setPercepcion(int percepcion) { this.percepcion = percepcion; }
+    public void setPercepcion(Integer percepcion) { this.percepcion = percepcion; }
 
-    public int getPoder() { return poder; }
+    public Integer getPoder() { return poder; }
 
-    public void setPoder(int poder) { this.poder = poder; }
+    public void setPoder(Integer poder) { this.poder = poder; }
 
-    public int getVoluntad() { return voluntad; }
+    public Integer getVoluntad() { return voluntad; }
 
-    public void setVoluntad(int voluntad) { this.voluntad = voluntad; }
+    public void setVoluntad(Integer voluntad) { this.voluntad = voluntad; }
 
-    public int getPd() { return pd; }
+    public Integer getPd() { return pd; }
 
-    public void setPd(int pd) { this.pd = pd; }
+    public void setPd(Integer pd) { this.pd = pd; }
 
-    public int getPdVida() { return pdVida; }
+    public Integer getPdVida() { return pdVida; }
 
-    public void setPdVida(int pdVida) { this.pdVida = pdVida; }
+    public void setPdVida(Integer pdVida) { this.pdVida = pdVida; }
 
-    public int getPdHa() { return pdHa; }
+    public Integer getPdHa() { return pdHa; }
 
-    public void setPdHa(int pdHa) { this.pdHa = pdHa; }
+    public void setPdHa(Integer pdHa) { this.pdHa = pdHa; }
 
-    public int getPdHd() { return pdHd; }
+    public Integer getPdHd() { return pdHd; }
 
-    public void setPdhd(int pdHd) { this.pdHd = pdHd; }
+    public void setPdhd(Integer pdHd) { this.pdHd = pdHd; }
 
-    public int getpdLlevarArmadura() { return pdLlevarArmadura; }
+    public Integer getpdLlevarArmadura() { return pdLlevarArmadura; }
 
-    public void setpdLlevarArmadura(int pdLlevarArmadura) { this.pdLlevarArmadura = pdLlevarArmadura; }
+    public void setpdLlevarArmadura(Integer pdLlevarArmadura) { this.pdLlevarArmadura = pdLlevarArmadura; }
 
-    public int getPdZeon() { return pdZeon; }
+    public Integer getPdZeon() { return pdZeon; }
 
-    public void setPdZeon(int pdZeon) { this.pdZeon = pdZeon; }
+    public void setPdZeon(Integer pdZeon) { this.pdZeon = pdZeon; }
 
-    public int getPdAct() { return pdAct; }
+    public Integer getPdAct() { return pdAct; }
 
-    public void setPdAct(int pdAct) { this.pdAct = pdAct; }
+    public void setPdAct(Integer pdAct) { this.pdAct = pdAct; }
 
-    public int getPdproyMagica() { return pdProyMagica; }
+    public Integer getPdproyMagica() { return pdProyMagica; }
 
-    public void setPdProyMagica(int pdProyMagica) { this.pdProyMagica = pdProyMagica; }
+    public void setPdProyMagica(Integer pdProyMagica) { this.pdProyMagica = pdProyMagica; }
 
-    public int getPdNivelMagia() { return pdNivelMagia; }
+    public Integer getPdNivelMagia() { return pdNivelMagia; }
 
-    public void setPdNivelMagia(int pdNivelMagia) { this.pdNivelMagia = pdNivelMagia; }
+    public void setPdNivelMagia(Integer pdNivelMagia) { this.pdNivelMagia = pdNivelMagia; }
 
-    public int getPdCv() { return pdCv; }
+    public Integer getPdCv() { return pdCv; }
 
-    public void setPdCv(int pdCv) { this.pdCv = pdCv; }
+    public void setPdCv(Integer pdCv) { this.pdCv = pdCv; }
 
-    public int getPdProyPsiquica() { return pdProyPsiquica; }
+    public Integer getPdProyPsiquica() { return pdProyPsiquica; }
 
-    public void setPdproyPsiquica(int pdProyPsiquica) { this.pdProyPsiquica = pdProyPsiquica; }
+    public void setPdproyPsiquica(Integer pdProyPsiquica) { this.pdProyPsiquica = pdProyPsiquica; }
 
-    public int getPdSigilo() { return pdSigilo; }
+    public Integer getPdSigilo() { return pdSigilo; }
 
-    public void setPdSigilo(int pdSigilo) { this.pdSigilo = pdSigilo; }
+    public void setPdSigilo(Integer pdSigilo) { this.pdSigilo = pdSigilo; }
 
-    public int getPdAdvertir() { return pdAdvertir; }
+    public Integer getPdAdvertir() { return pdAdvertir; }
 
-    public void setPdAdvertir(int pdAdvertir) { this.pdAdvertir = pdAdvertir; }
+    public void setPdAdvertir(Integer pdAdvertir) { this.pdAdvertir = pdAdvertir; }
 
-    public int getPdConocimiento() { return pdConocimiento; }
+    public Integer getPdConocimiento() { return pdConocimiento; }
 
-    public void setPdConocimiento(int pdConocimiento) { this.pdConocimiento = pdConocimiento; }
+    public void setPdConocimiento(Integer pdConocimiento) { this.pdConocimiento = pdConocimiento; }
 
-    public int getPdArte() { return pdArte; }
+    public Integer getPdArte() { return pdArte; }
 
-    public void setPdArte(int pdArte) { this.pdArte = pdArte; }
+    public void setPdArte(Integer pdArte) { this.pdArte = pdArte; }
 
-    public int getPdCapFisica() { return pdCapFisica; }
+    public Integer getPdCapFisica() { return pdCapFisica; }
 
-    public void setPdCapFisica(int pdCapFisica) { this.pdCapFisica = pdCapFisica; }
+    public void setPdCapFisica(Integer pdCapFisica) { this.pdCapFisica = pdCapFisica; }
 
-    public int getPdArma() { return pdArma; }
+    public Integer getPdArma() { return pdArma; }
 
-    public void setPdArma(int pdArma) { this.pdArma = pdArma; }
+    public void setPdArma(Integer pdArma) { this.pdArma = pdArma; }
 
-    public int getPdArmadura() { return pdArmadura; }
+    public Integer getPdArmadura() { return pdArmadura; }
 
-    public void setPdArmadura(int pdArmadura) { this.pdArmadura = pdArmadura; }
+    public void setPdArmadura(Integer pdArmadura) { this.pdArmadura = pdArmadura; }
+
+    public Integer getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(Integer fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public Integer getInteligencia() {
+        return inteligencia;
+    }
+
+    public void setInteligencia(Integer inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public void setPdHd(Integer pdHd) {
+        this.pdHd = pdHd;
+    }
+
+    public Integer getPdLlevarArmadura() {
+        return pdLlevarArmadura;
+    }
+
+    public void setPdLlevarArmadura(Integer pdLlevarArmadura) {
+        this.pdLlevarArmadura = pdLlevarArmadura;
+    }
+
+    public Integer getPdProyMagica() {
+        return pdProyMagica;
+    }
+
+    public void setPdProyPsiquica(Integer pdProyPsiquica) {
+        this.pdProyPsiquica = pdProyPsiquica;
+    }
+
+    public Integer getPdValoracionMagica() {
+        return pdValoracionMagica;
+    }
+
+    public void setPdValoracionMagica(Integer pdValoracionMagica) {
+        this.pdValoracionMagica = pdValoracionMagica;
+    }
 }

@@ -6,45 +6,45 @@ public abstract class Clase {
 
     private String nombre;
 
-    private int costeVida;
+    private Integer costeVida;
 
-    private int costeHa;
-    private int costeHd;
-    private int costeLlevarArmadura;
+    private Integer costeHa;
+    private Integer costeHd;
+    private Integer costeLlevarArmadura;
 
-    private int costeZeon;
-    private int costeAct;
-    private int costeProyMagica;
-    private int costeNivelMagia;
+    private Integer costeZeon;
+    private Integer costeAct;
+    private Integer costeProyMagica;
+    private Integer costeNivelMagia;
 
-    private int costeCv;
-    private int costeProyPsiquica;
+    private Integer costeCv;
+    private Integer costeProyPsiquica;
 
-    private int costeAdvertir;
-    private int costeArte;
-    private int costeCapFisica;
-    private int costeConocimiento;
-    private int costeSigilo;
-    private int costeVisionMágica;
+    private Integer costeAdvertir;
+    private Integer costeArte;
+    private Integer costeCapFisica;
+    private Integer costeConocimiento;
+    private Integer costeSigilo;
+    private Integer costeVisionMágica;
 
 
-    private int vidaNivel;
-    private int haNivel;
-    private int hdNivel;
-    private int llevarArmaduraNivel;
+    private Integer vidaNivel;
+    private Integer haNivel;
+    private Integer hdNivel;
+    private Integer llevarArmaduraNivel;
 
-    private int zeonNivel;
+    private Integer zeonNivel;
 
-    private int cvCadaXNiveles;
+    private Integer cvCadaXNiveles;
 
-    private int advertirNivel;
-    private int arteNivel;
-    private int capFisicaNivel;
-    private int conocimientoNivel;
-    private int sigiloNivel;
-    private int visionMagicaNivel;
+    private Integer advertirNivel;
+    private Integer arteNivel;
+    private Integer capFisicaNivel;
+    private Integer conocimientoNivel;
+    private Integer sigiloNivel;
+    private Integer visionMagicaNivel;
 
-    public Clase(String nombre, int costeVida, int costeHa, int costeHd, int costeLlevarArmadura, int costeZeon, int costeAct, int costeProyMagica, int costeNivelMagia, int costeCv, int costeProyPsiquica, int costeAdvertir, int costeArte, int costeCapFisica, int costeConocimiento, int costeSigilo, int costeVisionMágica, int vidaNivel, int haNivel, int hdNivel, int llevarArmaduraNivel, int zeonNivel, int cvCadaXNiveles, int advertirNivel, int arteNivel, int capFisicaNivel, int conocimientoNivel, int sigiloNivel, int visionMagicaNivel) {
+    public Clase(String nombre, Integer costeVida, Integer costeHa, Integer costeHd, Integer costeLlevarArmadura, Integer costeZeon, Integer costeAct, Integer costeProyMagica, Integer costeNivelMagia, Integer costeCv, Integer costeProyPsiquica, Integer costeAdvertir, Integer costeArte, Integer costeCapFisica, Integer costeConocimiento, Integer costeSigilo, Integer costeVisionMágica, Integer vidaNivel, Integer haNivel, Integer hdNivel, Integer llevarArmaduraNivel, Integer zeonNivel, Integer cvCadaXNiveles, Integer advertirNivel, Integer arteNivel, Integer capFisicaNivel, Integer conocimientoNivel, Integer sigiloNivel, Integer visionMagicaNivel) {
         this.nombre = nombre;
         this.costeVida = costeVida;
         this.costeHa = costeHa;
@@ -84,227 +84,227 @@ public abstract class Clase {
         this.nombre = nombre;
     }
 
-    public int getCosteVida() {
+    public Integer getCosteVida() {
         return costeVida;
     }
 
-    public void setCosteVida(int costeVida) {
+    public void setCosteVida(Integer costeVida) {
         this.costeVida = costeVida;
     }
 
-    public int getCosteHa() {
+    public Integer getCosteHa() {
         return costeHa;
     }
 
-    public void setCosteHa(int costeHa) {
+    public void setCosteHa(Integer costeHa) {
         this.costeHa = costeHa;
     }
 
-    public int getCosteHd() {
+    public Integer getCosteHd() {
         return costeHd;
     }
 
-    public void setCosteHd(int costeHd) {
+    public void setCosteHd(Integer costeHd) {
         this.costeHd = costeHd;
     }
 
-    public int getCosteLlevarArmadura() {
+    public Integer getCosteLlevarArmadura() {
         return costeLlevarArmadura;
     }
 
-    public void setCosteLlevarArmadura(int costeLlevarArmadura) {
+    public void setCosteLlevarArmadura(Integer costeLlevarArmadura) {
         this.costeLlevarArmadura = costeLlevarArmadura;
     }
 
-    public int getCosteZeon() {
+    public Integer getCosteZeon() {
         return costeZeon;
     }
 
-    public void setCosteZeon(int costeZeon) {
+    public void setCosteZeon(Integer costeZeon) {
         this.costeZeon = costeZeon;
     }
 
-    public int getCosteAct() {
+    public Integer getCosteAct() {
         return costeAct;
     }
 
-    public void setCosteAct(int costeAct) {
+    public void setCosteAct(Integer costeAct) {
         this.costeAct = costeAct;
     }
 
-    public int getCosteProyMagica() {
+    public Integer getCosteProyMagica() {
         return costeProyMagica;
     }
 
-    public void setCosteProyMagica(int costeProyMagica) {
+    public void setCosteProyMagica(Integer costeProyMagica) {
         this.costeProyMagica = costeProyMagica;
     }
 
-    public int getCosteNivelMagia() {
+    public Integer getCosteNivelMagia() {
         return costeNivelMagia;
     }
 
-    public void setCosteNivelMagia(int costeNivelMagia) {
+    public void setCosteNivelMagia(Integer costeNivelMagia) {
         this.costeNivelMagia = costeNivelMagia;
     }
 
-    public int getCosteCv() {
+    public Integer getCosteCv() {
         return costeCv;
     }
 
-    public void setCosteCv(int costeCv) {
+    public void setCosteCv(Integer costeCv) {
         this.costeCv = costeCv;
     }
 
-    public int getCosteProyPsiquica() {
+    public Integer getCosteProyPsiquica() {
         return costeProyPsiquica;
     }
 
-    public void setCosteProyPsiquica(int costeProyPsiquica) {
+    public void setCosteProyPsiquica(Integer costeProyPsiquica) {
         this.costeProyPsiquica = costeProyPsiquica;
     }
 
-    public int getCosteAdvertir() {
+    public Integer getCosteAdvertir() {
         return costeAdvertir;
     }
 
-    public void setCosteAdvertir(int costeAdvertir) {
+    public void setCosteAdvertir(Integer costeAdvertir) {
         this.costeAdvertir = costeAdvertir;
     }
 
-    public int getCosteArte() {
+    public Integer getCosteArte() {
         return costeArte;
     }
 
-    public void setCosteArte(int costeArte) {
+    public void setCosteArte(Integer costeArte) {
         this.costeArte = costeArte;
     }
 
-    public int getCosteCapFisica() {
+    public Integer getCosteCapFisica() {
         return costeCapFisica;
     }
 
-    public void setCosteCapFisica(int costeCapFisica) {
+    public void setCosteCapFisica(Integer costeCapFisica) {
         this.costeCapFisica = costeCapFisica;
     }
 
-    public int getCosteConocimiento() {
+    public Integer getCosteConocimiento() {
         return costeConocimiento;
     }
 
-    public void setCosteConocimiento(int costeConocimiento) {
+    public void setCosteConocimiento(Integer costeConocimiento) {
         this.costeConocimiento = costeConocimiento;
     }
 
-    public int getCosteSigilo() {
+    public Integer getCosteSigilo() {
         return costeSigilo;
     }
 
-    public void setCosteSigilo(int costeSigilo) {
+    public void setCosteSigilo(Integer costeSigilo) {
         this.costeSigilo = costeSigilo;
     }
 
-    public int getCosteVisionMágica() {
+    public Integer getCosteVisionMágica() {
         return costeVisionMágica;
     }
 
-    public void setCosteVisionMágica(int costeVisionMágica) {
+    public void setCosteVisionMágica(Integer costeVisionMágica) {
         this.costeVisionMágica = costeVisionMágica;
     }
 
-    public int getVidaNivel() {
+    public Integer getVidaNivel() {
         return vidaNivel;
     }
 
-    public void setVidaNivel(int vidaNivel) {
+    public void setVidaNivel(Integer vidaNivel) {
         this.vidaNivel = vidaNivel;
     }
 
-    public int getHaNivel() {
+    public Integer getHaNivel() {
         return haNivel;
     }
 
-    public void setHaNivel(int haNivel) {
+    public void setHaNivel(Integer haNivel) {
         this.haNivel = haNivel;
     }
 
-    public int getHdNivel() {
+    public Integer getHdNivel() {
         return hdNivel;
     }
 
-    public void setHdNivel(int hdNivel) {
+    public void setHdNivel(Integer hdNivel) {
         this.hdNivel = hdNivel;
     }
 
-    public int getLlevarArmaduraNivel() {
+    public Integer getLlevarArmaduraNivel() {
         return llevarArmaduraNivel;
     }
 
-    public void setLlevarArmaduraNivel(int llevarArmaduraNivel) {
+    public void setLlevarArmaduraNivel(Integer llevarArmaduraNivel) {
         this.llevarArmaduraNivel = llevarArmaduraNivel;
     }
 
-    public int getZeonNivel() {
+    public Integer getZeonNivel() {
         return zeonNivel;
     }
 
-    public void setZeonNivel(int zeonNivel) {
+    public void setZeonNivel(Integer zeonNivel) {
         this.zeonNivel = zeonNivel;
     }
 
-    public int getCvCadaXNiveles() {
+    public Integer getCvCadaXNiveles() {
         return cvCadaXNiveles;
     }
 
-    public void setCvCadaXNiveles(int cvCadaXNiveles) {
+    public void setCvCadaXNiveles(Integer cvCadaXNiveles) {
         this.cvCadaXNiveles = cvCadaXNiveles;
     }
 
-    public int getAdvertirNivel() {
+    public Integer getAdvertirNivel() {
         return advertirNivel;
     }
 
-    public void setAdvertirNivel(int advertirNivel) {
+    public void setAdvertirNivel(Integer advertirNivel) {
         this.advertirNivel = advertirNivel;
     }
 
-    public int getArteNivel() {
+    public Integer getArteNivel() {
         return arteNivel;
     }
 
-    public void setArteNivel(int arteNivel) {
+    public void setArteNivel(Integer arteNivel) {
         this.arteNivel = arteNivel;
     }
 
-    public int getCapFisicaNivel() {
+    public Integer getCapFisicaNivel() {
         return capFisicaNivel;
     }
 
-    public void setCapFisicaNivel(int capFisicaNivel) {
+    public void setCapFisicaNivel(Integer capFisicaNivel) {
         this.capFisicaNivel = capFisicaNivel;
     }
 
-    public int getConocimientoNivel() {
+    public Integer getConocimientoNivel() {
         return conocimientoNivel;
     }
 
-    public void setConocimientoNivel(int conocimientoNivel) {
+    public void setConocimientoNivel(Integer conocimientoNivel) {
         this.conocimientoNivel = conocimientoNivel;
     }
 
-    public int getSigiloNivel() {
+    public Integer getSigiloNivel() {
         return sigiloNivel;
     }
 
-    public void setSigiloNivel(int sigiloNivel) {
+    public void setSigiloNivel(Integer sigiloNivel) {
         this.sigiloNivel = sigiloNivel;
     }
 
-    public int getVisionMagicaNivel() {
+    public Integer getVisionMagicaNivel() {
         return visionMagicaNivel;
     }
 
-    public void setVisionMagicaNivel(int visionMagica) {
+    public void setVisionMagicaNivel(Integer visionMagica) {
         this.visionMagicaNivel = visionMagica;
     }
 }
