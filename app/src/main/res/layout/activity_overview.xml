@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="126dp"
+                    android:layout_height="47dp"
+                    android:text="    Nombre:"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/NombrePJ"
+                    android:layout_width="251dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView227"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="       Clase:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Clase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="13dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Nivel:"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Nivel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView55"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView231"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="       Raza:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Raza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView232"
+                    android:layout_width="13dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="PVida:"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/PV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView233"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView305"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView306"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView307"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Características"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView308"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView247"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="       Agilidad:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Agilidad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView248"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Constitución:"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Constitucion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView252"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="       Destreza:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Destreza"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView253"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Percepción:"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Percepcion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView255"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="       Fuerza:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Fuerza"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView256"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Inteligencia:"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Inteligencia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView258"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="       Poder:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Poder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView259"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Voluntad:"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Voluntad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView260"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView292"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView290"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Habilidades de Combate"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView291"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView261"
+                    android:layout_width="83dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="H.Ataque:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/H.ataque"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView262"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="H.Defensa:"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/H.defensa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView264"
+                    android:layout_width="100dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Arma:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Arma"
+                    android:layout_width="174dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView266"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView268"
+                    android:layout_width="100dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Armadura:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Armadura"
+                    android:layout_width="174dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView269"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView270"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView294"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView295"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Habilidades Místicas"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView296"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView271"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Zeon:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Zeon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView272"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Act:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Act"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView274"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text=" ProyMágica:"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/ProyMagica"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView275"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Niv.Magia:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/NivMagia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView297"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView298"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView299"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Habilidades Psíquicas"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView300"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView277"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="CV:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/CV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView278"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="ProyPsíquica:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/ProyPsiquica"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView301"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView302"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView303"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Habilidades Secundarias"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView304"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView280"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Sigilo:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Sigilo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView281"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Advertir:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Advertir"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView288"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Arte:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Arte"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView289"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Conocimiento: "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Conocimiento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView286"
+                    android:layout_width="56dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="CapFísica:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/CapFisica"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView287"
+                    android:layout_width="79dp"
+                    android:layout_height="47dp"
+                    android:layout_weight="1"
+                    android:text="Val.Mágica:  "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/valMagica"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
