@@ -11,14 +11,15 @@
         android:id="@+id/viewPds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Puntos de Desarrollo"
+            android:text="@string/DP"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="32dp"
-            android:text="PDs Disponibles:"
+            android:text="@string/RemainingDPs"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -52,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Habilidades"
+            android:text="@string/abilities"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -82,7 +83,7 @@
                     android:id="@+id/textView27"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:text="H.Ataque"
+                    android:text="@string/offAb"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -102,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -122,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -175,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoAtaque"
@@ -218,7 +219,7 @@
                     android:id="@+id/textView40"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:text="H.Defensa"
+                    android:text="@string/defAb"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -238,7 +239,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -258,7 +259,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -310,7 +311,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoDefensa"
@@ -353,7 +354,7 @@
                     android:id="@+id/textView60"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:text="Llevar Armadura"
+                    android:text="@string/armor"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -373,7 +374,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -393,7 +394,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -445,7 +446,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoArmadura"
@@ -508,7 +509,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -645,7 +646,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -665,7 +666,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -718,7 +719,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoAct"
@@ -764,7 +765,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Proyeccion Magica"
+                    android:text="@string/magicProy"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -784,7 +785,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -804,7 +805,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -857,7 +858,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoProyMagica"
@@ -902,7 +903,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Nivel de Magia"
+                    android:text="@string/magicLv"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -922,7 +923,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -942,7 +943,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -995,7 +996,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoNivelMagia"
@@ -1060,7 +1061,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1080,7 +1081,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1133,7 +1134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoCV"
@@ -1178,7 +1179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Proyeccion Psiquica"
+                    android:text="@string/psychicProy"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -1198,7 +1199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1218,7 +1219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1271,7 +1272,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoProyPsiquica"
@@ -1316,7 +1317,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Sigilo"
+                    android:text="@string/stealth"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -1336,7 +1337,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1356,7 +1357,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1409,7 +1410,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoSigilo"
@@ -1474,7 +1475,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1494,7 +1495,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1547,7 +1548,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoAdvertir"
@@ -1592,7 +1593,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Conocimiento"
+                    android:text="@string/knowledge"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -1612,7 +1613,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1632,7 +1633,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1685,7 +1686,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoConocimiento"
@@ -1730,7 +1731,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Arte"
+                    android:text="@string/Art"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -1750,7 +1751,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1770,7 +1771,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1823,7 +1824,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoArte"
@@ -1868,7 +1869,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Capacidad Fisica"
+                    android:text="@string/physAb"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -1888,7 +1889,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1908,7 +1909,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -1961,7 +1962,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoCapFisica"
@@ -2006,7 +2007,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Valoracion Magica"
+                    android:text="@string/magicRating"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2026,7 +2027,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -2046,7 +2047,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -2099,7 +2100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoValoracionMagica"
@@ -2144,7 +2145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Vida"
+                    android:text="@string/Health"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2164,7 +2165,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PDs"
+                        android:text="@string/DPShortened"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -2184,7 +2185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Coste:"
+                        android:text="@string/cost"
                         android:textAlignment="center"
                         android:textSize="16sp" />
 
@@ -2237,7 +2238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bono:" />
+                        android:text="@string/bonus" />
 
                     <TextView
                         android:id="@+id/bonoVida"
@@ -2292,7 +2293,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck">
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -2317,7 +2319,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nombre"
+                android:hint="@string/name"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:textAlignment="center" />
@@ -2352,7 +2354,7 @@
                 android:id="@+id/textName3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Raza"
+                android:text="@string/race"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
@@ -2373,7 +2375,7 @@
                 android:id="@+id/textName6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Atributos"
+                android:text="@string/attributes"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
@@ -2386,7 +2388,7 @@
                     android:id="@+id/agilidadLabel"
                     android:layout_width="106dp"
                     android:layout_height="wrap_content"
-                    android:text="Agilidad"
+                    android:text="@string/agilityOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2408,7 +2410,7 @@
                     android:layout_width="68dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Constitución"
+                    android:text="@string/constitutionOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2441,7 +2443,7 @@
                     android:id="@+id/destrezaLabel"
                     android:layout_width="106dp"
                     android:layout_height="wrap_content"
-                    android:text="Destreza"
+                    android:text="@string/dexterityOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2463,7 +2465,7 @@
                     android:layout_width="68dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Percepción"
+                    android:text="@string/perceptionOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2496,7 +2498,7 @@
                     android:id="@+id/fuerzaLabel"
                     android:layout_width="106dp"
                     android:layout_height="wrap_content"
-                    android:text="Fuerza"
+                    android:text="@string/strengthOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2518,7 +2520,7 @@
                     android:layout_width="68dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Inteligencia"
+                    android:text="@string/intelligenceOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2551,7 +2553,7 @@
                     android:id="@+id/poderLabel"
                     android:layout_width="106dp"
                     android:layout_height="wrap_content"
-                    android:text="Poder"
+                    android:text="@string/powerOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2573,7 +2575,7 @@
                     android:layout_width="68dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Voluntad"
+                    android:text="@string/perseveranceOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2606,7 +2608,7 @@
                 android:id="@+id/buttonPd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PD" />
+                android:text="@string/DP" />
 
         </LinearLayout>
     </ScrollView>

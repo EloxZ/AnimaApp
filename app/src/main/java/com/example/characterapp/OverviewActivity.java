@@ -75,25 +75,25 @@ public class OverviewActivity extends AppCompatActivity {
         zeon.setText(p.calcularZeon().toString());
 
         act = (TextView) findViewById(R.id.Act);
-        //act.setText("0");
+        act.setText(p.calcularAct().toString());
 
         proyMagica = (TextView) findViewById(R.id.ProyMagica);
         proyMagica.setText(p.calcularProyMagica().toString());
 
         nivMagia = (TextView) findViewById(R.id.NivMagia);
-        //nivMagia.setText(p.getN.toString());
+        nivMagia.setText(p.calcularNivelMagia().toString());
 
         cv = (TextView) findViewById(R.id.CV);
-        //cv.setText(p..toString());
+        cv.setText(p.calcularCVs().toString());
 
-        proyPsiquica = (TextView) findViewById(R.id.ProyPsiquica;
+        proyPsiquica = (TextView) findViewById(R.id.ProyPsiquica);
         proyPsiquica.setText(p.calcularProyPsiquica().toString());
 
         sigilo = (TextView) findViewById(R.id.Sigilo);
         sigilo.setText(p.calcularSigilo().toString());
 
         advertir = (TextView) findViewById(R.id.Advertir);
-        advertir.setText(p.calcularAdverir().toString());
+        advertir.setText(p.calcularAdvertir().toString());
 
         arte = (TextView) findViewById(R.id.Arte);
         arte.setText(p.calcularArte().toString());
@@ -105,6 +105,6 @@ public class OverviewActivity extends AppCompatActivity {
         capFisica.setText(p.calcularCapFisica().toString());
 
         valMagica = (TextView) findViewById(R.id.valMagica);
-        valMagica.setText(p.calcularVisionMagica().toString());
+        valMagica.setText(p.calcularValoracionMagica().toString());
     }
 }

@@ -37,8 +37,6 @@ public class Personaje {
     private Integer pdArte;
     private Integer pdCapFisica;
     private Integer pdValoracionMagica;
-    private Integer pdArma;
-    private Integer pdArmadura;
 
 
 
@@ -73,8 +71,6 @@ public class Personaje {
         this.pdArte = 0;
         this.pdCapFisica = 0;
         this.pdValoracionMagica = 0;
-        this.pdArma = 0;
-        this.pdArmadura = 0;
     }
 
     public Personaje(Integer id, String nombre, String raza, Integer nivel, Clase clase, String arma, Integer agilidad, Integer constitucion, Integer destreza, Integer fuerza, Integer inteligencia, Integer percepcion, Integer poder, Integer voluntad, Integer pd, Integer pdVida, Integer pdHa, Integer pdHd, Integer pdLlevarArmadura, Integer pdZeon, Integer pdAct, Integer pdProyMagica, Integer pdNivelMagia, Integer pdCv, Integer pdProyPsiquica, Integer pdSigilo, Integer pdAdvertir, Integer pdConocimiento, Integer pdArte, Integer pdCapFisica, Integer pdValoracionMagica, Integer pdArma, Integer pdArmadura) {
@@ -109,8 +105,6 @@ public class Personaje {
         this.pdArte = pdArte;
         this.pdCapFisica = pdCapFisica;
         this.pdValoracionMagica = pdValoracionMagica;
-        this.pdArma = pdArma;
-        this.pdArmadura = pdArmadura;
     }
 
     private Integer  calcularPDs()
@@ -149,14 +143,74 @@ public class Personaje {
         return bono;
     }
 
-    private Integer calcularHabilidadFinal(Integer pdshabilidad, Integer costehabilidad, Integer caracteristica, Integer bonoClaseXNivel, Integer nivel)
+    public Integer calcularValorPdsHabilidad(Integer pdshabilidad, Integer costehabilidad)
     {
         Integer coste = costehabilidad;
         if (costehabilidad == 0) { coste = 2; }
+        return pdshabilidad/coste;
+    }
 
+    public Integer calcularBonoHabilidad(Integer caracteristica, Integer bonoClaseXnivel)
+    {
         Integer bonocaracteristica = calcularBonoCaracteristica(caracteristica);
-        Integer habilidadFinal = pdshabilidad/coste + bonocaracteristica + (bonoClaseXNivel*nivel);
+        return bonocaracteristica + (bonoClaseXnivel*this.nivel);
+    }
+
+    private Integer calcularHabilidadFinal(Integer pdshabilidad, Integer costehabilidad, Integer caracteristica, Integer bonoClaseXNivel)
+    {
+        Integer habilidadFinal = calcularValorPdsHabilidad(pdshabilidad, costehabilidad) + calcularBonoHabilidad(caracteristica, bonoClaseXNivel);
         return habilidadFinal;
+    }
+
+    public Integer tablaDeNivelDeMagia(Integer inteligencia)
+    {
+        Integer valor = 0;
+        if (inteligencia <= 5)
+        {
+            valor = 0;
+        } else if (inteligencia <= 10)
+        {
+            valor = (inteligencia-5)*10;
+        } else if (inteligencia <= 12)
+        {
+            valor = 50+(inteligencia-10)*25;
+        } else if (inteligencia <= 14)
+        {
+            valor = 100+(inteligencia-12)*50;
+        } else if (inteligencia >= 15)
+        {
+            valor = 200+(inteligencia-14)*100;
+        }
+        return valor;
+    }
+    public Integer tablaDeAct(Integer poder)
+    {
+        Integer valor = 5;
+        if (1 <= poder && poder <= 4)
+        {
+            valor = 0;
+        } else if (poder <= 7)
+        {
+            valor = 5;
+        } else if (poder <= 11)
+        {
+            valor = 10;
+        } else if (poder <= 14)
+        {
+            valor = 15;
+        } else if (poder == 15) {
+            valor = 20;
+        } else if (poder <= 17)
+        {
+            valor = 25;
+        } else if (poder <= 19)
+        {
+            valor = 30;
+        } else if (poder >= 20)
+        {
+            valor = 35;
+        }
+        return valor;
     }
 
     private Integer tablaDeVidaOZeon(Integer característica)
@@ -203,61 +257,75 @@ public class Personaje {
         return pv;
     }
 
+
+
     public Integer calcularZeon()
     {
         Integer zeon = 0;
         zeon = tablaDeVidaOZeon(this.poder);
-        zeon += (this.pdVida / this.clase.getCosteVida())*this.constitucion;
-        zeon += this.clase.getVidaNivel() * this.nivel;
+        zeon += (this.pdZeon / this.clase.getCosteZeon())*this.poder;
+        zeon += this.clase.getZeonNivel() * this.nivel;
         return zeon;
 
     }
 
 
+    public Integer calcularAct()
+    {
+        return tablaDeAct(this.poder) + this.calcularValorPdsHabilidad(this.pdAct, this.getClase().getCosteAct()) * tablaDeAct(this.poder);
+    }
 
     public Integer calcularHabilidadAtaque()
     {
-        return calcularHabilidadFinal(this.pdHa, this.clase.getCosteHa(), this.destreza, this.clase.getHaNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pdHa, this.clase.getCosteHa(), this.destreza, this.clase.getHaNivel());
     }
     public Integer calcularHabilidadDefensa()
     {
-        return calcularHabilidadFinal(this.pdHd, this.clase.getCosteHd(),this.agilidad, this.clase.getHdNivel(),this.nivel);
+        return calcularHabilidadFinal(this.pdHd, this.clase.getCosteHd(),this.agilidad, this.clase.getHdNivel());
     }
     public Integer calcularLlevarArmadura()
     {
-        return calcularHabilidadFinal(this.pdLlevarArmadura, this.clase.getCosteLlevarArmadura(),this.fuerza, this.clase.getLlevarArmaduraNivel(),this.nivel);
+        return calcularHabilidadFinal(this.pdLlevarArmadura, this.clase.getCosteLlevarArmadura(),this.fuerza, this.clase.getLlevarArmaduraNivel());
     }
     public Integer calcularProyMagica()
     {
-        return calcularHabilidadFinal(this.pdProyMagica, this.clase.getCosteProyMagica(),this.destreza, 0, this.nivel);
+        return calcularHabilidadFinal(this.pdProyMagica, this.clase.getCosteProyMagica(),this.destreza, 0);
+    }
+    public Integer calcularNivelMagia()
+    {
+        return this.getPdNivelMagia() - (this.getPdNivelMagia() % this.getClase().getCosteNivelMagia()) + tablaDeNivelDeMagia(this.getInteligencia());
+    }
+    public Integer calcularCVs()
+    {
+        return calcularValorPdsHabilidad(this.getPdCv(), this.getClase().getCosteCv()) + this.nivel / this.getClase().getCvCadaXNiveles();
     }
     public Integer calcularProyPsiquica()
     {
-        return calcularHabilidadFinal(this.pdProyPsiquica, this.clase.getCosteProyPsiquica(),this.destreza, 0, this.nivel);
+        return calcularHabilidadFinal(this.pdProyPsiquica, this.clase.getCosteProyPsiquica(),this.destreza, 0);
     }
     public Integer calcularSigilo()
     {
-        return calcularHabilidadFinal(this.pdSigilo, this.clase.getCosteSigilo(), this.agilidad, this.clase.getSigiloNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pdSigilo, this.clase.getCosteSigilo(), this.agilidad, this.clase.getSigiloNivel());
     }
-    public Integer calcularAdverir()
+    public Integer calcularAdvertir()
     {
-        return calcularHabilidadFinal(this.pdAdvertir, this.clase.getCosteAdvertir(), this.percepcion, this.clase.getAdvertirNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pdAdvertir, this.clase.getCosteAdvertir(), this.percepcion, this.clase.getAdvertirNivel());
     }
     public Integer calcularCapFisica()
     {
-        return calcularHabilidadFinal(this.pdCapFisica, this.clase.getCosteCapFisica(),this.fuerza, this.clase.getCapFisicaNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pdCapFisica, this.clase.getCosteCapFisica(),this.fuerza, this.clase.getCapFisicaNivel());
     }
     public Integer calcularConocimiento()
     {
-        return calcularHabilidadFinal(this.pdConocimiento, this.clase.getCosteConocimiento(),this.inteligencia, this.clase.getConocimientoNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pdConocimiento, this.clase.getCosteConocimiento(),this.inteligencia, this.clase.getConocimientoNivel());
     }
     public Integer calcularArte()
     {
-        return calcularHabilidadFinal(this.pdArte, this.clase.getCosteArte(),this.poder, this.clase.getArteNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pdArte, this.clase.getCosteArte(),this.poder, this.clase.getArteNivel());
     }
-    public Integer calcularVisionMagica()
+    public Integer calcularValoracionMagica()
     {
-        return calcularHabilidadFinal(this.pd, this.clase.getCosteArte(),this.poder, this.clase.getArteNivel(), this.nivel);
+        return calcularHabilidadFinal(this.pd, this.clase.getCosteVisionMágica(),this.poder, this.clase.getVisionMagicaNivel());
     }
 
     public Integer getId() { return id; }
@@ -371,14 +439,6 @@ public class Personaje {
     public Integer getPdCapFisica() { return pdCapFisica; }
 
     public void setPdCapFisica(Integer pdCapFisica) { this.pdCapFisica = pdCapFisica; }
-
-    public Integer getPdArma() { return pdArma; }
-
-    public void setPdArma(Integer pdArma) { this.pdArma = pdArma; }
-
-    public Integer getPdArmadura() { return pdArmadura; }
-
-    public void setPdArmadura(Integer pdArmadura) { this.pdArmadura = pdArmadura; }
 
     public Integer getFuerza() {
         return fuerza;

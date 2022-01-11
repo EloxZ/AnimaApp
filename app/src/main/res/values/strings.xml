@@ -131,4 +131,54 @@
         <item>Dragon Roar</item>
         <item>Siege Guard</item>
     </string-array>
+    <string name="name">Name:</string>
+    <string name="classOverview">Class:</string>
+    <string name="raceOverview">Race:</string>
+    <string name="levelOverview">Level:</string>
+    <string name="pvOverview">HP:</string>
+    <string name="StatisticsOverview">Statistics</string>
+    <string name="agilityOV">Agility:</string>
+    <string name="dexterityOV">Dexterity:</string>
+    <string name="constitutionOV">Constitution:</string>
+    <string name="perceptionOV">Perception:</string>
+    <string name="strengthOV">Strength:</string>
+    <string name="powerOV">Power:</string>
+    <string name="intelligenceOV">Intelligence:</string>
+    <string name="perseveranceOV">Perseverance:</string>
+    <string name="combatAbilityOV">Combat Abilities</string>
+    <string name="combat.abOV">Offensive.Ab:</string>
+    <string name="def.abOV">Defensive.Ab:</string>
+    <string name="weapOV">Weapon:</string>
+    <string name="ArmorOV">Armor:</string>
+    <string name="mystiOV">Mystical Abilities</string>
+    <string name="magicProyOV">MagicProy:</string>
+    <string name="MagicLvOV">MagicLv:</string>
+    <string name="PsychicProyOV">PsychicProy:</string>
+    <string name="stealthOV">Stealth:</string>
+    <string name="PsychicAbOV">Psychic Abilities</string>
+    <string name="secAbOV">Secondary Abilities</string>
+    <string name="artOV">Art:</string>
+    <string name="knowledgeOV">Knowledge:</string>
+    <string name="physAbOV">Phys.Cap:</string>
+    <string name="magicRatingOV">MagicRating:</string>
+    <string name="DP">Devlopment Points</string>
+    <string name="RemainingDPs">Remaining DPs:</string>
+    <string name="abilities">Abilities</string>
+    <string name="offAb">Offensive Abilities</string>
+    <string name="DPShortened">DPs:</string>
+    <string name="cost">Cost:</string>
+    <string name="bonus">Bonus:</string>
+    <string name="defAb">Deffensive Abilities</string>
+    <string name="armor">Armor Bonus</string>
+    <string name="magicProy">Magic Proyection</string>
+    <string name="magicLv">Magic Level</string>
+    <string name="psychicProy">Psychic Proyection</string>
+    <string name="stealth">Stealth</string>
+    <string name="knowledge">Knowledge</string>
+    <string name="Art">Art</string>
+    <string name="physAb">Physical Capacity</string>
+    <string name="magicRating">Magic Rating</string>
+    <string name="Health">Health</string>
+    <string name="race">Race</string>
+    <string name="attributes">Attributes</string>
 </resources>

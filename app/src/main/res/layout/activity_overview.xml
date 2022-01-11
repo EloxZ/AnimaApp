@@ -30,8 +30,8 @@
                     android:id="@+id/textView4"
                     android:layout_width="126dp"
                     android:layout_height="47dp"
-                    android:text="    Nombre:"
-                    android:textAlignment="textStart"
+                    android:text="@string/name"
+                    android:textAlignment="textEnd"
                     android:textSize="24sp" />
 
                 <TextView
@@ -64,8 +64,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="       Clase:"
-                    android:textAlignment="textStart"
+                    android:text="@string/classOverview"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -81,8 +81,8 @@
                     android:layout_width="13dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Nivel:"
-                    android:textAlignment="viewStart"
+                    android:text="@string/levelOverview"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -110,8 +110,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="       Raza:"
-                    android:textAlignment="textStart"
+                    android:text="@string/raceOverview"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -127,8 +127,8 @@
                     android:layout_width="13dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="PVida:"
-                    android:textAlignment="viewStart"
+                    android:text="@string/pvOverview"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -161,7 +161,7 @@
                 android:id="@+id/textView307"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:text="Características"
+                android:text="@string/StatisticsOverview"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -182,8 +182,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="       Agilidad:"
-                    android:textAlignment="textStart"
+                    android:text="@string/agilityOV"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -199,7 +199,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Constitución:"
+                    android:text="@string/constitutionOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -224,8 +224,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="       Destreza:"
-                    android:textAlignment="textStart"
+                    android:text="@string/dexterityOV"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -241,7 +241,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Percepción:"
+                    android:text="@string/perceptionOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -265,8 +265,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="       Fuerza:"
-                    android:textAlignment="textStart"
+                    android:text="@string/strengthOV"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -282,7 +282,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Inteligencia:"
+                    android:text="@string/intelligenceOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -306,8 +306,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="       Poder:"
-                    android:textAlignment="textStart"
+                    android:text="@string/powerOV"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -323,7 +323,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Voluntad:"
+                    android:text="@string/perseveranceOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -350,7 +350,7 @@
                 android:id="@+id/textView290"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:text="Habilidades de Combate"
+                android:text="@string/combatAbilityOV"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -371,7 +371,7 @@
                     android:layout_width="83dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="H.Ataque:  "
+                    android:text="@string/combat.abOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -388,7 +388,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="H.Defensa:"
+                    android:text="@string/def.abOV"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -412,7 +412,7 @@
                     android:layout_width="100dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Arma:  "
+                    android:text="@string/weapOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -443,7 +443,7 @@
                     android:layout_width="100dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Armadura:  "
+                    android:text="@string/ArmorOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -476,7 +476,7 @@
                 android:id="@+id/textView295"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:text="Habilidades Místicas"
+                android:text="@string/mystiOV"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -538,8 +538,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text=" ProyMágica:"
-                    android:textAlignment="textStart"
+                    android:text="@string/magicProyOV"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -555,7 +555,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Niv.Magia:  "
+                    android:text="@string/MagicLvOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -582,7 +582,7 @@
                 android:id="@+id/textView299"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:text="Habilidades Psíquicas"
+                android:text="@string/PsychicAbOV"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -620,7 +620,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="ProyPsíquica:  "
+                    android:text="@string/PsychicProyOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -647,7 +647,7 @@
                 android:id="@+id/textView303"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:text="Habilidades Secundarias"
+                android:text="@string/secAbOV"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -668,7 +668,7 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Sigilo:  "
+                    android:text="@string/stealthOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -709,7 +709,7 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Arte:  "
+                    android:text="@string/artOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -726,7 +726,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Conocimiento: "
+                    android:text="@string/knowledgeOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -750,7 +750,7 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="CapFísica:  "
+                    android:text="@string/physAbOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -767,7 +767,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Val.Mágica:  "
+                    android:text="@string/magicRatingOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
