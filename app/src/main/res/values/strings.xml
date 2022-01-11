@@ -87,7 +87,7 @@
     <string name="strengthOV">Strength:</string>
     <string name="powerOV">Power:</string>
     <string name="intelligenceOV">Intelligence:</string>
-    <string name="perseveranceOV">Willpower:</string>
+    <string name="perseveranceOV">Perseverance:</string>
     <string name="combatAbilityOV">Combat Abilities</string>
     <string name="combat.abOV">Offensive.Ab:</string>
     <string name="def.abOV">Defensive.Ab:</string>
@@ -103,7 +103,7 @@
     <string name="artOV">Art:</string>
     <string name="knowledgeOV">Knowledge:</string>
     <string name="physAbOV">Phys.Cap:</string>
-    <string name="magicRatingOV">MagicAppraisal:</string>
+    <string name="magicRatingOV">MagicRating:</string>
     <string name="DP">Devlopment Points</string>
     <string name="RemainingDPs">Remaining DPs:</string>
     <string name="abilities">Abilities</string>
@@ -120,13 +120,8 @@
     <string name="knowledge">Knowledge</string>
     <string name="Art">Art</string>
     <string name="physAb">Physical Capacity</string>
-    <string name="magicRating">Magic Appraisal</string>
+    <string name="magicRating">Magic Rating</string>
     <string name="Health">Health</string>
     <string name="race">Race</string>
     <string name="attributes">Attributes</string>
-    <string name="advertirOV">Notice:</string>
-    <string name="save">Save</string>
-    <string name="advertir">Notice</string>
-    <string name="zeonOV">Zeon:</string>
-    <string name="zeon">Zeon</string>
 </resources>
