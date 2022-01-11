@@ -110,17 +110,9 @@ public class Personaje {
         this.pdValoracionMagica = pdValoracionMagica;
     }
 
-    /*
-    Nosotros en la base de datos solo guardamos los puntos de desarrollo (PDs), que resumido son los puntos que invierte el jugador en cada una de las habilidades del personaje
-    Los valores finales de cada habilidad se calculan a partir de los PDs invertidos en esa habilidad y otros datos como su clase o sus características. A veces se calculan de
-    maneras similares y podemos compartir funciones para las mismas, a veces un atributo se genera de una manera completamente distinta a t odo lo que hemos hecho, tenemos
-    bastantes funciones que se usan para mostrar distintos aspectos de la información del personaje.
-    */
-
-    // Tendremos un numero de Puntos de Desarrollo (PDs) según nuestro nivel, los calculamos según esta función.
-    public Integer  calcularPDs()
+    private Integer  calcularPDs()
     {
-        Integer valor;
+        Integer valor = 0;
         if (this.nivel == 0)
         {
             valor = 400;
