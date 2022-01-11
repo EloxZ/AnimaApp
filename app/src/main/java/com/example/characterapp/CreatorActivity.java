@@ -1,13 +1,22 @@
 package com.example.characterapp;
 
+<<<<<<< Updated upstream
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+=======
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+>>>>>>> Stashed changes
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
@@ -16,6 +25,34 @@ public class CreatorActivity extends AppCompatActivity {
     private Spinner classSpinner;
     private Spinner razaSpinner;
     private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber;
+<<<<<<< Updated upstream
+=======
+    private EditText PDsAtaque, PDsDefensa, PDsArmadura, PDsZeon, PDsAct, PDsProyMagica, PDsNivelMagia, PDsCV,
+            PDsProyPsiquica, PDsSigilo, PDsAdvertir, PDsConocimiento, PDsArte, PDsCapFisica, PDsValoracionMagica, PDsVida;
+
+    private TextView pdsDisponibles, baseAtaque, baseDefensa, baseArmadura, baseZeon, baseAct, baseProyMagica, baseNivelMagia, baseCV, baseProyPsiquica, baseSigilo, baseAdvertir, baseConocimiento, baseArte, baseCapFisica, baseValoracionMagica, baseVida;
+
+    private TextView costeAtaque, costeDefensa, costeArmadura, costeZeon, costeAct, costeProyMagica, costeNivelMagia, costeCV, costeProyPsiquica, costeSigilo, costeAdvertir, costeConocimiento, costeArte, costeCapFisica, costeValoracionMagica, costeVida;
+
+    private TextView bonoAtaque, bonoDefensa, bonoArmadura, bonoZeon, bonoAct, bonoProyMagica, bonoNivelMagia, bonoCV, bonoProyPsiquica, bonoSigilo, bonoAdvertir, bonoConocimiento, bonoArte, bonoCapFisica, bonoValoracionMagica, bonoVida;
+
+    private TextView totalAtaque, totalDefensa, totalArmadura, totalZeon, totalAct, totalProyMagica, totalNivelMagia, totalCV, totalProyPsiquica, totalSigilo, totalAdvertir, totalConocimiento, totalArte, totalCapFisica, totalValoracionMagica, totalVida;
+
+    private Button buttonPd;
+    private boolean back;
+    private ScrollView viewAtr;
+    private ConstraintLayout viewPds;
+>>>>>>> Stashed changes
+
+    private Integer calcularPDsDisponibles(Personaje p)
+    {
+        Integer valor = p.getPd()-p.getPdHa()-p.getPdHd()-p.getPdLlevarArmadura()-p.getPdVida();
+        valor = valor - p.getPdZeon()-p.getPdAct()-p.getPdProyMagica()-p.getPdNivelMagia();
+        valor = valor - p.getPdCv()-p.getPdProyPsiquica();
+        valor = valor - p.getPdArte()-p.getPdAdvertir()-p.getPdCapFisica()-p.getPdConocimiento()-p.getPdSigilo()-p.getPdValoracionMagica();
+        return valor;
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +70,7 @@ public class CreatorActivity extends AppCompatActivity {
         razaSpinner.setAdapter(adapter2);
         Personaje personaje = new Personaje("Sbeve");
 
+<<<<<<< Updated upstream
 
 
         agilidadNumber = (EditText) findViewById(R.id.agilidadNumber);
@@ -115,16 +153,911 @@ public class CreatorActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+=======
+        Personaje p = new Personaje("");
+
+
+
+        pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
+        Integer pdsdisponibles = calcularPDsDisponibles(p);
+        pdsDisponibles.setText(pdsdisponibles.toString());
+        if (pdsdisponibles < 0)
+        {
+            pdsDisponibles.setTextColor(Color.RED);
+        } else
+        {
+            pdsDisponibles.setTextColor(Color.BLACK);
+        }
+
+        PDsAtaque = (EditText) findViewById(R.id.PDsAtaque);
+        PDsAtaque.setTransformationMethod(null);
+        PDsAtaque.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsAtaque.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsAtaque.getText().toString());
+                }
+                p.setPdHa(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getDestreza(),p.getClase().getHaNivel());
+                Integer habilidadTotal = p.calcularHabilidadAtaque();
+                baseAtaque.setText(valorPdsHabilidad.toString());
+                bonoAtaque.setText(valorBonoHabilidad.toString());
+                totalAtaque.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseAtaque = (TextView) findViewById(R.id.baseAtaque);
+        baseAtaque.setText(p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa()).toString());
+        bonoAtaque = (TextView) findViewById(R.id.bonoAtaque);
+        bonoAtaque.setText(p.calcularBonoHabilidad(p.getDestreza(),p.getClase().getHaNivel()).toString());
+        totalAtaque = (TextView) findViewById(R.id.totalAtaque);
+        totalAtaque.setText(p.calcularHabilidadAtaque().toString());
+        costeAtaque = (TextView) findViewById(R.id.costeAtaque);
+        costeAtaque.setText(p.getClase().getCosteHa().toString());
+
+        PDsDefensa = (EditText) findViewById(R.id.PDsDefensa);
+        PDsDefensa.setTransformationMethod(null);
+        PDsDefensa.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsDefensa.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsDefensa.getText().toString());
+                }
+                p.setPdHd(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getHdNivel());
+                Integer habilidadTotal = p.calcularHabilidadDefensa();
+                baseDefensa.setText(valorPdsHabilidad.toString());
+                bonoDefensa.setText(valorBonoHabilidad.toString());
+                totalDefensa.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseDefensa = (TextView) findViewById(R.id.baseDefensa);
+        baseDefensa.setText(p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd()).toString());
+        bonoDefensa = (TextView) findViewById(R.id.bonoDefensa);
+        bonoDefensa.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getHdNivel()).toString());
+        totalDefensa = (TextView) findViewById(R.id.totalDefensa);
+        totalDefensa.setText(p.calcularHabilidadDefensa().toString());
+        costeDefensa = (TextView) findViewById(R.id.costeDefensa);
+        costeDefensa.setText(p.getClase().getCosteHd().toString());
+
+        PDsArmadura = (EditText) findViewById(R.id.PDsArmadura);
+        PDsArmadura.setTransformationMethod(null);
+        PDsArmadura.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsArmadura.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsArmadura.getText().toString());
+                }
+                p.setpdLlevarArmadura(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdLlevarArmadura(),p.getClase().getCosteLlevarArmadura());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getLlevarArmaduraNivel());
+                Integer habilidadTotal = p.calcularLlevarArmadura();
+                baseArmadura.setText(valorPdsHabilidad.toString());
+                bonoArmadura.setText(valorBonoHabilidad.toString());
+                totalArmadura.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseArmadura = (TextView) findViewById(R.id.baseArmadura);
+        baseArmadura.setText(p.calcularValorPdsHabilidad(p.getPdLlevarArmadura(),p.getClase().getCosteLlevarArmadura()).toString());
+        bonoArmadura = (TextView) findViewById(R.id.bonoArmadura);
+        bonoArmadura.setText(p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getLlevarArmaduraNivel()).toString());
+        totalArmadura = (TextView) findViewById(R.id.totalArmadura);
+        totalArmadura.setText(p.calcularLlevarArmadura().toString());
+        costeArmadura = (TextView) findViewById(R.id.costeArmadura);
+        costeArmadura.setText(p.getClase().getCosteLlevarArmadura().toString());
+
+        PDsZeon = (EditText) findViewById(R.id.PDsZeon);
+        PDsZeon.setTransformationMethod(null);
+        PDsZeon.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsZeon.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsZeon.getText().toString());
+                }
+                p.setPdZeon(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon());
+                Integer valorBonoHabilidad = p.calcularZeon() - valorPdsHabilidad;
+                Integer habilidadTotal = p.calcularZeon();
+                baseZeon.setText(valorPdsHabilidad.toString());
+                bonoZeon.setText(valorBonoHabilidad.toString());
+                totalZeon.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseZeon = (TextView) findViewById(R.id.baseZeon);
+        baseZeon.setText(p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon()).toString());
+        bonoZeon = (TextView) findViewById(R.id.bonoZeon);
+        Integer valorBonoHabilidad = p.calcularZeon() - p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon());
+        bonoZeon.setText(valorBonoHabilidad.toString());
+        totalZeon = (TextView) findViewById(R.id.totalZeon);
+        totalZeon.setText(p.calcularZeon().toString());
+        costeZeon = (TextView) findViewById(R.id.costeZeon);
+        costeZeon.setText(p.getClase().getCosteZeon().toString());
+
+        PDsAct = (EditText) findViewById(R.id.PDsAct);
+        PDsAct.setTransformationMethod(null);
+        PDsAct.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsAct.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsAct.getText().toString());
+                }
+                p.setPdAct(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdAct(),p.getClase().getCosteAct());
+                Integer valorBonoHabilidad = p.tablaDeAct(p.getPoder());
+                Integer habilidadTotal = p.calcularAct();
+                baseAct.setText(valorPdsHabilidad.toString());
+                bonoAct.setText(valorBonoHabilidad.toString());
+                totalAct.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
+        baseAct = (TextView) findViewById(R.id.baseAct);
+        baseAct.setText(p.calcularValorPdsHabilidad(p.getPdAct(),p.getClase().getCosteAct()).toString());
+        bonoAct = (TextView) findViewById(R.id.bonoAct);
+        bonoAct.setText(p.tablaDeAct(p.getPoder()).toString());
+        totalAct = (TextView) findViewById(R.id.totalAct);
+        totalAct.setText(p.calcularAct().toString());
+        costeAct = (TextView) findViewById(R.id.costeAct);
+        costeAct.setText(p.getClase().getCosteAct().toString());
+
+        PDsProyMagica = (EditText) findViewById(R.id.PDsProyMagica);
+        PDsProyMagica.setTransformationMethod(null);
+        PDsProyMagica.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsProyMagica.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsProyMagica.getText().toString());
+                }
+                p.setPdProyMagica(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getDestreza(),0);
+                Integer habilidadTotal = p.calcularProyMagica();
+                baseProyMagica.setText(valorPdsHabilidad.toString());
+                bonoProyMagica.setText(valorBonoHabilidad.toString());
+                totalProyMagica.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseProyMagica = (TextView) findViewById(R.id.baseProyMagica);
+        baseProyMagica.setText(p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica()).toString());
+        bonoProyMagica = (TextView) findViewById(R.id.bonoProyMagica);
+        bonoProyMagica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+        totalProyMagica = (TextView) findViewById(R.id.totalProyMagica);
+        totalProyMagica.setText(p.calcularProyMagica().toString());
+        costeProyMagica = (TextView) findViewById(R.id.costeProyMagica);
+        costeProyMagica.setText(p.getClase().getCosteProyMagica().toString());
+
+        PDsNivelMagia = (EditText) findViewById(R.id.PDsNivelMagia);
+        PDsNivelMagia.setTransformationMethod(null);
+        PDsNivelMagia.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsNivelMagia.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsNivelMagia.getText().toString());
+                }
+                p.setPdNivelMagia(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdNivelMagia(),p.getClase().getCosteNivelMagia());
+                Integer valorBonoHabilidad = p.tablaDeNivelDeMagia(p.getInteligencia());
+                Integer habilidadTotal = p.calcularNivelMagia();
+                baseNivelMagia.setText(valorPdsHabilidad.toString());
+                bonoNivelMagia.setText(valorBonoHabilidad.toString());
+                totalNivelMagia.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
+        baseNivelMagia = (TextView) findViewById(R.id.baseNivelMagia);
+        baseNivelMagia.setText(p.calcularValorPdsHabilidad(p.getPdNivelMagia(),p.getClase().getCosteNivelMagia()).toString());
+        bonoNivelMagia = (TextView) findViewById(R.id.bonoNivelMagia);
+        bonoNivelMagia.setText(p.tablaDeNivelDeMagia(p.getInteligencia()).toString());
+        totalNivelMagia = (TextView) findViewById(R.id.totalNivelMagia);
+        totalNivelMagia.setText(p.calcularNivelMagia().toString());
+        costeNivelMagia = (TextView) findViewById(R.id.costeNivelMagia);
+        costeNivelMagia.setText(p.getClase().getCosteNivelMagia().toString());
+
+        PDsCV = (EditText) findViewById(R.id.PDsCV);
+        PDsCV.setTransformationMethod(null);
+        PDsCV.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsCV.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsCV.getText().toString());
+                }
+                p.setPdCv(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdCv(),p.getClase().getCosteCv());
+                Integer valorBonoHabilidad = p.getNivel() / p.getClase().getCvCadaXNiveles();
+                Integer habilidadTotal = p.calcularCVs();
+                baseCV.setText(valorPdsHabilidad.toString());
+                bonoCV.setText(valorBonoHabilidad.toString());
+                totalCV.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
+        baseCV = (TextView) findViewById(R.id.baseCV);
+        baseCV.setText(p.calcularValorPdsHabilidad(p.getPdCv(),p.getClase().getCosteCv()).toString());
+        bonoCV = (TextView) findViewById(R.id.bonoCV);
+        Integer bono = p.getNivel() / p.getClase().getCvCadaXNiveles();
+        bonoCV.setText(bono.toString());
+        totalCV = (TextView) findViewById(R.id.totalCV);
+        totalCV.setText(p.calcularCVs().toString());
+        costeCV = (TextView) findViewById(R.id.costeCV);
+        costeCV.setText(p.getClase().getCosteCv().toString());
+
+        PDsProyPsiquica = (EditText) findViewById(R.id.PDsProyPsiquica);
+        PDsProyPsiquica.setTransformationMethod(null);
+        PDsProyPsiquica.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsProyPsiquica.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsProyPsiquica.getText().toString());
+                }
+                p.setPdProyPsiquica(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getDestreza(),0);
+                Integer habilidadTotal = p.calcularProyPsiquica();
+                baseProyPsiquica.setText(valorPdsHabilidad.toString());
+                bonoProyPsiquica.setText(valorBonoHabilidad.toString());
+                totalProyPsiquica.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseProyPsiquica = (TextView) findViewById(R.id.baseProyPsiquica);
+        baseProyPsiquica.setText(p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica()).toString());
+        bonoProyPsiquica = (TextView) findViewById(R.id.bonoProyPsiquica);
+        bonoProyPsiquica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+        totalProyPsiquica = (TextView) findViewById(R.id.totalProyPsiquica);
+        totalProyPsiquica.setText(p.calcularProyPsiquica().toString());
+        costeProyPsiquica = (TextView) findViewById(R.id.costeProyPsiquica);
+        costeProyPsiquica.setText(p.getClase().getCosteProyPsiquica().toString());
+
+        PDsAdvertir = (EditText) findViewById(R.id.PDsAdvertir);
+        PDsAdvertir.setTransformationMethod(null);
+        PDsAdvertir.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsAdvertir.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsAdvertir.getText().toString());
+                }
+                p.setPdAdvertir(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getPercepcion(),0);
+                Integer habilidadTotal = p.calcularAdvertir();
+                baseAdvertir.setText(valorPdsHabilidad.toString());
+                bonoAdvertir.setText(valorBonoHabilidad.toString());
+                totalAdvertir.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseAdvertir = (TextView) findViewById(R.id.baseAdvertir);
+        baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
+        bonoAdvertir = (TextView) findViewById(R.id.bonoAdvertir);
+        bonoAdvertir.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+        totalAdvertir = (TextView) findViewById(R.id.totalAdvertir);
+        totalAdvertir.setText(p.calcularAdvertir().toString());
+        costeAdvertir = (TextView) findViewById(R.id.costeAdvertir);
+        costeAdvertir.setText(p.getClase().getCosteAdvertir().toString());
+
+        PDsAdvertir = (EditText) findViewById(R.id.PDsAdvertir);
+        PDsAdvertir.setTransformationMethod(null);
+        PDsAdvertir.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsAdvertir.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsAdvertir.getText().toString());
+                }
+                p.setPdAdvertir(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getPercepcion(),p.getClase().getAdvertirNivel());
+                Integer habilidadTotal = p.calcularAdvertir();
+                baseAdvertir.setText(valorPdsHabilidad.toString());
+                bonoAdvertir.setText(valorBonoHabilidad.toString());
+                totalAdvertir.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseAdvertir = (TextView) findViewById(R.id.baseAdvertir);
+        baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
+        bonoAdvertir = (TextView) findViewById(R.id.bonoAdvertir);
+        bonoAdvertir.setText(p.calcularBonoHabilidad(p.getPercepcion(),p.getClase().getAdvertirNivel()).toString());
+        totalAdvertir = (TextView) findViewById(R.id.totalAdvertir);
+        totalAdvertir.setText(p.calcularAdvertir().toString());
+        costeAdvertir = (TextView) findViewById(R.id.costeAdvertir);
+        costeAdvertir.setText(p.getClase().getCosteAdvertir().toString());
+
+
+        PDsArte = (EditText) findViewById(R.id.PDsArte);
+        PDsArte.setTransformationMethod(null);
+        PDsArte.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsArte.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsArte.getText().toString());
+                }
+                p.setPdArte(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteArte());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getPoder(),p.getClase().getArteNivel());
+                Integer habilidadTotal = p.calcularArte();
+                baseArte.setText(valorPdsHabilidad.toString());
+                bonoArte.setText(valorBonoHabilidad.toString());
+                totalArte.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseArte = (TextView) findViewById(R.id.baseArte);
+        baseArte.setText(p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteArte()).toString());
+        bonoArte = (TextView) findViewById(R.id.bonoArte);
+        bonoArte.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getArteNivel()).toString());
+        totalArte = (TextView) findViewById(R.id.totalArte);
+        totalArte.setText(p.calcularArte().toString());
+        costeArte = (TextView) findViewById(R.id.costeArte);
+        costeArte.setText(p.getClase().getCosteArte().toString());
+
+        PDsCapFisica = (EditText) findViewById(R.id.PDsCapFisica);
+        PDsCapFisica.setTransformationMethod(null);
+        PDsCapFisica.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsCapFisica.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsCapFisica.getText().toString());
+                }
+                p.setPdCapFisica(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getCapFisicaNivel());
+                Integer habilidadTotal = p.calcularCapFisica();
+                baseCapFisica.setText(valorPdsHabilidad.toString());
+                bonoCapFisica.setText(valorBonoHabilidad.toString());
+                totalCapFisica.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseCapFisica = (TextView) findViewById(R.id.baseCapFisica);
+        baseCapFisica.setText(p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica()).toString());
+        bonoCapFisica = (TextView) findViewById(R.id.bonoCapFisica);
+        bonoCapFisica.setText(p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getCapFisicaNivel()).toString());
+        totalCapFisica = (TextView) findViewById(R.id.totalCapFisica);
+        totalCapFisica.setText(p.calcularCapFisica().toString());
+        costeCapFisica = (TextView) findViewById(R.id.costeCapFisica);
+        costeCapFisica.setText(p.getClase().getCosteCapFisica().toString());
+
+        PDsConocimiento = (EditText) findViewById(R.id.PDsConocimiento);
+        PDsConocimiento.setTransformationMethod(null);
+        PDsConocimiento.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsConocimiento.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsConocimiento.getText().toString());
+                }
+                p.setPdConocimiento(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getInteligencia(),p.getClase().getConocimientoNivel());
+                Integer habilidadTotal = p.calcularConocimiento();
+                baseConocimiento.setText(valorPdsHabilidad.toString());
+                bonoConocimiento.setText(valorBonoHabilidad.toString());
+                totalConocimiento.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseConocimiento = (TextView) findViewById(R.id.baseConocimiento);
+        baseConocimiento.setText(p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento()).toString());
+        bonoConocimiento = (TextView) findViewById(R.id.bonoConocimiento);
+        bonoConocimiento.setText(p.calcularBonoHabilidad(p.getInteligencia(),p.getClase().getConocimientoNivel()).toString());
+        totalConocimiento = (TextView) findViewById(R.id.totalConocimiento);
+        totalConocimiento.setText(p.calcularConocimiento().toString());
+        costeConocimiento = (TextView) findViewById(R.id.costeConocimiento);
+        costeConocimiento.setText(p.getClase().getCosteConocimiento().toString());
+
+        PDsSigilo = (EditText) findViewById(R.id.PDsSigilo);
+        PDsSigilo.setTransformationMethod(null);
+        PDsSigilo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsSigilo.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsSigilo.getText().toString());
+                }
+                p.setPdSigilo(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getSigiloNivel());
+                Integer habilidadTotal = p.calcularSigilo();
+                baseSigilo.setText(valorPdsHabilidad.toString());
+                bonoSigilo.setText(valorBonoHabilidad.toString());
+                totalSigilo.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseSigilo = (TextView) findViewById(R.id.baseSigilo);
+        baseSigilo.setText(p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo()).toString());
+        bonoSigilo = (TextView) findViewById(R.id.bonoSigilo);
+        bonoSigilo.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getSigiloNivel()).toString());
+        totalSigilo = (TextView) findViewById(R.id.totalSigilo);
+        totalSigilo.setText(p.calcularSigilo().toString());
+        costeSigilo = (TextView) findViewById(R.id.costeSigilo);
+        costeSigilo.setText(p.getClase().getCosteSigilo().toString());
+
+        PDsValoracionMagica = (EditText) findViewById(R.id.PDsValoracionMagica);
+        PDsValoracionMagica.setTransformationMethod(null);
+        PDsValoracionMagica.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsValoracionMagica.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsValoracionMagica.getText().toString());
+                }
+                p.setPdValoracionMagica(val);
+                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica());
+                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getPoder(),p.getClase().getVisionMagicaNivel());
+                Integer habilidadTotal = p.calcularValoracionMagica();
+                baseValoracionMagica.setText(valorPdsHabilidad.toString());
+                bonoValoracionMagica.setText(valorBonoHabilidad.toString());
+                totalValoracionMagica.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseValoracionMagica = (TextView) findViewById(R.id.baseValoracionMagica);
+        baseValoracionMagica.setText(p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica()).toString());
+        bonoValoracionMagica = (TextView) findViewById(R.id.bonoValoracionMagica);
+        bonoValoracionMagica.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getVisionMagicaNivel()).toString());
+        totalValoracionMagica = (TextView) findViewById(R.id.totalValoracionMagica);
+        totalValoracionMagica.setText(p.calcularValoracionMagica().toString());
+        costeValoracionMagica = (TextView) findViewById(R.id.costeValoracionMagica);
+        costeValoracionMagica.setText(p.getClase().getCosteVisionMágica().toString());
+
+        PDsVida = (EditText) findViewById(R.id.PDsVida);
+        PDsVida.setTransformationMethod(null);
+        PDsVida.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (PDsVida.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(PDsVida.getText().toString());
+                }
+                p.setPdVida(val);
+                Integer valorPdsHabilidad = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
+                Integer valorBonoHabilidad = p.calcularVida()-valorPdsHabilidad;
+                Integer habilidadTotal = p.calcularVida();
+
+                baseVida.setText(valorPdsHabilidad.toString());
+                bonoVida.setText(valorBonoHabilidad.toString());
+                totalVida.setText(habilidadTotal.toString());
+                Integer pdsdisponibles = calcularPDsDisponibles(p);
+                pdsDisponibles.setText(pdsdisponibles.toString());
+                if (pdsdisponibles < 0)
+                {
+                    pdsDisponibles.setTextColor(Color.RED);
+                } else
+                {
+                    pdsDisponibles.setTextColor(Color.BLACK);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        baseVida = (TextView) findViewById(R.id.baseVida);
+        Integer base = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
+        baseVida.setText(base.toString());
+        bonoVida = (TextView) findViewById(R.id.bonoVida);
+        bonoVida.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getVidaNivel()).toString());
+        totalVida = (TextView) findViewById(R.id.totalVida);
+        totalVida.setText(p.calcularVida().toString());
+        costeVida = (TextView) findViewById(R.id.costeVida);
+        costeVida.setText(p.getClase().getCosteVida().toString());
+
+        agilidadNumber = (EditText) findViewById(R.id.agilidadNumber);
+        agilidadNumber.setTransformationMethod(null);
+        agilidadNumber.setText(p.getAgilidad().toString());
+        agilidadNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (agilidadNumber.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(agilidadNumber.getText().toString());
+                }
+                p.setAgilidad(val);
+
+                baseSigilo.setText(p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo()).toString());
+                bonoSigilo.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getSigiloNivel()).toString());
+                totalSigilo.setText(p.calcularSigilo().toString());
+
+                baseDefensa.setText(p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd()).toString());
+                bonoDefensa.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getHdNivel()).toString());
+                totalDefensa.setText(p.calcularHabilidadDefensa().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
+
+        percepNumber = (EditText) findViewById(R.id.percepNumber);
+        percepNumber.setTransformationMethod(null);
+        percepNumber.setText(p.getPercepcion().toString());
+        percepNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (percepNumber.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(percepNumber.getText().toString());
+                }
+                p.setPercepcion(val);
+
+                baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
+                bonoAdvertir.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+                totalAdvertir.setText(p.calcularAdvertir().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+
+        volNumber = (EditText) findViewById(R.id.volNumber);
+        volNumber.setTransformationMethod(null);
+        volNumber.setText(p.getVoluntad().toString());
+        volNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer val;
+                if (volNumber.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(volNumber.getText().toString());
+                }
+                p.setVoluntad(val);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+>>>>>>> Stashed changes
         });
 
         poderNumber = (EditText) findViewById(R.id.poderNumber);
         poderNumber.setTransformationMethod(null);
+<<<<<<< Updated upstream
         poderNumber.setText(personaje.getPoder().toString());
         poderNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+=======
+        poderNumber.setText(p.getPoder().toString());
+        poderNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+>>>>>>> Stashed changes
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -135,6 +1068,7 @@ public class CreatorActivity extends AppCompatActivity {
                 } else {
                     val = Integer.parseInt(poderNumber.getText().toString());
                 }
+<<<<<<< Updated upstream
                 personaje.setPoder(val);
             }
 
@@ -142,20 +1076,48 @@ public class CreatorActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+=======
+                p.setPoder(val);
+
+                baseZeon.setText(p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon()).toString());
+                Integer valorBonoHabilidad = p.calcularZeon() - p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon());
+                bonoZeon.setText(valorBonoHabilidad.toString());
+                totalZeon.setText(p.calcularZeon().toString());
+
+                baseValoracionMagica.setText(p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica()).toString());
+                bonoValoracionMagica.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getVisionMagicaNivel()).toString());
+                totalValoracionMagica.setText(p.calcularValoracionMagica().toString());
+
+                baseArte.setText(p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteVisionMágica()).toString());
+                bonoArte.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getArteNivel()).toString());
+                totalArte.setText(p.calcularArte().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+>>>>>>> Stashed changes
         });
 
         intNumber = (EditText) findViewById(R.id.intNumber);
         intNumber.setTransformationMethod(null);
+<<<<<<< Updated upstream
         intNumber.setText(personaje.getInteligencia().toString());
         intNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+=======
+        intNumber.setText(p.getInteligencia().toString());
+        intNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+>>>>>>> Stashed changes
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Integer val;
+<<<<<<< Updated upstream
                 if (agilidadNumber.getText().toString().compareTo("")==0)
                 {
                     val = 0;
@@ -169,16 +1131,44 @@ public class CreatorActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+=======
+                if (intNumber.getText().toString().compareTo("")==0)
+                {
+                    val = 0;
+                } else {
+                    val = Integer.parseInt(intNumber.getText().toString());
+                }
+                p.setInteligencia(val);
+
+                baseConocimiento.setText(p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento()).toString());
+                bonoConocimiento.setText(p.calcularBonoHabilidad(p.getInteligencia(),p.getClase().getConocimientoNivel()).toString());
+                totalConocimiento.setText(p.calcularConocimiento().toString());
+
+                baseNivelMagia.setText(p.calcularValorPdsHabilidad(p.getPdNivelMagia(),p.getClase().getCosteNivelMagia()).toString());
+                bonoNivelMagia.setText(p.tablaDeNivelDeMagia(p.getInteligencia()).toString());
+                totalNivelMagia.setText(p.calcularNivelMagia().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+>>>>>>> Stashed changes
         });
 
         constNumber = (EditText) findViewById(R.id.constNumber);
         constNumber.setTransformationMethod(null);
+<<<<<<< Updated upstream
         constNumber.setText(personaje.getConstitucion().toString());
         constNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+=======
+        constNumber.setText(p.getConstitucion().toString());
+        constNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+>>>>>>> Stashed changes
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -189,6 +1179,7 @@ public class CreatorActivity extends AppCompatActivity {
                 } else {
                     val = Integer.parseInt(constNumber.getText().toString());
                 }
+<<<<<<< Updated upstream
                 personaje.setConstitucion(val);
             }
 
@@ -196,16 +1187,35 @@ public class CreatorActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+=======
+                p.setConstitucion(val);
+
+                Integer base = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
+                baseVida.setText(base.toString());
+                bonoVida.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getVidaNivel()).toString());
+                totalVida.setText(p.calcularVida().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+>>>>>>> Stashed changes
         });
 
         fuerzaNumber = (EditText) findViewById(R.id.fuerzaNumber);
         fuerzaNumber.setTransformationMethod(null);
+<<<<<<< Updated upstream
         fuerzaNumber.setText(personaje.getFuerza().toString());
         fuerzaNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+=======
+        fuerzaNumber.setText(p.getFuerza().toString());
+        fuerzaNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+>>>>>>> Stashed changes
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -216,6 +1226,7 @@ public class CreatorActivity extends AppCompatActivity {
                 } else {
                     val = Integer.parseInt(fuerzaNumber.getText().toString());
                 }
+<<<<<<< Updated upstream
                 personaje.setFuerza(val);
             }
 
@@ -223,16 +1234,34 @@ public class CreatorActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+=======
+                p.setFuerza(val);
+
+                baseCapFisica.setText(p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica()).toString());
+                bonoCapFisica.setText(p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getCapFisicaNivel()).toString());
+                totalCapFisica.setText(p.calcularCapFisica().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+>>>>>>> Stashed changes
         });
 
         destrezaNumber = (EditText) findViewById(R.id.destrezaNumber);
         destrezaNumber.setTransformationMethod(null);
+<<<<<<< Updated upstream
         destrezaNumber.setText(personaje.getDestreza().toString());
         destrezaNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+=======
+        destrezaNumber.setText(p.getDestreza().toString());
+        destrezaNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+>>>>>>> Stashed changes
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -243,11 +1272,34 @@ public class CreatorActivity extends AppCompatActivity {
                 } else {
                     val = Integer.parseInt(destrezaNumber.getText().toString());
                 }
+<<<<<<< Updated upstream
                 personaje.setDestreza(val);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+=======
+                p.setDestreza(val);
+
+                baseAtaque.setText(p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa()).toString());
+                bonoAtaque.setText(p.calcularBonoHabilidad(p.getDestreza(),p.getClase().getHaNivel()).toString());
+                totalAtaque.setText(p.calcularHabilidadAtaque().toString());
+
+                baseProyMagica.setText(p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica()).toString());
+                bonoProyMagica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+                totalProyMagica.setText(p.calcularProyMagica().toString());
+
+                baseProyPsiquica.setText(p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica()).toString());
+                bonoProyPsiquica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+                totalProyPsiquica.setText(p.calcularProyPsiquica().toString());
+                
+                
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+>>>>>>> Stashed changes
 
             }
         });
