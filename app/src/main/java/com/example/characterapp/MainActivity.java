@@ -38,8 +38,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("AnimaApp");
+        //Se carga el layout de la actividad principal
         setContentView(R.layout.activity_main);
+        //Se accede a la base de datos para cargar todos los personajes de la BD en la app
         db = new DatabaseHelper(this);
+        //Se declara un botón el cual, cuando es clickado, redirecciona al usuario a la actividad
+        //de crear personaje
         botonAddChar = (FloatingActionButton) findViewById(R.id.botonAddChar);
         charList = (ListView) findViewById(R.id.charList);
         cogerDatos();
@@ -50,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(addCharIntent);
             }
         });
+        //Este método abrirá la actividad que permite ver todos los datos de un usuario y le envía el personaje
+        //a dicha actividad cuando el usuario toca un personaje
         charList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
@@ -61,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(verCharIntent);
             }
         });
-
+    //Este método abre un mené contextual que le da al usuario la opción de editar o eliminar un personaje.
+    //Cuando se seleccione una de las acciones, se llamará al método correspondiente. En el caso de editar
+    //se abrirá una ventana similar a crear donde editar la información del personaje. Si se selecciona
+    //eliminar, el personaje es eliminado y se muestra un mensaje de éxito.
         charList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(Menu.NONE, 0, Menu.NONE, "Edit");
         menu.add(Menu.NONE, 1, Menu.NONE, "Delete");
     }
-
+    //Aquí se asigna el funcionamiento a cada elemento del menú contextual
     @Override
     public boolean onContextItemSelected (MenuItem item) {
         switch (item.getItemId()) {
