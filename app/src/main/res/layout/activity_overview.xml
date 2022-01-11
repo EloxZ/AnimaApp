@@ -30,6 +30,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="126dp"
                     android:layout_height="47dp"
+                    android:layout_marginRight="5dp"
                     android:text="@string/name"
                     android:textAlignment="textEnd"
                     android:textSize="24sp" />
@@ -70,19 +71,21 @@
 
                 <TextView
                     android:id="@+id/Clase"
-                    android:layout_width="wrap_content"
+                    android:layout_width="174dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="Ilusionista"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textView25"
-                    android:layout_width="13dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:text="@string/levelOverview"
-                    android:textAlignment="center"
+                    android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
                 <TextView
@@ -90,6 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="22"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
@@ -107,7 +111,7 @@
 
                 <TextView
                     android:id="@+id/textView231"
-                    android:layout_width="56dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/raceOverview"
@@ -116,19 +120,21 @@
 
                 <TextView
                     android:id="@+id/Raza"
-                    android:layout_width="wrap_content"
+                    android:layout_width="174dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="asasasasasasasasas"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textView232"
-                    android:layout_width="13dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:text="@string/pvOverview"
-                    android:textAlignment="center"
+                    android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
                 <TextView
@@ -136,6 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="2121"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
@@ -371,6 +378,7 @@
                     android:layout_width="83dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/combat.abOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
@@ -388,8 +396,9 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/def.abOV"
-                    android:textAlignment="center"
+                    android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
                 <TextView
@@ -409,8 +418,9 @@
 
                 <TextView
                     android:id="@+id/textView264"
-                    android:layout_width="100dp"
+                    android:layout_width="48dp"
                     android:layout_height="47dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:text="@string/weapOV"
                     android:textAlignment="textEnd"
@@ -424,12 +434,6 @@
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/textView266"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -440,8 +444,9 @@
 
                 <TextView
                     android:id="@+id/textView268"
-                    android:layout_width="100dp"
+                    android:layout_width="48dp"
                     android:layout_height="47dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:text="@string/ArmorOV"
                     android:textAlignment="textEnd"
@@ -455,11 +460,6 @@
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/textView269"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <TextView
@@ -497,7 +497,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Zeon:  "
+                    android:layout_marginRight="5dp"
+                    android:text="Zeon:"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -514,7 +515,8 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Act:  "
+                    android:layout_marginRight="5dp"
+                    android:text="Act:"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -538,8 +540,9 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/magicProyOV"
-                    android:textAlignment="center"
+                    android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
                 <TextView
@@ -555,6 +558,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/MagicLvOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
@@ -576,6 +580,7 @@
             <TextView
                 android:id="@+id/textView298"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -603,7 +608,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="CV:  "
+                    android:layout_marginRight="5dp"
+                    android:text="CV:"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -621,6 +627,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/PsychicProyOV"
+                    android:layout_marginRight="5dp"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -668,6 +675,7 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/stealthOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
@@ -685,7 +693,8 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Advertir:  "
+                    android:layout_marginRight="5dp"
+                    android:text="Advertir:"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 
@@ -709,6 +718,7 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/artOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
@@ -726,6 +736,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/knowledgeOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
@@ -750,6 +761,7 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/physAbOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
@@ -767,6 +779,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:text="@string/magicRatingOV"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
