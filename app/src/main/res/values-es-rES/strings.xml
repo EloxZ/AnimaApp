@@ -57,4 +57,7 @@
     <string name="ladron">Ladron</string>
     <string name="hechicero">Hechicero</string>
     <string name="ilusionista">Ilusionista</string>
+    <string name="advertirOV">Advertir:</string>
+    <string name="save">Aceptar</string>
+    <string name="advertir">Advertir</string>
 </resources>

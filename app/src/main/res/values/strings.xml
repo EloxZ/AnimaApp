@@ -91,4 +91,7 @@
     <string name="Health">Health</string>
     <string name="race">Race</string>
     <string name="attributes">Attributes</string>
+    <string name="advertirOV">Notice:</string>
+    <string name="save">Save</string>
+    <string name="advertir">Notice</string>
 </resources>
