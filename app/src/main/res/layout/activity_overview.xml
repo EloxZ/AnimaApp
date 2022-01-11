@@ -74,7 +74,6 @@
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Ilusionista"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
@@ -93,7 +92,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="22"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
@@ -123,7 +121,6 @@
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="asasasasasasasasas"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
@@ -142,7 +139,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2121"
                     android:textAlignment="textStart"
                     android:textSize="20sp" />
 
