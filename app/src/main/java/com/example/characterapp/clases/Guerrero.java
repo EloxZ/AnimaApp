@@ -1,4 +1,6 @@
-package com.example.characterapp;
+package com.example.characterapp.clases;
+
+import com.example.characterapp.Clase;
 
 public class Guerrero extends Clase {
 

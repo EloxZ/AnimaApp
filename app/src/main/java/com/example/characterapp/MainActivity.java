@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     //Cuando se seleccione una de las acciones, se llamará al método correspondiente. En el caso de editar
     //se abrirá una ventana similar a crear donde editar la información del personaje. Si se selecciona
     //eliminar, el personaje es eliminado y se muestra un mensaje de éxito.
+
         charList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(Menu.NONE, 1, Menu.NONE, "Delete");
     }
     //Aquí se asigna el funcionamiento a cada elemento del menú contextual
+
     @Override
     public boolean onContextItemSelected (MenuItem item) {
         switch (item.getItemId()) {

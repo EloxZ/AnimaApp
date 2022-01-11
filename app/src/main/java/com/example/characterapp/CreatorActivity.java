@@ -17,6 +17,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.characterapp.clases.Guerrero;
+import com.example.characterapp.clases.Hechicero;
+import com.example.characterapp.clases.Ladron;
+import com.example.characterapp.clases.Mentalista;
+
 public class CreatorActivity extends AppCompatActivity {
     private Spinner classSpinner, razaSpinner, spinnerWeapon, spinnerArmor;
     private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber, lvlNumber;
@@ -1364,6 +1369,27 @@ public class CreatorActivity extends AppCompatActivity {
                             armor = R.string.acolchada;
                     }
 
+                    String s = classSpinner.getSelectedItem().toString();
+                    Clase c = new Guerrero();
+
+                    switch (s) {
+                        case "Warrior":
+                        case "Guerrero":
+                            c = new Guerrero();
+                            break;
+                        case "Hechicero":
+                        case "Sorcerer":
+                            c = new Hechicero();
+                            break;
+                        case "Ladron":
+                        case "Thief":
+                            c = new Ladron();
+                            break;
+                        case "Mentalista":
+                        case "Mentalist":
+                            c = new Mentalista();
+                    }
+                    pFinal.setClase(c);
                     pFinal.setArma(weapon);
                     pFinal.setArmadura(armor);
 

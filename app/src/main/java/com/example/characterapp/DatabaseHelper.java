@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.characterapp.clases.Guerrero;
+import com.example.characterapp.clases.Hechicero;
+import com.example.characterapp.clases.Ladron;
+import com.example.characterapp.clases.Mentalista;
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 
@@ -23,14 +27,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private Context context;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 6);
+        super(context, DATABASE_NAME, null, 7);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            db.execSQL("CREATE TABLE Personaje (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR, Raza VARCHAR, Nivel INTEGER, Clase INTEGER, Agilidad INTEGER, Fuerza INTEGER, Constitucion INTEGER, Destreza INTEGER, Inteligencia INTEGER, Percepcion INTEGER, Poder INTEGER, Voluntad INTEGER, PD INTEGER, PDVida INTEGER, PDHA INTEGER, PDHD INTEGER, PDLlevarArmadura INTEGER, PDZeon INTEGER, PDACT INTEGER, PDProyMagica INTEGER, PDNivelMagia INTEGER, PDCV INTEGER, PDproyPsiquica INTEGER, PDSigilo INTEGER, PDAvertir INTEGER, PDConocimiento INTEGER, PDArte INTEGER, PDCapFisica INTEGER, Arma INTEGER, Armadura INTEGER)");
+            db.execSQL("CREATE TABLE Personaje (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR, Raza VARCHAR, Nivel INTEGER, Clase VARCHAR, Agilidad INTEGER, Fuerza INTEGER, Constitucion INTEGER, Destreza INTEGER, Inteligencia INTEGER, Percepcion INTEGER, Poder INTEGER, Voluntad INTEGER, PD INTEGER, PDVida INTEGER, PDHA INTEGER, PDHD INTEGER, PDLlevarArmadura INTEGER, PDZeon INTEGER, PDACT INTEGER, PDProyMagica INTEGER, PDNivelMagia INTEGER, PDCV INTEGER, PDproyPsiquica INTEGER, PDSigilo INTEGER, PDAvertir INTEGER, PDConocimiento INTEGER, PDArte INTEGER, PDCapFisica INTEGER, Arma INTEGER, Armadura INTEGER)");
 
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
@@ -45,13 +49,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addPersonaje(Personaje p) {
-        //Faltan cosas xd
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Nombre", p.getNombre());
         contentValues.put("Raza", p.getRaza());
         contentValues.put("Nivel", p.getNivel());
-        //contentValues.put("Clase", p.getClase().getNombre()); // Editar
+        contentValues.put("Clase", p.getClase().getNombre());
         contentValues.put("Agilidad", p.getAgilidad());
         contentValues.put("Constitucion", p.getConstitucion());
         contentValues.put("Destreza", p.getDestreza());
@@ -116,7 +119,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 pj.setId(cursor.getInt(cursor.getColumnIndexOrThrow("ID")));
                 pj.setRaza(cursor.getString(cursor.getColumnIndexOrThrow("Raza")));
                 pj.setNivel(cursor.getInt(cursor.getColumnIndexOrThrow("Nivel")));
-                //contentValues.put("Clase", p.getClase().getNombre());
+                String clase = cursor.getString(cursor.getColumnIndexOrThrow("Clase"));
+                Clase c = new Guerrero();
+                switch (clase) {
+                    case "Guerrero":
+                        c = new Guerrero();
+                        break;
+                    case "Hechicero":
+                        c = new Hechicero();
+                        break;
+                    case "Mentalista":
+                        c = new Mentalista();
+                        break;
+                    case "Ladron":
+                        c = new Ladron();
+                }
+                pj.setClase(c);
                 pj.setAgilidad(cursor.getInt(cursor.getColumnIndexOrThrow("Agilidad")));
                 pj.setFuerza(cursor.getInt(cursor.getColumnIndexOrThrow("Fuerza")));
                 pj.setConstitucion(cursor.getInt(cursor.getColumnIndexOrThrow("Constitucion")));

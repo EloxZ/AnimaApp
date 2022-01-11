@@ -17,6 +17,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.characterapp.clases.Guerrero;
+import com.example.characterapp.clases.Hechicero;
+import com.example.characterapp.clases.Ladron;
+import com.example.characterapp.clases.Mentalista;
 import com.google.gson.Gson;
 
 import java.util.Collections;
@@ -164,6 +168,7 @@ public class EditorActivity extends AppCompatActivity {
 
             }
         });
+        lvlNumber.setText(p.getNivel().toString());
 
         pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
         Integer pdsdisponibles = calcularPDsDisponibles(p);
@@ -1342,6 +1347,27 @@ public class EditorActivity extends AppCompatActivity {
 
                     pFinal.setArma(weapon);
                     pFinal.setArmadura(armor);
+                    String s = classSpinner.getSelectedItem().toString();
+                    Clase c = new Guerrero();
+
+                    switch (s) {
+                        case "Warrior":
+                        case "Guerrero":
+                            c = new Guerrero();
+                            break;
+                        case "Hechicero":
+                        case "Sorcerer":
+                            c = new Hechicero();
+                            break;
+                        case "Ladron":
+                        case "Thief":
+                            c = new Ladron();
+                            break;
+                        case "Mentalista":
+                        case "Mentalist":
+                            c = new Mentalista();
+                    }
+                    pFinal.setClase(c);
 
                     pFinal.setId(p.getId());
 
