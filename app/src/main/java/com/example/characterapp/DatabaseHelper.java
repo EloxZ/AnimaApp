@@ -54,11 +54,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addPersonaje(String n, String r, int lvl) {
+    public boolean addPersonaje(Personaje p) {
+        //Faltan cosas xd
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("Nombre", n);
-        contentValues.put("Raza", r);
+        contentValues.put("Nombre", p.getNombre());
+        contentValues.put("Raza", p.getRaza());
+        contentValues.put("Nivel", p.getRaza());
+        contentValues.put("Clase", p.getClase().getNombre());
+        contentValues.put("Agilidad", p.getAgilidad());
+        contentValues.put("Constitucion", p.getConstitucion());
+        contentValues.put("Destreza", p.getDestreza());
+        contentValues.put("Inteligencia", p.getInteligencia());
+        contentValues.put("Percepcion", p.getPercepcion());
+        contentValues.put("Poder", p.getPoder());
+        contentValues.put("Voluntad", p.getVoluntad());
+        contentValues.put("PD", p.getPd());
+        contentValues.put("PDVida", p.getPdVida());
+        contentValues.put("PDHA", p.getPdHa());
+        contentValues.put("PDLlevarArmadura", p.getPdLlevarArmadura());
+        contentValues.put("PDZeon", p.getPdZeon());
+        contentValues.put("PDACT", p.getPdAct());
+        contentValues.put("PDProyMagica", p.getPdProyMagica());
+        contentValues.put("PDNivelMagia", p.getPdNivelMagia());
+        contentValues.put("PDproyPsiquica", p.getPdProyPsiquica());
+        contentValues.put("PDSigilo", p.getPdSigilo());
+        contentValues.put("PDAvertir", p.getPdAdvertir());
+        contentValues.put("PDConocimiento", p.getPdConocimiento());
+        contentValues.put("PDCapFisica", p.getPdCapFisica());
+        contentValues.put("Arma",p.getArma());
+        //contentValues.put("Armadura",p.getArmadura());
+
 
         long result = db.insert("Personajes", null, contentValues);
 
@@ -69,6 +95,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public boolean removePersonaje(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean sol = false;
+        String sql = "DELETE FROM Personajes " +
+                "WHERE ID = " + id;
+        try {
+            db.execSQL(sql);
+            sol = true;
+        } catch (Exception e) {
+
+        }
+
+        return sol;
+    }
+
     public List<Personaje> getPersonajes(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + "Personajes", null);
@@ -76,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             while (cursor.moveToNext()) {
                 Personaje pj = new Personaje(cursor.getString(cursor.getColumnIndexOrThrow("Nombre")));
+                pj.setId(cursor.getInt(cursor.getColumnIndexOrThrow("ID")));
                 pj.setRaza(cursor.getString(cursor.getColumnIndexOrThrow("Raza")));
                 pj.setNivel(cursor.getInt(cursor.getColumnIndexOrThrow("Nivel")));
                 pjs.add(pj);

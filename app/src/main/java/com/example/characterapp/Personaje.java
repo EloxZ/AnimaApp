@@ -325,7 +325,7 @@ public class Personaje {
     }
     public Integer calcularValoracionMagica()
     {
-        return calcularHabilidadFinal(this.pd, this.clase.getCosteVisionMágica(),this.poder, this.clase.getVisionMagicaNivel());
+        return calcularHabilidadFinal(this.pdValoracionMagica, this.clase.getCosteVisionMágica(), this.poder, this.clase.getVisionMagicaNivel());
     }
 
     public Integer getId() { return id; }
