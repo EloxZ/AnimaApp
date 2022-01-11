@@ -17,17 +17,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.characterapp.clases.Guerrero;
+import com.example.characterapp.clases.Hechicero;
+import com.example.characterapp.clases.Ladron;
+import com.example.characterapp.clases.Mentalista;
 import com.google.gson.Gson;
 
 import java.util.Collections;
 import java.util.Map;
 
 public class EditorActivity extends AppCompatActivity {
-    private Spinner classSpinner;
-    private Spinner razaSpinner;
-    private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber, nameField;
+    private Spinner classSpinner, razaSpinner, spinnerWeapon, spinnerArmor;
+    private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber, lvlNumber;
     private EditText PDsAtaque, PDsDefensa, PDsArmadura, PDsZeon, PDsAct, PDsProyMagica, PDsNivelMagia, PDsCV,
-            PDsProyPsiquica, PDsSigilo, PDsAdvertir, PDsConocimiento, PDsArte, PDsCapFisica, PDsValoracionMagica, PDsVida;
+            PDsProyPsiquica, PDsSigilo, PDsAdvertir, PDsConocimiento, PDsArte, PDsCapFisica, PDsValoracionMagica, PDsVida, nameField;
 
     private TextView pdsDisponibles, baseAtaque, baseDefensa, baseArmadura, baseZeon, baseAct, baseProyMagica, baseNivelMagia, baseCV, baseProyPsiquica, baseSigilo, baseAdvertir, baseConocimiento, baseArte, baseCapFisica, baseValoracionMagica, baseVida;
 
@@ -36,10 +39,8 @@ public class EditorActivity extends AppCompatActivity {
     private TextView bonoAtaque, bonoDefensa, bonoArmadura, bonoZeon, bonoAct, bonoProyMagica, bonoNivelMagia, bonoCV, bonoProyPsiquica, bonoSigilo, bonoAdvertir, bonoConocimiento, bonoArte, bonoCapFisica, bonoValoracionMagica, bonoVida;
 
     private TextView totalAtaque, totalDefensa, totalArmadura, totalZeon, totalAct, totalProyMagica, totalNivelMagia, totalCV, totalProyPsiquica, totalSigilo, totalAdvertir, totalConocimiento, totalArte, totalCapFisica, totalValoracionMagica, totalVida;
-
     private Button buttonPd, btnAccept;
     private boolean back;
-    DatabaseHelper db = new DatabaseHelper(this);
     private ScrollView viewAtr;
     private ConstraintLayout viewPds;
 
@@ -49,24 +50,37 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_creator);
         setTitle("Editor de personaje");
         back = false;
+        DatabaseHelper db = new DatabaseHelper(this);
         Intent intent = getIntent();
         Gson gson = new Gson();
         Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class);
         viewAtr = (ScrollView) findViewById(R.id.viewAtr);
         viewPds = (ConstraintLayout) findViewById(R.id.viewPds);
         classSpinner = (Spinner) findViewById(R.id.classSpinner);
+        spinnerWeapon = (Spinner) findViewById(R.id.spinnerWeapon);
+        spinnerArmor = (Spinner) findViewById(R.id.spinnerArmor);
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
         buttonPd = (Button) findViewById(R.id.buttonPd);
         btnAccept = (Button) findViewById(R.id.btnAccept);
-        btnAccept.setText("Guardar");
+        btnAccept.setText("Save");
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clases, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.razas, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.armas, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.armaduras, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         classSpinner.setAdapter(adapter);
         razaSpinner.setAdapter(adapter2);
+        spinnerWeapon.setAdapter(adapter3);
+        spinnerArmor.setAdapter(adapter4);
         nameField = (EditText) findViewById(R.id.nameField);
         nameField.setText(p.getNombre());
+        lvlNumber = (EditText) findViewById(R.id.lvlNumber);
+        lvlNumber.setTransformationMethod(null);
+        lvlNumber.setText(p.getNivel().toString());
+
         pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
         Integer pdsdisponibles = calcularPDsDisponibles(p);
         pdsDisponibles.setText(pdsdisponibles.toString());
@@ -115,6 +129,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseAtaque = (TextView) findViewById(R.id.baseAtaque);
         baseAtaque.setText(p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa()).toString());
         bonoAtaque = (TextView) findViewById(R.id.bonoAtaque);
@@ -162,6 +177,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseDefensa = (TextView) findViewById(R.id.baseDefensa);
         baseDefensa.setText(p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd()).toString());
         bonoDefensa = (TextView) findViewById(R.id.bonoDefensa);
@@ -208,6 +224,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseArmadura = (TextView) findViewById(R.id.baseArmadura);
         baseArmadura.setText(p.calcularValorPdsHabilidad(p.getPdLlevarArmadura(),p.getClase().getCosteLlevarArmadura()).toString());
         bonoArmadura = (TextView) findViewById(R.id.bonoArmadura);
@@ -254,6 +271,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseZeon = (TextView) findViewById(R.id.baseZeon);
         baseZeon.setText(p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon()).toString());
         bonoZeon = (TextView) findViewById(R.id.bonoZeon);
@@ -348,6 +366,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseProyMagica = (TextView) findViewById(R.id.baseProyMagica);
         baseProyMagica.setText(p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica()).toString());
         bonoProyMagica = (TextView) findViewById(R.id.bonoProyMagica);
@@ -489,6 +508,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseProyPsiquica = (TextView) findViewById(R.id.baseProyPsiquica);
         baseProyPsiquica.setText(p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica()).toString());
         bonoProyPsiquica = (TextView) findViewById(R.id.bonoProyPsiquica);
@@ -535,56 +555,11 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseAdvertir = (TextView) findViewById(R.id.baseAdvertir);
         baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
         bonoAdvertir = (TextView) findViewById(R.id.bonoAdvertir);
         bonoAdvertir.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
-        totalAdvertir = (TextView) findViewById(R.id.totalAdvertir);
-        totalAdvertir.setText(p.calcularAdvertir().toString());
-        costeAdvertir = (TextView) findViewById(R.id.costeAdvertir);
-        costeAdvertir.setText(p.getClase().getCosteAdvertir().toString());
-
-        PDsAdvertir = (EditText) findViewById(R.id.PDsAdvertir);
-        PDsAdvertir.setTransformationMethod(null);
-        PDsAdvertir.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Integer val;
-                if (PDsAdvertir.getText().toString().compareTo("")==0)
-                {
-                    val = 0;
-                } else {
-                    val = Integer.parseInt(PDsAdvertir.getText().toString());
-                }
-                p.setPdAdvertir(val);
-                Integer valorPdsHabilidad = p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir());
-                Integer valorBonoHabilidad = p.calcularBonoHabilidad(p.getPercepcion(),p.getClase().getAdvertirNivel());
-                Integer habilidadTotal = p.calcularAdvertir();
-                baseAdvertir.setText(valorPdsHabilidad.toString());
-                bonoAdvertir.setText(valorBonoHabilidad.toString());
-                totalAdvertir.setText(habilidadTotal.toString());
-                Integer pdsdisponibles = calcularPDsDisponibles(p);
-                pdsDisponibles.setText(pdsdisponibles.toString());
-                if (pdsdisponibles < 0)
-                {
-                    pdsDisponibles.setTextColor(Color.RED);
-                } else
-                {
-                    pdsDisponibles.setTextColor(Color.BLACK);
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {}
-        });
-        baseAdvertir = (TextView) findViewById(R.id.baseAdvertir);
-        baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
-        bonoAdvertir = (TextView) findViewById(R.id.bonoAdvertir);
-        bonoAdvertir.setText(p.calcularBonoHabilidad(p.getPercepcion(),p.getClase().getAdvertirNivel()).toString());
         totalAdvertir = (TextView) findViewById(R.id.totalAdvertir);
         totalAdvertir.setText(p.calcularAdvertir().toString());
         costeAdvertir = (TextView) findViewById(R.id.costeAdvertir);
@@ -628,6 +603,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseArte = (TextView) findViewById(R.id.baseArte);
         baseArte.setText(p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteArte()).toString());
         bonoArte = (TextView) findViewById(R.id.bonoArte);
@@ -674,6 +650,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseCapFisica = (TextView) findViewById(R.id.baseCapFisica);
         baseCapFisica.setText(p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica()).toString());
         bonoCapFisica = (TextView) findViewById(R.id.bonoCapFisica);
@@ -720,6 +697,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseConocimiento = (TextView) findViewById(R.id.baseConocimiento);
         baseConocimiento.setText(p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento()).toString());
         bonoConocimiento = (TextView) findViewById(R.id.bonoConocimiento);
@@ -766,6 +744,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseSigilo = (TextView) findViewById(R.id.baseSigilo);
         baseSigilo.setText(p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo()).toString());
         bonoSigilo = (TextView) findViewById(R.id.bonoSigilo);
@@ -812,6 +791,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseValoracionMagica = (TextView) findViewById(R.id.baseValoracionMagica);
         baseValoracionMagica.setText(p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica()).toString());
         bonoValoracionMagica = (TextView) findViewById(R.id.bonoValoracionMagica);
@@ -859,6 +839,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+
         baseVida = (TextView) findViewById(R.id.baseVida);
         Integer base = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
         baseVida.setText(base.toString());
@@ -1109,6 +1090,62 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+        PDsProyMagica = (EditText) findViewById(R.id.PDsProyMagica);
+        PDsProyMagica.setTransformationMethod(null);
+
+        PDsNivelMagia = (EditText) findViewById(R.id.PDsNivelMagia);
+        PDsNivelMagia.setTransformationMethod(null);
+
+        PDsCV = (EditText) findViewById(R.id.PDsCV);
+        PDsCV.setTransformationMethod(null);
+
+        PDsProyPsiquica = (EditText) findViewById(R.id.PDsProyPsiquica);
+        PDsProyPsiquica.setTransformationMethod(null);
+
+        PDsSigilo = (EditText) findViewById(R.id.PDsSigilo);
+        PDsSigilo.setTransformationMethod(null);
+
+        PDsAdvertir = (EditText) findViewById(R.id.PDsAdvertir);
+        PDsAdvertir.setTransformationMethod(null);
+
+        PDsConocimiento = (EditText) findViewById(R.id.PDsConocimiento);
+        PDsConocimiento.setTransformationMethod(null);
+
+        PDsArte = (EditText) findViewById(R.id.PDsArte);
+        PDsArte.setTransformationMethod(null);
+
+        PDsCapFisica = (EditText) findViewById(R.id.PDsCapFisica);
+        PDsCapFisica.setTransformationMethod(null);
+
+        PDsValoracionMagica = (EditText) findViewById(R.id.PDsValoracionMagica);
+        PDsValoracionMagica.setTransformationMethod(null);
+
+        PDsVida = (EditText) findViewById(R.id.PDsVida);
+        PDsVida.setTransformationMethod(null);
+
+        agilidadNumber = (EditText) findViewById(R.id.agilidadNumber);
+        agilidadNumber.setTransformationMethod(null);
+
+        percepNumber = (EditText) findViewById(R.id.percepNumber);
+        percepNumber.setTransformationMethod(null);
+
+        volNumber = (EditText) findViewById(R.id.volNumber);
+        volNumber.setTransformationMethod(null);
+
+        poderNumber = (EditText) findViewById(R.id.poderNumber);
+        poderNumber.setTransformationMethod(null);
+
+        intNumber = (EditText) findViewById(R.id.intNumber);
+        intNumber.setTransformationMethod(null);
+
+        constNumber = (EditText) findViewById(R.id.constNumber);
+        constNumber.setTransformationMethod(null);
+
+        fuerzaNumber = (EditText) findViewById(R.id.fuerzaNumber);
+        fuerzaNumber.setTransformationMethod(null);
+
+        destrezaNumber = (EditText) findViewById(R.id.destrezaNumber);
+        destrezaNumber.setTransformationMethod(null);
 
         buttonPd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -1117,6 +1154,8 @@ public class EditorActivity extends AppCompatActivity {
                 viewPds.setVisibility(View.VISIBLE);
             }
         });
+
+        PDsAtaque.setText(p.getPdHa().toString());
 
         btnAccept.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -1128,60 +1167,126 @@ public class EditorActivity extends AppCompatActivity {
                     pFinal.setRaza(razaSpinner.getSelectedItem().toString());
                     //p.setClase(classSpinner.getSelectedItem().toString());
                     pFinal.setClase(new Guerrero());
-                    if (!agilidadNumber.getText().toString().isEmpty()) {pFinal.setAgilidad(Integer.parseInt(agilidadNumber.getText().toString()));}
-                    else{pFinal.setAgilidad(0);}
-                    if (!constNumber.getText().toString().isEmpty()) { pFinal.setConstitucion(Integer.parseInt(constNumber.getText().toString()));}
-                    else {pFinal.setConstitucion(0);}
-                    if (!percepNumber.getText().toString().isEmpty()) {pFinal.setPercepcion(Integer.parseInt(percepNumber.getText().toString()));}
-                    else {pFinal.setPercepcion(0);}
-                    if (!fuerzaNumber.getText().toString().isEmpty()) {pFinal.setFuerza(Integer.parseInt(fuerzaNumber.getText().toString()));}
-                    else {pFinal.setFuerza(0);}
-                    if (!intNumber.getText().toString().isEmpty()) {pFinal.setInteligencia(Integer.parseInt(intNumber.getText().toString()));}
-                    else {pFinal.setInteligencia(0);}
-                    if (!poderNumber.getText().toString().isEmpty()) {pFinal.setPoder(Integer.parseInt(poderNumber.getText().toString()));}
-                    else {pFinal.setPoder(0);}
-                    if (!destrezaNumber.getText().toString().isEmpty()) {pFinal.setDestreza(Integer.parseInt(destrezaNumber.getText().toString()));}
-                    else {pFinal.setDestreza(0);}
-                    if (!volNumber.getText().toString().isEmpty()) {pFinal.setVoluntad(Integer.parseInt(volNumber.getText().toString()));}
-                    else {pFinal.setVoluntad(0);}
-                    if (!PDsAct.getText().toString().isEmpty()) {pFinal.setPdAct(Integer.parseInt(PDsAct.getText().toString()));}
-                    else {pFinal.setPdAct(0);}
-                    if (!PDsAdvertir.getText().toString().isEmpty()) pFinal.setPdAdvertir(Integer.parseInt(PDsAdvertir.getText().toString()));
-                    else {pFinal.setPdAdvertir(0);}
-                    if (!PDsArmadura.getText().toString().isEmpty()) {pFinal.setPdLlevarArmadura(Integer.parseInt(PDsArmadura.getText().toString()));}
-                    else {pFinal.setPdLlevarArmadura(0);}
-                    if (!PDsArte.getText().toString().isEmpty()) {pFinal.setPdArte(Integer.parseInt(PDsArte.getText().toString()));}
-                    else {pFinal.setPdArte(0);}
-                    if (!PDsAtaque.getText().toString().isEmpty()) {pFinal.setPdHa(Integer.parseInt(PDsAtaque.getText().toString()));}
-                    else {pFinal.setPdHa(0);}
-                    if (!PDsCapFisica.getText().toString().isEmpty()) {pFinal.setPdCapFisica(Integer.parseInt(PDsCapFisica.getText().toString()));}
-                    else {pFinal.setPdCapFisica(0);}
-                    if (!PDsConocimiento.getText().toString().isEmpty()) {pFinal.setPdConocimiento(Integer.parseInt(PDsConocimiento.getText().toString()));}
-                    else {pFinal.setPdConocimiento(0);}
-                    if (!PDsCV.getText().toString().isEmpty()) {pFinal.setPdCv(Integer.parseInt(PDsCV.getText().toString()));}
-                    else {pFinal.setPdCv(0);}
-                    if (!PDsDefensa.getText().toString().isEmpty()) {pFinal.setPdHd(Integer.parseInt(PDsDefensa.getText().toString()));}
-                    else {pFinal.setPdHd(0);}
-                    if (!PDsNivelMagia.getText().toString().isEmpty()) {pFinal.setPdNivelMagia(Integer.parseInt(PDsNivelMagia.getText().toString()));}
-                    else {pFinal.setPdNivelMagia(0);}
-                    if (!PDsProyMagica.getText().toString().isEmpty()) {pFinal.setPdProyMagica(Integer.parseInt(PDsProyMagica.getText().toString()));}
-                    else {pFinal.setPdProyMagica(0);}
-                    if (!PDsProyPsiquica.getText().toString().isEmpty()) {pFinal.setPdProyPsiquica(Integer.parseInt(PDsProyPsiquica.getText().toString()));}
-                    else {pFinal.setPdproyPsiquica(0);}
-                    if (!PDsSigilo.getText().toString().isEmpty()) {pFinal.setPdSigilo(Integer.parseInt(PDsSigilo.getText().toString()));}
-                    else {pFinal.setPdSigilo(0);}
-                    if (!PDsValoracionMagica.getText().toString().isEmpty()) {pFinal.setPdValoracionMagica(Integer.parseInt(PDsValoracionMagica.getText().toString()));}
-                    else {pFinal.setPdValoracionMagica(0);}
-                    if (!PDsVida.getText().toString().isEmpty()) {pFinal.setPdVida(Integer.parseInt(PDsVida.getText().toString()));}
-                    else {pFinal.setPdVida(0);}
-                    if (!PDsZeon.getText().toString().isEmpty()) {pFinal.setPdZeon(Integer.parseInt(PDsZeon.getText().toString()));}
-                    else {pFinal.setPdZeon(0);}
+                    if (!lvlNumber.getText().toString().isEmpty() && Integer.parseInt(lvlNumber.getText().toString()) > 0) pFinal.setNivel(Integer.parseInt(lvlNumber.getText().toString()));
+                    if (!agilidadNumber.getText().toString().isEmpty()) pFinal.setAgilidad(Integer.parseInt(agilidadNumber.getText().toString()));
+                    if (!constNumber.getText().toString().isEmpty()) pFinal.setConstitucion(Integer.parseInt(constNumber.getText().toString()));
+                    if (!percepNumber.getText().toString().isEmpty()) pFinal.setPercepcion(Integer.parseInt(percepNumber.getText().toString()));
+                    if (!fuerzaNumber.getText().toString().isEmpty()) pFinal.setFuerza(Integer.parseInt(fuerzaNumber.getText().toString()));
+                    if (!intNumber.getText().toString().isEmpty()) pFinal.setInteligencia(Integer.parseInt(intNumber.getText().toString()));
+                    if (!poderNumber.getText().toString().isEmpty()) pFinal.setPoder(Integer.parseInt(poderNumber.getText().toString()));
+                    if (!destrezaNumber.getText().toString().isEmpty()) pFinal.setDestreza(Integer.parseInt(destrezaNumber.getText().toString()));
+                    if (!volNumber.getText().toString().isEmpty()) pFinal.setVoluntad(Integer.parseInt(volNumber.getText().toString()));
 
-                    boolean b = db.addPersonaje(pFinal);
+                    if (!PDsAct.getText().toString().isEmpty()) pFinal.setPdAct(Integer.parseInt(PDsAct.getText().toString()));
+                    if (!PDsAdvertir.getText().toString().isEmpty()) pFinal.setPdAdvertir(Integer.parseInt(PDsAdvertir.getText().toString()));
+                    if (!PDsArmadura.getText().toString().isEmpty()) pFinal.setPdLlevarArmadura(Integer.parseInt(PDsArmadura.getText().toString()));
+                    if (!PDsArte.getText().toString().isEmpty()) pFinal.setPdArte(Integer.parseInt(PDsArte.getText().toString()));
+                    if (!PDsAtaque.getText().toString().isEmpty()) pFinal.setPdHa(Integer.parseInt(PDsAtaque.getText().toString()));
+                    if (!PDsCapFisica.getText().toString().isEmpty()) pFinal.setPdCapFisica(Integer.parseInt(PDsCapFisica.getText().toString()));
+                    if (!PDsConocimiento.getText().toString().isEmpty()) pFinal.setPdConocimiento(Integer.parseInt(PDsConocimiento.getText().toString()));
+                    if (!PDsCV.getText().toString().isEmpty()) pFinal.setPdCv(Integer.parseInt(PDsCV.getText().toString()));
+                    if (!PDsDefensa.getText().toString().isEmpty()) pFinal.setPdHd(Integer.parseInt(PDsDefensa.getText().toString()));
+                    if (!PDsNivelMagia.getText().toString().isEmpty()) pFinal.setPdNivelMagia(Integer.parseInt(PDsNivelMagia.getText().toString()));
+                    if (!PDsProyMagica.getText().toString().isEmpty()) pFinal.setPdProyMagica(Integer.parseInt(PDsProyMagica.getText().toString()));
+                    if (!PDsProyPsiquica.getText().toString().isEmpty()) pFinal.setPdProyPsiquica(Integer.parseInt(PDsProyPsiquica.getText().toString()));
+                    if (!PDsSigilo.getText().toString().isEmpty()) pFinal.setPdSigilo(Integer.parseInt(PDsSigilo.getText().toString()));
+                    if (!PDsValoracionMagica.getText().toString().isEmpty()) pFinal.setPdValoracionMagica(Integer.parseInt(PDsValoracionMagica.getText().toString()));
+                    if (!PDsVida.getText().toString().isEmpty()) pFinal.setPdVida(Integer.parseInt(PDsVida.getText().toString()));
+                    if (!PDsZeon.getText().toString().isEmpty()) pFinal.setPdZeon(Integer.parseInt(PDsZeon.getText().toString()));
+
+                    int weapon = R.string.vara;
+                    int armor = R.string.cuero;
+
+                    int pos = spinnerWeapon.getSelectedItemPosition();
+
+                    switch (pos) {
+                        case 0:
+                            weapon = R.string.vara;
+                            break;
+                        case 1:
+                            weapon = R.string.lanza;
+                            break;
+                        case 2:
+                            weapon = R.string.martillo;
+                            break;
+                        case 3:
+                            weapon = R.string.daga;
+                            break;
+                        case 4:
+                            weapon = R.string.ballesta;
+                            break;
+                        case 5:
+                            weapon = R.string.arco;
+                            break;
+                        case 6:
+                            weapon = R.string.espada;
+                    }
+
+                    pos = spinnerArmor.getSelectedItemPosition();
+
+                    switch (pos) {
+                        case 0:
+                            armor = R.string.cuero;
+                            break;
+                        case 1:
+                            armor = R.string.piezas;
+                            break;
+                        case 2:
+                            armor = R.string.completaPesada;
+                            break;
+                        case 3:
+                            armor = R.string.completa;
+                            break;
+                        case 4:
+                            armor = R.string.semicompleta;
+                            break;
+                        case 5:
+                            armor = R.string.placas;
+                            break;
+                        case 6:
+                            armor = R.string.mallas;
+                            break;
+                        case 7:
+                            armor = R.string.cueroTachonado;
+                            break;
+                        case 8:
+                            armor = R.string.piel;
+                            break;
+                        case 9:
+                            armor = R.string.acolchada;
+                    }
+
+                    pFinal.setArma(weapon);
+                    pFinal.setArmadura(armor);
+                    String s = classSpinner.getSelectedItem().toString();
+                    Clase c = new Guerrero();
+
+                    switch (s) {
+                        case "Warrior":
+                        case "Guerrero":
+                            c = new Guerrero();
+                            break;
+                        case "Hechicero":
+                        case "Sorcerer":
+                            c = new Hechicero();
+                            break;
+                        case "Ladron":
+                        case "Thief":
+                            c = new Ladron();
+                            break;
+                        case "Mentalista":
+                        case "Mentalist":
+                            c = new Mentalista();
+                    }
+                    pFinal.setClase(c);
+
+                    pFinal.setId(p.getId());
+
+                    boolean b = db.editarPersonaje(pFinal);
                     if (!b) {
                         throw new RuntimeException("Error al subir a la base de datos");
                     } else {
-                        Toast.makeText(getApplicationContext(), "Se ha creado su personaje", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Se ha editado su personaje", Toast.LENGTH_LONG).show();
                     }
                     finish();
                 } catch (Exception e) {
@@ -1189,6 +1294,22 @@ public class EditorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        PDsVida.setText(p.getPdVida().toString());
+        PDsValoracionMagica.setText(p.getPdValoracionMagica().toString());
+        PDsSigilo.setText(p.getPdSigilo().toString());
+        PDsConocimiento.setText(p.getPdConocimiento().toString());
+        PDsCapFisica.setText(p.getPdCapFisica().toString());
+        PDsArte.setText(p.getPdArte().toString());
+        PDsAdvertir.setText(p.getPdAdvertir().toString());
+        PDsProyPsiquica.setText(p.getPdProyPsiquica().toString());
+        PDsCV.setText(p.getPdCv().toString());
+        PDsNivelMagia.setText(p.getPdNivelMagia().toString());
+        PDsProyMagica.setText(p.getPdProyMagica().toString());
+        PDsAct.setText(p.getPdAct().toString());
+        PDsZeon.setText(p.getPdZeon().toString());
+        PDsArmadura.setText(p.getPdLlevarArmadura().toString());
+        PDsDefensa.setText(p.getPdHd().toString());
     }
 
     @Override
@@ -1201,6 +1322,7 @@ public class EditorActivity extends AppCompatActivity {
             finish();
         }
     }
+
     private Integer calcularPDsDisponibles(Personaje p)
     {
         Integer valor = p.getPd()-p.getPdHa()-p.getPdHd()-p.getPdLlevarArmadura()-p.getPdVida();
@@ -1210,5 +1332,4 @@ public class EditorActivity extends AppCompatActivity {
         return valor;
 
     }
-
 }

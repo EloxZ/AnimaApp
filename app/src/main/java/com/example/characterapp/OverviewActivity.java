@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 public class OverviewActivity extends AppCompatActivity {
     private TextView nombrePJ, clase, nivel, raza, pv, agilidad, destreza, constitucion, percepcion,
             fuerza, inteligencia, poder, voluntad, hataque, hdefensa, arma, armadura, zeon, act,
-            proyMagica, nivMagia, cv, proyPsiquica, sigilo, advertir, arte, conocimiento, capFisica, valMagica;
+            proyMagica, nivMagia, cv, proyPsiquica, sigilo, advertir, arte, conocimiento, capFisica, valMagica, pdArmadura;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,16 @@ public class OverviewActivity extends AppCompatActivity {
         setTitle("Ver personaje");
         Intent intent = getIntent();
         Gson gson = new Gson();
-        Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class); p = new Personaje("Fortnite Guy");
+        Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class);
 
         nombrePJ = (TextView) findViewById(R.id.NombrePJ);
         nombrePJ.setText(p.getNombre());
 
+        pdArmadura = (TextView) findViewById(R.id.armaduraPd);
+        pdArmadura.setText(p.getPdLlevarArmadura().toString());
+
         clase = (TextView) findViewById(R.id.Clase);
-        clase.setText(p.getClase().getNombre());
+        clase.setText(p.getClase().toString());
 
         nivel = (TextView) findViewById(R.id.Nivel);
         nivel.setText(p.getNivel().toString());
@@ -68,13 +71,13 @@ public class OverviewActivity extends AppCompatActivity {
         hdefensa.setText(p.calcularHabilidadDefensa().toString());
 
         arma = (TextView) findViewById(R.id.Arma);
-        arma.setText(p.getArma());
+        arma.setText(getResources().getString(p.getArma()));
 
         clase = (TextView) findViewById(R.id.Clase);
         clase.setText(p.getClase().toString());
 
-        armadura = (TextView) findViewById(R.id.Armadura);
-        armadura.setText(p.calcularLlevarArmadura().toString());
+        armadura = (TextView) findViewById(R.id.armadura);
+        armadura.setText(getResources().getString(p.getArmadura()));
 
         zeon = (TextView) findViewById(R.id.Zeon);
         zeon.setText(p.calcularZeon().toString());
