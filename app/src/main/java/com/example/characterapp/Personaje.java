@@ -122,9 +122,9 @@ public class Personaje {
     */
 
     // Tendremos un numero de Puntos de Desarrollo (PDs) según nuestro nivel, los calculamos según esta función.
-    private Integer  calcularPDs()
+    public Integer  calcularPDs()
     {
-        Integer valor = 0;
+        Integer valor;
         if (this.nivel == 0)
         {
             valor = 400;
