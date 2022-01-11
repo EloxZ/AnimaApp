@@ -56,5 +56,24 @@
     <string name="guerrero">Guerrero</string>
     <string name="ladron">Ladron</string>
     <string name="hechicero">Hechicero</string>
-    <string name="ilusionista">Ilusionista</string>
+    <string name="mentalista">Mentalista</string>
+    <string name="vara">Vara</string>
+    <string name="lanza">Lanza</string>
+    <string name="martillo">Martillo</string>
+    <string name="daga">Daga</string>
+    <string name="ballesta">Ballesta</string>
+    <string name="arco">Arco</string>
+    <string name="espada">Espada</string>
+    <string name="cuero">Cuero</string>
+    <string name="piezas">Piezas</string>
+    <string name="completaPesada">Completa Pesada</string>
+    <string name="completa">Completa</string>
+    <string name="semicompleta">Semicompleta</string>
+    <string name="placas">Placas</string>
+    <string name="mallas">Mallas</string>
+    <string name="cueroTachonado">Cuero Tachonado</string>
+    <string name="armaLabel">Arma</string>
+    <string name="armaduraLabel">Armadura</string>
+    <string name="piel">Piel</string>
+    <string name="acolchada">Acolchada</string>
 </resources>

@@ -6,13 +6,46 @@
     <string name="guerrero">Warrior</string>
     <string name="ladron">Thief</string>
     <string name="hechicero">Sorcerer</string>
-    <string name="ilusionista">Illusionist</string>
+    <string name="mentalista">Mentalist</string>
 
+
+    <string name="armaLabel">Weapon</string>
+    <string name="armaduraLabel">Armor</string>
+    <string name="vara">Staff</string>
+    <string name="lanza">Spear</string>
+    <string name="martillo">Hammer</string>
+    <string name="daga">Dagger</string>
+    <string name="ballesta">Crossbow</string>
+    <string name="arco">Bow</string>
+    <string name="espada">Sword</string>
+
+    <string name="cuero">Leather</string>
+    <string name="piezas">Parts</string>
+    <string name="completaPesada">Full Heavy</string>
+    <string name="completa">Full</string>
+    <string name="semicompleta">Half full</string>
+    <string name="placas">Plates</string>
+    <string name="mallas">Chainmail</string>
+    <string name="cueroTachonado">Studded Leather</string>
+    <string name="piel">Fur</string>
+    <string name="acolchada">Padded</string>
+    <string-array name="armaduras">
+        <item>@string/cuero</item>
+        <item>@string/piezas</item>
+        <item>@string/completaPesada</item>
+        <item>@string/completa</item>
+        <item>@string/semicompleta</item>
+        <item>@string/placas</item>
+        <item>@string/mallas</item>
+        <item>@string/cueroTachonado</item>
+        <item>@string/piel</item>
+        <item>@string/acolchada</item>
+    </string-array>
     <string-array name="clases">
         <item>@string/guerrero</item>
         <item>@string/ladron</item>
         <item>@string/hechicero</item>
-        <item>@string/ilusionista</item>
+        <item>@string/mentalista</item>
     </string-array>
     <string-array name="razas">
         <item>Asher (Human)</item>
@@ -33,13 +66,13 @@
         <item>Duk\'zarist (Nephilim)</item>
     </string-array>
     <string-array name="armas">
-        <item>Vara</item>
-        <item>Lanza</item>
-        <item>Martillo</item>
-        <item>Daga</item>
-        <item>Ballesta</item>
-        <item>Arco</item>
-        <item>Espada</item>
+        <item>@string/vara</item>
+        <item>@string/lanza</item>
+        <item>@string/martillo</item>
+        <item>@string/daga</item>
+        <item>@string/ballesta</item>
+        <item>@string/arco</item>
+        <item>@string/espada</item>
     </string-array>
     <string name="name">Name:</string>
     <string name="classOverview">Class:</string>

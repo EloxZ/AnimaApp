@@ -8,7 +8,8 @@ public class Personaje {
     private Integer nivel;
     private Clase clase;
 
-    private String arma;
+    private Integer arma;
+    private Integer armadura;
 
     private Integer agilidad;
     private Integer constitucion;
@@ -45,7 +46,7 @@ public class Personaje {
         this.raza = "";
         this.nivel = 1;
         this.clase = new Guerrero();
-        this.arma = "ESPADA";
+        this.arma = 0;
         this.agilidad = 0;
         this.constitucion = 0;
         this.destreza = 0;
@@ -73,7 +74,7 @@ public class Personaje {
         this.pdValoracionMagica = 0;
     }
 
-    public Personaje(Integer id, String nombre, String raza, Integer nivel, Clase clase, String arma, Integer agilidad, Integer constitucion, Integer destreza, Integer fuerza, Integer inteligencia, Integer percepcion, Integer poder, Integer voluntad, Integer pd, Integer pdVida, Integer pdHa, Integer pdHd, Integer pdLlevarArmadura, Integer pdZeon, Integer pdAct, Integer pdProyMagica, Integer pdNivelMagia, Integer pdCv, Integer pdProyPsiquica, Integer pdSigilo, Integer pdAdvertir, Integer pdConocimiento, Integer pdArte, Integer pdCapFisica, Integer pdValoracionMagica, Integer pdArma, Integer pdArmadura) {
+    public Personaje(Integer id, String nombre, String raza, Integer nivel, Clase clase, Integer arma, Integer agilidad, Integer constitucion, Integer destreza, Integer fuerza, Integer inteligencia, Integer percepcion, Integer poder, Integer voluntad, Integer pd, Integer pdVida, Integer pdHa, Integer pdHd, Integer pdLlevarArmadura, Integer pdZeon, Integer pdAct, Integer pdProyMagica, Integer pdNivelMagia, Integer pdCv, Integer pdProyPsiquica, Integer pdSigilo, Integer pdAdvertir, Integer pdConocimiento, Integer pdArte, Integer pdCapFisica, Integer pdValoracionMagica, Integer pdArma, Integer pdArmadura) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
@@ -348,9 +349,13 @@ public class Personaje {
 
     public void setClase(Clase clase) { this.clase = clase; }
 
-    public String getArma() { return arma; }
+    public Integer getArma() { return arma; }
 
-    public void setArma(String arma) { this.arma = arma; }
+    public void setArma(int arma) { this.arma = arma; }
+
+    public Integer getArmadura() { return armadura; }
+
+    public void setArmadura(int armadura) { this.armadura = armadura; }
 
     public Integer getAgilidad() { return agilidad; }
 

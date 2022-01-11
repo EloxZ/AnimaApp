@@ -18,9 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class CreatorActivity extends AppCompatActivity {
-    private Spinner classSpinner;
-    private Spinner razaSpinner;
-    private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber;
+    private Spinner classSpinner, razaSpinner, spinnerWeapon, spinnerArmor;
+    private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber, lvlNumber;
     private EditText PDsAtaque, PDsDefensa, PDsArmadura, PDsZeon, PDsAct, PDsProyMagica, PDsNivelMagia, PDsCV,
             PDsProyPsiquica, PDsSigilo, PDsAdvertir, PDsConocimiento, PDsArte, PDsCapFisica, PDsValoracionMagica, PDsVida, nameField;
 
@@ -48,32 +47,26 @@ public class CreatorActivity extends AppCompatActivity {
         viewPds = (ConstraintLayout) findViewById(R.id.viewPds);
         classSpinner = (Spinner) findViewById(R.id.classSpinner);
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
+        spinnerWeapon = (Spinner) findViewById(R.id.spinnerWeapon);
+        spinnerArmor = (Spinner) findViewById(R.id.spinnerArmor);
         buttonPd = (Button) findViewById(R.id.buttonPd);
         btnAccept = (Button) findViewById(R.id.btnAccept);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clases, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.razas, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.armas, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.armaduras, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         classSpinner.setAdapter(adapter);
         razaSpinner.setAdapter(adapter2);
+        spinnerWeapon.setAdapter(adapter3);
+        spinnerArmor.setAdapter(adapter4);
         nameField = (EditText) findViewById(R.id.nameField);
-
-        PDsAtaque = (EditText) findViewById(R.id.PDsAtaque);
-        PDsAtaque.setTransformationMethod(null);
-
-        PDsDefensa = (EditText) findViewById(R.id.PDsDefensa);
-        PDsDefensa.setTransformationMethod(null);
-
-        PDsArmadura = (EditText) findViewById(R.id.PDsArmadura);
-        PDsArmadura.setTransformationMethod(null);
-
-        PDsZeon = (EditText) findViewById(R.id.PDsZeon);
-        PDsZeon.setTransformationMethod(null);
-
-        PDsAct = (EditText) findViewById(R.id.PDsAct);
-        PDsAct.setTransformationMethod(null);
         Personaje p = new Personaje("");
-
+        lvlNumber = (EditText) findViewById(R.id.lvlNumber);
+        lvlNumber.setTransformationMethod(null);
 
 
         pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
@@ -1193,6 +1186,7 @@ public class CreatorActivity extends AppCompatActivity {
                     pFinal.setRaza(razaSpinner.getSelectedItem().toString());
                     //p.setClase(classSpinner.getSelectedItem().toString());
                     pFinal.setClase(new Guerrero());
+                    if (!lvlNumber.getText().toString().isEmpty() && Integer.parseInt(lvlNumber.getText().toString()) > 0) pFinal.setNivel(Integer.parseInt(lvlNumber.getText().toString()));
                     if (!agilidadNumber.getText().toString().isEmpty()) pFinal.setAgilidad(Integer.parseInt(agilidadNumber.getText().toString()));
                     if (!constNumber.getText().toString().isEmpty()) pFinal.setConstitucion(Integer.parseInt(constNumber.getText().toString()));
                     if (!percepNumber.getText().toString().isEmpty()) pFinal.setPercepcion(Integer.parseInt(percepNumber.getText().toString()));
@@ -1218,6 +1212,71 @@ public class CreatorActivity extends AppCompatActivity {
                     if (!PDsValoracionMagica.getText().toString().isEmpty()) pFinal.setPdValoracionMagica(Integer.parseInt(PDsValoracionMagica.getText().toString()));
                     if (!PDsVida.getText().toString().isEmpty()) pFinal.setPdVida(Integer.parseInt(PDsVida.getText().toString()));
                     if (!PDsZeon.getText().toString().isEmpty()) pFinal.setPdZeon(Integer.parseInt(PDsZeon.getText().toString()));
+
+                    int weapon = R.string.vara;
+                    int armor = R.string.cuero;
+
+                    int pos = spinnerWeapon.getSelectedItemPosition();
+
+                    switch (pos) {
+                        case 0:
+                            weapon = R.string.vara;
+                            break;
+                        case 1:
+                            weapon = R.string.lanza;
+                            break;
+                        case 2:
+                            weapon = R.string.martillo;
+                            break;
+                        case 3:
+                            weapon = R.string.daga;
+                            break;
+                        case 4:
+                            weapon = R.string.ballesta;
+                            break;
+                        case 5:
+                            weapon = R.string.arco;
+                            break;
+                        case 6:
+                            weapon = R.string.espada;
+                    }
+
+                    pos = spinnerArmor.getSelectedItemPosition();
+
+                    switch (pos) {
+                        case 0:
+                            armor = R.string.cuero;
+                            break;
+                        case 1:
+                            armor = R.string.piezas;
+                            break;
+                        case 2:
+                            armor = R.string.completaPesada;
+                            break;
+                        case 3:
+                            armor = R.string.completa;
+                            break;
+                        case 4:
+                            armor = R.string.semicompleta;
+                            break;
+                        case 5:
+                            armor = R.string.placas;
+                            break;
+                        case 6:
+                            armor = R.string.mallas;
+                            break;
+                        case 7:
+                            armor = R.string.cueroTachonado;
+                            break;
+                        case 8:
+                            armor = R.string.piel;
+                            break;
+                        case 9:
+                            armor = R.string.acolchada;
+                    }
+
+                    pFinal.setArma(weapon);
+                    pFinal.setArmadura(armor);
 
                     boolean b = db.addPersonaje(pFinal);
                     if (!b) {

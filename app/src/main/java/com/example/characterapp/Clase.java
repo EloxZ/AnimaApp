@@ -304,4 +304,8 @@ public class Clase {
     public void setVisionMagicaNivel(Integer visionMagica) {
         this.visionMagicaNivel = visionMagica;
     }
+
+    public String toString(){
+        return nombre;
+    }
 }
