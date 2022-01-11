@@ -2610,6 +2610,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/DP" />
 
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:text="Aceptar" />
+
         </LinearLayout>
     </ScrollView>
 

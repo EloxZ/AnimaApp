@@ -23,7 +23,7 @@ public class EditorActivity extends AppCompatActivity {
     private EditText agilidadNumber, percepNumber, volNumber, poderNumber, intNumber, constNumber, fuerzaNumber, destrezaNumber, nameField;
     private EditText PDsAtaque, PDsDefensa, PDsArmadura, PDsZeon, PDsAct, PDsProyMagica, PDsNivelMagia, PDsCV,
             PDsProyPsiquica, PDsSigilo, PDsAdvertir, PDsConocimiento, PDsArte, PDsCapFisica, PDsValMagica, PDsVida;
-    private Button buttonPd;
+    private Button buttonPd, btnAccept;
     private boolean back;
     private ScrollView viewAtr;
     private ConstraintLayout viewPds;
@@ -42,6 +42,8 @@ public class EditorActivity extends AppCompatActivity {
         classSpinner = (Spinner) findViewById(R.id.classSpinner);
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
         buttonPd = (Button) findViewById(R.id.buttonPd);
+        btnAccept = (Button) findViewById(R.id.btnAccept);
+        btnAccept.setText("Guardar");
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clases, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.razas, android.R.layout.simple_spinner_item);

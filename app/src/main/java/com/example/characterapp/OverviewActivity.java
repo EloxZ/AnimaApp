@@ -1,9 +1,12 @@
 package com.example.characterapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.gson.Gson;
 
 public class OverviewActivity extends AppCompatActivity {
     private TextView nombrePJ, clase, nivel, raza, pv, agilidad, destreza, constitucion, percepcion,
@@ -14,8 +17,10 @@ public class OverviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
-        setTitle("owo");
-        Personaje p = new Personaje("Fortnite Guy");
+        setTitle("Ver personaje");
+        Intent intent = getIntent();
+        Gson gson = new Gson();
+        Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class); p = new Personaje("Fortnite Guy");
 
         nombrePJ = (TextView) findViewById(R.id.NombrePJ);
         nombrePJ.setText(p.getNombre());
