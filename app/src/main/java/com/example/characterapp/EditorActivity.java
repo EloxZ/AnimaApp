@@ -58,7 +58,7 @@ public class EditorActivity extends AppCompatActivity {
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
         buttonPd = (Button) findViewById(R.id.buttonPd);
         btnAccept = (Button) findViewById(R.id.btnAccept);
-        btnAccept.setText("Guardar");
+        btnAccept.setText("Save");
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clases, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.razas, android.R.layout.simple_spinner_item);
@@ -72,9 +72,10 @@ public class EditorActivity extends AppCompatActivity {
         spinnerWeapon.setAdapter(adapter3);
         spinnerArmor.setAdapter(adapter4);
         nameField = (EditText) findViewById(R.id.nameField);
+        nameField.setText(p.getNombre());
         lvlNumber = (EditText) findViewById(R.id.lvlNumber);
         lvlNumber.setTransformationMethod(null);
-
+        lvlNumber.setText(p.getNivel().toString());
 
         pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
         Integer pdsdisponibles = calcularPDsDisponibles(p);
@@ -124,7 +125,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsAtaque.setText(p.getPdHa());
+
         baseAtaque = (TextView) findViewById(R.id.baseAtaque);
         baseAtaque.setText(p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa()).toString());
         bonoAtaque = (TextView) findViewById(R.id.bonoAtaque);
@@ -172,7 +173,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsDefensa.setText(p.getPdHd());
+
         baseDefensa = (TextView) findViewById(R.id.baseDefensa);
         baseDefensa.setText(p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd()).toString());
         bonoDefensa = (TextView) findViewById(R.id.bonoDefensa);
@@ -219,7 +220,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsArmadura.setText(p.getPdLlevarArmadura());
+
         baseArmadura = (TextView) findViewById(R.id.baseArmadura);
         baseArmadura.setText(p.calcularValorPdsHabilidad(p.getPdLlevarArmadura(),p.getClase().getCosteLlevarArmadura()).toString());
         bonoArmadura = (TextView) findViewById(R.id.bonoArmadura);
@@ -266,7 +267,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsZeon.setText(p.getPdZeon());
+
         baseZeon = (TextView) findViewById(R.id.baseZeon);
         baseZeon.setText(p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon()).toString());
         bonoZeon = (TextView) findViewById(R.id.bonoZeon);
@@ -314,7 +315,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsAct.setText(p.getPdAct());
+
         baseAct = (TextView) findViewById(R.id.baseAct);
         baseAct.setText(p.calcularValorPdsHabilidad(p.getPdAct(),p.getClase().getCosteAct()).toString());
         bonoAct = (TextView) findViewById(R.id.bonoAct);
@@ -361,7 +362,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsProyMagica.setText(p.getPdProyMagica());
+
         baseProyMagica = (TextView) findViewById(R.id.baseProyMagica);
         baseProyMagica.setText(p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica()).toString());
         bonoProyMagica = (TextView) findViewById(R.id.bonoProyMagica);
@@ -408,7 +409,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsNivelMagia.setText(p.getPdNivelMagia());
+
         baseNivelMagia = (TextView) findViewById(R.id.baseNivelMagia);
         baseNivelMagia.setText(p.calcularValorPdsHabilidad(p.getPdNivelMagia(),p.getClase().getCosteNivelMagia()).toString());
         bonoNivelMagia = (TextView) findViewById(R.id.bonoNivelMagia);
@@ -455,7 +456,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsCV.setText(p.getPdCv());
+
         baseCV = (TextView) findViewById(R.id.baseCV);
         baseCV.setText(p.calcularValorPdsHabilidad(p.getPdCv(),p.getClase().getCosteCv()).toString());
         bonoCV = (TextView) findViewById(R.id.bonoCV);
@@ -503,7 +504,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsProyPsiquica.setText(p.getPdProyPsiquica());
+
         baseProyPsiquica = (TextView) findViewById(R.id.baseProyPsiquica);
         baseProyPsiquica.setText(p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica()).toString());
         bonoProyPsiquica = (TextView) findViewById(R.id.bonoProyPsiquica);
@@ -550,7 +551,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsAdvertir.setText(p.getPdAdvertir());
+
         baseAdvertir = (TextView) findViewById(R.id.baseAdvertir);
         baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
         bonoAdvertir = (TextView) findViewById(R.id.bonoAdvertir);
@@ -598,7 +599,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsArte.setText(p.getPdArte());
+
         baseArte = (TextView) findViewById(R.id.baseArte);
         baseArte.setText(p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteArte()).toString());
         bonoArte = (TextView) findViewById(R.id.bonoArte);
@@ -645,7 +646,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsCapFisica.setText(p.getPdCapFisica());
+
         baseCapFisica = (TextView) findViewById(R.id.baseCapFisica);
         baseCapFisica.setText(p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica()).toString());
         bonoCapFisica = (TextView) findViewById(R.id.bonoCapFisica);
@@ -692,7 +693,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsConocimiento.setText(p.getPdConocimiento());
+
         baseConocimiento = (TextView) findViewById(R.id.baseConocimiento);
         baseConocimiento.setText(p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento()).toString());
         bonoConocimiento = (TextView) findViewById(R.id.bonoConocimiento);
@@ -739,7 +740,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsSigilo.setText(p.getPdSigilo());
+
         baseSigilo = (TextView) findViewById(R.id.baseSigilo);
         baseSigilo.setText(p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo()).toString());
         bonoSigilo = (TextView) findViewById(R.id.bonoSigilo);
@@ -786,7 +787,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsValoracionMagica.setText(p.getPdValoracionMagica());
+
         baseValoracionMagica = (TextView) findViewById(R.id.baseValoracionMagica);
         baseValoracionMagica.setText(p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica()).toString());
         bonoValoracionMagica = (TextView) findViewById(R.id.bonoValoracionMagica);
@@ -834,7 +835,7 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsValoracionMagica.setText(p.getPdValoracionMagica());
+
         baseVida = (TextView) findViewById(R.id.baseVida);
         Integer base = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
         baseVida.setText(base.toString());
@@ -1150,6 +1151,8 @@ public class EditorActivity extends AppCompatActivity {
             }
         });
 
+        PDsAtaque.setText(p.getPdHa().toString());
+
         btnAccept.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
@@ -1266,6 +1269,22 @@ public class EditorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        PDsVida.setText(p.getPdVida().toString());
+        PDsValoracionMagica.setText(p.getPdValoracionMagica().toString());
+        PDsSigilo.setText(p.getPdSigilo().toString());
+        PDsConocimiento.setText(p.getPdConocimiento().toString());
+        PDsCapFisica.setText(p.getPdCapFisica().toString());
+        PDsArte.setText(p.getPdArte().toString());
+        PDsAdvertir.setText(p.getPdAdvertir().toString());
+        PDsProyPsiquica.setText(p.getPdProyPsiquica().toString());
+        PDsCV.setText(p.getPdCv().toString());
+        PDsNivelMagia.setText(p.getPdNivelMagia().toString());
+        PDsProyMagica.setText(p.getPdProyMagica().toString());
+        PDsAct.setText(p.getPdAct().toString());
+        PDsZeon.setText(p.getPdZeon().toString());
+        PDsArmadura.setText(p.getPdLlevarArmadura().toString());
+        PDsDefensa.setText(p.getPdHd().toString());
     }
 
     @Override
