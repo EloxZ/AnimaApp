@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.characterapp.clases.*;
+
 public class CreatorActivity extends AppCompatActivity {
     private Spinner classSpinner;
     private Spinner razaSpinner;

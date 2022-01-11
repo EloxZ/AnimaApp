@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.characterapp.clases.*;
 import com.google.gson.Gson;
 
 import java.util.Collections;
