@@ -58,20 +58,7 @@ public class CreatorActivity extends AppCompatActivity {
         razaSpinner.setAdapter(adapter2);
         nameField = (EditText) findViewById(R.id.nameField);
 
-        PDsAtaque = (EditText) findViewById(R.id.PDsAtaque);
-        PDsAtaque.setTransformationMethod(null);
 
-        PDsDefensa = (EditText) findViewById(R.id.PDsDefensa);
-        PDsDefensa.setTransformationMethod(null);
-
-        PDsArmadura = (EditText) findViewById(R.id.PDsArmadura);
-        PDsArmadura.setTransformationMethod(null);
-
-        PDsZeon = (EditText) findViewById(R.id.PDsZeon);
-        PDsZeon.setTransformationMethod(null);
-
-        PDsAct = (EditText) findViewById(R.id.PDsAct);
-        PDsAct.setTransformationMethod(null);
         Personaje p = new Personaje("");
 
 
@@ -1118,62 +1105,7 @@ public class CreatorActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        PDsProyMagica = (EditText) findViewById(R.id.PDsProyMagica);
-        PDsProyMagica.setTransformationMethod(null);
 
-        PDsNivelMagia = (EditText) findViewById(R.id.PDsNivelMagia);
-        PDsNivelMagia.setTransformationMethod(null);
-
-        PDsCV = (EditText) findViewById(R.id.PDsCV);
-        PDsCV.setTransformationMethod(null);
-
-        PDsProyPsiquica = (EditText) findViewById(R.id.PDsProyPsiquica);
-        PDsProyPsiquica.setTransformationMethod(null);
-
-        PDsSigilo = (EditText) findViewById(R.id.PDsSigilo);
-        PDsSigilo.setTransformationMethod(null);
-
-        PDsAdvertir = (EditText) findViewById(R.id.PDsAdvertir);
-        PDsAdvertir.setTransformationMethod(null);
-
-        PDsConocimiento = (EditText) findViewById(R.id.PDsConocimiento);
-        PDsConocimiento.setTransformationMethod(null);
-
-        PDsArte = (EditText) findViewById(R.id.PDsArte);
-        PDsArte.setTransformationMethod(null);
-
-        PDsCapFisica = (EditText) findViewById(R.id.PDsCapFisica);
-        PDsCapFisica.setTransformationMethod(null);
-
-        PDsValoracionMagica = (EditText) findViewById(R.id.PDsValoracionMagica);
-        PDsValoracionMagica.setTransformationMethod(null);
-
-        PDsVida = (EditText) findViewById(R.id.PDsVida);
-        PDsVida.setTransformationMethod(null);
-
-        agilidadNumber = (EditText) findViewById(R.id.agilidadNumber);
-        agilidadNumber.setTransformationMethod(null);
-
-        percepNumber = (EditText) findViewById(R.id.percepNumber);
-        percepNumber.setTransformationMethod(null);
-
-        volNumber = (EditText) findViewById(R.id.volNumber);
-        volNumber.setTransformationMethod(null);
-
-        poderNumber = (EditText) findViewById(R.id.poderNumber);
-        poderNumber.setTransformationMethod(null);
-
-        intNumber = (EditText) findViewById(R.id.intNumber);
-        intNumber.setTransformationMethod(null);
-
-        constNumber = (EditText) findViewById(R.id.constNumber);
-        constNumber.setTransformationMethod(null);
-
-        fuerzaNumber = (EditText) findViewById(R.id.fuerzaNumber);
-        fuerzaNumber.setTransformationMethod(null);
-
-        destrezaNumber = (EditText) findViewById(R.id.destrezaNumber);
-        destrezaNumber.setTransformationMethod(null);
 
         buttonPd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
