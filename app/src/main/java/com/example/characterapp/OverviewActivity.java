@@ -15,13 +15,18 @@ public class OverviewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Esta actividad muestra en pantalla todos los datos de un personaje
         super.onCreate(savedInstanceState);
+        //Se carga el layout de la actividad
         setContentView(R.layout.activity_overview);
         setTitle("Ver personaje");
+        //Se recoge al personaje del cual mostrar sus datos
         Intent intent = getIntent();
         Gson gson = new Gson();
         Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class);
 
+        //A partir de aquí se asocian los TextViews generados localmente con los del layout y
+        //posteriormente se hace un setText para poner el valor correspondiente del Personaje
         nombrePJ = (TextView) findViewById(R.id.NombrePJ);
         nombrePJ.setText(p.getNombre());
 
