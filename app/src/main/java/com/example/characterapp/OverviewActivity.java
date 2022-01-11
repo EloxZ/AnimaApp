@@ -20,7 +20,7 @@ public class OverviewActivity extends AppCompatActivity {
         setTitle("Ver personaje");
         Intent intent = getIntent();
         Gson gson = new Gson();
-        Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class); p = new Personaje("Fortnite Guy");
+        Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class);
 
         nombrePJ = (TextView) findViewById(R.id.NombrePJ);
         nombrePJ.setText(p.getNombre());
