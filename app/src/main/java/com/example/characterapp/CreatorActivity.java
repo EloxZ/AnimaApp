@@ -67,6 +67,8 @@ public class CreatorActivity extends AppCompatActivity {
         Personaje p = new Personaje("");
         lvlNumber = (EditText) findViewById(R.id.lvlNumber);
         lvlNumber.setTransformationMethod(null);
+
+        //Cada vez que cambiamos una label se tienen que hacer los cambios correspondientes, hay un montón de label, vamos a explicar el funcionamiento de esta ya que todas funcionan igual
         lvlNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -76,6 +78,7 @@ public class CreatorActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                //cogemos el valor del label, si no hay nadie el valor es 0
                 Integer val;
                 if (lvlNumber.getText().toString().compareTo("")==0)
                 {
@@ -83,7 +86,9 @@ public class CreatorActivity extends AppCompatActivity {
                 } else {
                     val = Integer.parseInt(lvlNumber.getText().toString());
                 }
+                //guardamos el valor de la clase
                 p.setNivel(val);
+                //hacemos todos los cambios de label que podrian cambiar por el valor cambiado, como estamos cambiando el nivel hay que cambiar casi todos los datos de personaje
                 p.setPd(p.calcularPDs());
                 Integer pdsdisponibles = calcularPDsDisponibles(p);
                 pdsDisponibles.setText(pdsdisponibles.toString());
