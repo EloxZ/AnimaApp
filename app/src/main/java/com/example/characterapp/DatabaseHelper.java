@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.characterapp.clases.Guerrero;
-import com.example.characterapp.clases.Hechicero;
-import com.example.characterapp.clases.Ladron;
-import com.example.characterapp.clases.Mentalista;
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 
@@ -27,16 +23,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private Context context;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 7);
+        super(context, DATABASE_NAME, null, 1);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        InputStream inputStream = context.getResources().openRawResource(R.raw.script);
         try {
-            db.execSQL("CREATE TABLE Personaje (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR, Raza VARCHAR, Nivel INTEGER, Clase VARCHAR, Agilidad INTEGER, Fuerza INTEGER, Constitucion INTEGER, Destreza INTEGER, Inteligencia INTEGER, Percepcion INTEGER, Poder INTEGER, Voluntad INTEGER, PD INTEGER, PDVida INTEGER, PDHA INTEGER, PDHD INTEGER, PDLlevarArmadura INTEGER, PDZeon INTEGER, PDACT INTEGER, PDProyMagica INTEGER, PDNivelMagia INTEGER, PDCV INTEGER, PDproyPsiquica INTEGER, PDSigilo INTEGER, PDAvertir INTEGER, PDConocimiento INTEGER, PDArte INTEGER, PDCapFisica INTEGER, Arma INTEGER, Armadura INTEGER)");
+            String queries = CharStreams.toString(new InputStreamReader(
+                    inputStream, Charsets.UTF_8));
 
-        } catch (Exception e) {
+            for (String query : queries.split(";")) {
+                Log.d("DB", query);
+                db.execSQL(query);
+            }
+        } catch (IOException e) {
             Log.e("Error", e.getMessage());
         }
 
@@ -44,22 +46,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS Personaje");
+        db.execSQL("DROP TABLE IF EXISTS Armaduras");
+        db.execSQL("DROP TABLE IF EXISTS Armas");
+        db.execSQL("DROP TABLE IF EXISTS Caracteristica");
+        db.execSQL("DROP TABLE IF EXISTS Clases");
+        db.execSQL("DROP TABLE IF EXISTS Personajes");
         onCreate(db);
     }
 
     public boolean addPersonaje(Personaje p) {
+        //Faltan cosas xd
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Nombre", p.getNombre());
         contentValues.put("Raza", p.getRaza());
-        contentValues.put("Nivel", p.getNivel());
+        contentValues.put("Nivel", p.getRaza());
         contentValues.put("Clase", p.getClase().getNombre());
         contentValues.put("Agilidad", p.getAgilidad());
         contentValues.put("Constitucion", p.getConstitucion());
         contentValues.put("Destreza", p.getDestreza());
         contentValues.put("Inteligencia", p.getInteligencia());
-        contentValues.put("Fuerza", p.getFuerza());
         contentValues.put("Percepcion", p.getPercepcion());
         contentValues.put("Poder", p.getPoder());
         contentValues.put("Voluntad", p.getVoluntad());
@@ -77,9 +83,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("PDConocimiento", p.getPdConocimiento());
         contentValues.put("PDCapFisica", p.getPdCapFisica());
         contentValues.put("Arma",p.getArma());
-        contentValues.put("Armadura",p.getArmadura());
+        //contentValues.put("Armadura",p.getArmadura());
 
-        long result = db.insert("Personaje", null, contentValues);
+
+        long result = db.insert("Personajes", null, contentValues);
 
         //if date as inserted incorrectly it will return -1
         if (result == -1) {
@@ -92,26 +99,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean removePersonaje(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean sol = false;
-        String sql = "DELETE FROM Personaje" +
-                " WHERE ID = " + id;
+        String sql = "DELETE FROM Personajes " +
+                "WHERE ID = " + id;
         try {
             db.execSQL(sql);
             sol = true;
         } catch (Exception e) {
-            Log.e("Error",e.getMessage());
+
         }
 
         return sol;
     }
 
-    public boolean editarPersonaje(Personaje p) {
-        removePersonaje(p.getId());
-        return addPersonaje(p);
-    }
-
     public List<Personaje> getPersonajes(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + "Personaje", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + "Personajes", null);
         ArrayList<Personaje> pjs = new ArrayList<>();
         try {
             while (cursor.moveToNext()) {
@@ -119,46 +121,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 pj.setId(cursor.getInt(cursor.getColumnIndexOrThrow("ID")));
                 pj.setRaza(cursor.getString(cursor.getColumnIndexOrThrow("Raza")));
                 pj.setNivel(cursor.getInt(cursor.getColumnIndexOrThrow("Nivel")));
-                String clase = cursor.getString(cursor.getColumnIndexOrThrow("Clase"));
-                Clase c = new Guerrero();
-                switch (clase) {
-                    case "Guerrero":
-                        c = new Guerrero();
-                        break;
-                    case "Hechicero":
-                        c = new Hechicero();
-                        break;
-                    case "Mentalista":
-                        c = new Mentalista();
-                        break;
-                    case "Ladron":
-                        c = new Ladron();
-                }
-                pj.setClase(c);
-                pj.setAgilidad(cursor.getInt(cursor.getColumnIndexOrThrow("Agilidad")));
-                pj.setFuerza(cursor.getInt(cursor.getColumnIndexOrThrow("Fuerza")));
-                pj.setConstitucion(cursor.getInt(cursor.getColumnIndexOrThrow("Constitucion")));
-                pj.setDestreza(cursor.getInt(cursor.getColumnIndexOrThrow("Destreza")));
-                pj.setInteligencia(cursor.getInt(cursor.getColumnIndexOrThrow("Inteligencia")));
-                pj.setPercepcion(cursor.getInt(cursor.getColumnIndexOrThrow("Percepcion")));
-                pj.setPoder(cursor.getInt(cursor.getColumnIndexOrThrow("Poder")));
-                pj.setVoluntad(cursor.getInt(cursor.getColumnIndexOrThrow("Voluntad")));
-                pj.setPd(cursor.getInt(cursor.getColumnIndexOrThrow("PD")));
-                pj.setPdVida(cursor.getInt(cursor.getColumnIndexOrThrow("PDVida")));
-                pj.setPdHa(cursor.getInt(cursor.getColumnIndexOrThrow("PDHA")));
-                pj.setPdLlevarArmadura(cursor.getInt(cursor.getColumnIndexOrThrow("PDLlevarArmadura")));
-                pj.setPdZeon(cursor.getInt(cursor.getColumnIndexOrThrow("PDZeon")));
-                pj.setPdAct(cursor.getInt(cursor.getColumnIndexOrThrow("PDACT")));
-                pj.setPdProyMagica(cursor.getInt(cursor.getColumnIndexOrThrow("PDProyMagica")));
-                pj.setPdNivelMagia(cursor.getInt(cursor.getColumnIndexOrThrow("PDNivelMagia")));
-                pj.setPdProyPsiquica(cursor.getInt(cursor.getColumnIndexOrThrow("PDproyPsiquica")));
-                pj.setPdSigilo(cursor.getInt(cursor.getColumnIndexOrThrow("PDSigilo")));
-                pj.setPdAdvertir(cursor.getInt(cursor.getColumnIndexOrThrow("PDAvertir")));
-                pj.setPdConocimiento(cursor.getInt(cursor.getColumnIndexOrThrow("PDConocimiento")));
-                pj.setPdCapFisica(cursor.getInt(cursor.getColumnIndexOrThrow("PDCapFisica")));
-                pj.setArma(cursor.getInt(cursor.getColumnIndexOrThrow("Arma")));
-                pj.setArmadura(cursor.getInt(cursor.getColumnIndexOrThrow("Armadura")));
-
                 pjs.add(pj);
             }
         } finally {

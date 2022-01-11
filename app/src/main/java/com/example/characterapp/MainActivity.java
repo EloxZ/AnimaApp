@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Personaje p = (Personaje) charList.getItemAtPosition(position);
-                Intent verCharIntent = new Intent(MainActivity.this, OverviewActivity.class);
+                Intent editCharIntent = new Intent(MainActivity.this, EditorActivity.class);
                 Gson gson = new Gson();
                 String s = gson.toJson(p);
-                verCharIntent.putExtra("personaje", s);
-                startActivity(verCharIntent);
+                editCharIntent.putExtra("personaje", s);
+                startActivity(editCharIntent);
             }
         });
 
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case 0: {
                 // Edit
-                editarPj();
             }
             break;
             case 1: {
@@ -102,17 +101,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         cogerDatos();
-    }
-
-    private void editarPj() {
-        if (selected!=-1) {
-            Personaje p = (Personaje) charList.getItemAtPosition(selected);
-            Intent editarCharIntent = new Intent(MainActivity.this, EditorActivity.class);
-            Gson gson = new Gson();
-            String s = gson.toJson(p);
-            editarCharIntent.putExtra("personaje", s);
-            startActivity(editarCharIntent);
-        }
     }
 
     private boolean borrarPj(){
