@@ -53,4 +53,8 @@
     <string name="Health">Vida</string>
     <string name="race">Raza</string>
     <string name="attributes">Atributos</string>
+    <string name="guerrero">Guerrero</string>
+    <string name="ladron">Ladron</string>
+    <string name="hechicero">Hechicero</string>
+    <string name="ilusionista">Ilusionista</string>
 </resources>
