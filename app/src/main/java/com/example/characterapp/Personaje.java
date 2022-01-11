@@ -2,6 +2,8 @@ package com.example.characterapp;
 
 import com.example.characterapp.clases.*;
 
+
+//Esta clase nos permitirá adaptar los datos almacenados sobre personajes de manera ordenada.
 public class Personaje {
 
     private Integer id;
@@ -40,8 +42,10 @@ public class Personaje {
     private Integer pdCapFisica;
     private Integer pdValoracionMagica;
 
+    //hemos almacenado todos los atributos de personaje en una sola clase, esto hace que la clase Personaje sea bastante extensa. Vayamos por partes:
 
 
+    //Tenemos dos constructores, el constructor por defecto que usaremos para personajes recien creados y el constructor con atributos para inicializar un Personaje de la base de Datos.
     public Personaje(String nombre) {
         this.nombre = nombre;
         this.raza = "";
@@ -109,6 +113,14 @@ public class Personaje {
         this.pdValoracionMagica = pdValoracionMagica;
     }
 
+    /*
+    Nosotros en la base de datos solo guardamos los puntos de desarrollo (PDs), que resumido son los puntos que invierte el jugador en cada una de las habilidades del personaje
+    Los valores finales de cada habilidad se calculan a partir de los PDs invertidos en esa habilidad y otros datos como su clase o sus características. A veces se calculan de
+    maneras similares y podemos compartir funciones para las mismas, a veces un atributo se genera de una manera completamente distinta a t odo lo que hemos hecho, tenemos
+    bastantes funciones que se usan para mostrar distintos aspectos de la información del personaje.
+    */
+
+    // Tendremos un numero de Puntos de Desarrollo (PDs) según nuestro nivel, los calculamos según esta función.
     private Integer  calcularPDs()
     {
         Integer valor = 0;
@@ -123,28 +135,19 @@ public class Personaje {
         return valor;
     }
 
-    private Integer calcularBonoCaracteristica(Integer caracteristica)
-    {
-        Integer bono = 0;
+    /*
+     Las Habilidades de Ataque y Defensa, Llevar Armadura, Proyecciones Mágicas y Psiquicas y todas las Habilidades secundarias (Advertir, Arte, Capacidad Física, etc)
+     se calculan con la misma fórmula, lo único que cambia son los parámetros de entrada, hemos creado las funciones calcularValorPdsHabilidad, calcularBonoHabilidad y
+     calcularHabilidadFinal para todas ellas
 
-        if (caracteristica <= 0)
-        {
-            bono = 0;
-        } else if (caracteristica<=3) {
-            bono = -40 + 10 * caracteristica;
-        } else if (caracteristica==4)
-        {
-            bono = -5;
-        } else if (caracteristica==5)
-        {
-            bono = 0;
-        } else if (caracteristica>=6)
-        {
-            bono = 5+5*((caracteristica-6)/2);
-        }
-        return bono;
-    }
+     El valor que generan los PDs viene dado por PDsInvertidos / CosteDeHabilidad donde CosteHabilidad es el coste de esa clase en esa habilidad, normalmente vale 2.
 
+     El bono de la habilidad se calcula obteniendo el bono de la característica de la tabla calcularBonoCaracterística, a esto le sumamos el bono que tiene por nivel la
+     clase del personaje a esa habilidad si lo tiene. Por ejemplo, un guerrero gana 5 de Habilidad de Ataque por nivel, si es nivel 4 este bono será de 20 + el bono de
+     habilidad.
+
+     La habilidad final es la suma del valor de los PDs invertidos y el bono de la habilidad.
+     */
     public Integer calcularValorPdsHabilidad(Integer pdshabilidad, Integer costehabilidad)
     {
         Integer coste = costehabilidad;
@@ -164,91 +167,13 @@ public class Personaje {
         return habilidadFinal;
     }
 
-    public Integer tablaDeNivelDeMagia(Integer inteligencia)
-    {
-        Integer valor = 0;
-        if (inteligencia <= 5)
-        {
-            valor = 0;
-        } else if (inteligencia <= 10)
-        {
-            valor = (inteligencia-5)*10;
-        } else if (inteligencia <= 12)
-        {
-            valor = 50+(inteligencia-10)*25;
-        } else if (inteligencia <= 14)
-        {
-            valor = 100+(inteligencia-12)*50;
-        } else if (inteligencia >= 15)
-        {
-            valor = 200+(inteligencia-14)*100;
-        }
-        return valor;
-    }
-    public Integer tablaDeAct(Integer poder)
-    {
-        Integer valor = 5;
-        if (1 <= poder && poder <= 4)
-        {
-            valor = 0;
-        } else if (poder <= 7)
-        {
-            valor = 5;
-        } else if (poder <= 11)
-        {
-            valor = 10;
-        } else if (poder <= 14)
-        {
-            valor = 15;
-        } else if (poder == 15) {
-            valor = 20;
-        } else if (poder <= 17)
-        {
-            valor = 25;
-        } else if (poder <= 19)
-        {
-            valor = 30;
-        } else if (poder >= 20)
-        {
-            valor = 35;
-        }
-        return valor;
-    }
+    /*
+    La vida se calcula de su propia manera, obtenemos el valor base de vida según la constitución de la tabla de Vida o Zeon. A esto le sumamos el valor de PDs dividido por el
+    coste de la clase, multiplicado por el valor de constitución. A esto se suma el bono de clase por nivel.
 
-    private Integer tablaDeVidaOZeon(Integer característica)
-    {
-        Integer valor = 20;
-        switch (característica)
-        {
-            case 0:  valor = 20; break;
-            case 1:  valor = 5; break;
-            case 2:  valor = 20; break;
-            case 3:  valor = 40; break;
-            case 4:  valor = 55; break;
-            case 5:  valor = 70; break;
-            case 6:  valor = 85; break;
-            case 7:  valor = 95; break;
-            case 8:  valor = 110; break;
-            case 9:  valor = 120; break;
-            case 10:  valor = 135; break;
-            case 11:  valor = 150; break;
-            case 12:  valor = 160; break;
-            case 13:  valor = 175; break;
-            case 14:  valor = 185; break;
-            case 15:  valor = 205; break;
-            case 16:  valor = 215; break;
-            case 17:  valor = 225; break;
-            case 18:  valor = 240; break;
-            case 19:  valor = 250; break;
-            case 20:  valor = 265; break;
-        }
-        if (característica>20)
-        {
-            valor = 265;
-        }
-        return valor;
-
-    }
+    Anima Beyond Fantasy tiene una manera muy específica de calcular cada valor, comentamos como funciona cada una por si quereis saber que estamos haciendo por dentro de la App.
+    No os lo recomiendo la verdad, yo tengo que escribir estos comentarios por si me viene alguien con el Manual de Juego a reclamarme que no hemos hecho las mates bien.
+    */
 
     public Integer calcularVida()
     {
@@ -260,6 +185,7 @@ public class Personaje {
     }
 
 
+    //El Zeon se calcula de manera similar a la vida solo que se usa poder en vez de constitución.
 
     public Integer calcularZeon()
     {
@@ -270,13 +196,37 @@ public class Personaje {
         return zeon;
 
     }
+    /*
+    Nivel de Magia se calcula obteniendo el valor de PDs en paquetes de 5.
+    Por ejemplo, si inviertes 100 PDs en Nivel de Magia obtienes 100 de Nivel de Magia, si inviertes 102 tambien obtienes 100 de Nivel de Magia, hasta que no llegues
+    a 105 no obtendrás mas de 100 de Nivel de Magia
 
+    A esto hay que sumarle el bono que genera tu inteligencia que viene dado por la tabla de Nivel de Magia.
+    */
+    public Integer calcularNivelMagia()
+    {
+        return this.getPdNivelMagia() - (this.getPdNivelMagia() % this.getClase().getCosteNivelMagia()) + tablaDeNivelDeMagia(this.getInteligencia());
+    }
+
+    /*
+    Los CVs se calculan viendo el valor final de los PDs invertidos en el mismo, la diferencia con el resto de habilidades es que ganas 1 CV cada X niveles, dependiendo de tu clase.
+    */
+
+    public Integer calcularCVs()
+    {
+        return calcularValorPdsHabilidad(this.getPdCv(), this.getClase().getCosteCv()) + this.nivel / this.getClase().getCvCadaXNiveles();
+    }
+
+    /*
+    El Act (Acumulación de Zeon por Turno) viene dada por el valor de los PDs invertidos * el bono de act según tu poder en la tabla de Act, a esto le sumas una vez el bono.
+     */
 
     public Integer calcularAct()
     {
         return tablaDeAct(this.poder) + this.calcularValorPdsHabilidad(this.pdAct, this.getClase().getCosteAct()) * tablaDeAct(this.poder);
     }
 
+    // Todas estas habilidades se calculan con la formula de habilidad final, así que llamamos a esa función.
     public Integer calcularHabilidadAtaque()
     {
         return calcularHabilidadFinal(this.pdHa, this.clase.getCosteHa(), this.destreza, this.clase.getHaNivel());
@@ -292,14 +242,6 @@ public class Personaje {
     public Integer calcularProyMagica()
     {
         return calcularHabilidadFinal(this.pdProyMagica, this.clase.getCosteProyMagica(),this.destreza, 0);
-    }
-    public Integer calcularNivelMagia()
-    {
-        return this.getPdNivelMagia() - (this.getPdNivelMagia() % this.getClase().getCosteNivelMagia()) + tablaDeNivelDeMagia(this.getInteligencia());
-    }
-    public Integer calcularCVs()
-    {
-        return calcularValorPdsHabilidad(this.getPdCv(), this.getClase().getCosteCv()) + this.nivel / this.getClase().getCvCadaXNiveles();
     }
     public Integer calcularProyPsiquica()
     {
@@ -330,6 +272,7 @@ public class Personaje {
         return calcularHabilidadFinal(this.pdValoracionMagica, this.clase.getCosteVisionMágica(), this.poder, this.clase.getVisionMagicaNivel());
     }
 
+    //Getters y Setters, hay unos cuantos.
     public Integer getId() { return id; }
 
     public void setId(Integer id) { this.id = id; }
@@ -484,6 +427,117 @@ public class Personaje {
 
     public void setPdValoracionMagica(Integer pdValoracionMagica) {
         this.pdValoracionMagica = pdValoracionMagica;
+    }
+
+
+    //Las Tablas que se usan para calcular distintos bonos. En Anima casi ninguna tabla se calcula con una formula que englobe todos los valores, así que tuvimos que separar
+    //Las distintas secciones de valores en distintos ifs. Bastante peñazo la verdad.
+    public Integer tablaDeNivelDeMagia(Integer inteligencia)
+    {
+        Integer valor = 0;
+        if (inteligencia <= 5)
+        {
+            valor = 0;
+        } else if (inteligencia <= 10)
+        {
+            valor = (inteligencia-5)*10;
+        } else if (inteligencia <= 12)
+        {
+            valor = 50+(inteligencia-10)*25;
+        } else if (inteligencia <= 14)
+        {
+            valor = 100+(inteligencia-12)*50;
+        } else if (inteligencia >= 15)
+        {
+            valor = 200+(inteligencia-14)*100;
+        }
+        return valor;
+    }
+    public Integer tablaDeAct(Integer poder)
+    {
+        Integer valor = 5;
+        if (1 <= poder && poder <= 4)
+        {
+            valor = 0;
+        } else if (poder <= 7)
+        {
+            valor = 5;
+        } else if (poder <= 11)
+        {
+            valor = 10;
+        } else if (poder <= 14)
+        {
+            valor = 15;
+        } else if (poder == 15) {
+            valor = 20;
+        } else if (poder <= 17)
+        {
+            valor = 25;
+        } else if (poder <= 19)
+        {
+            valor = 30;
+        } else if (poder >= 20)
+        {
+            valor = 35;
+        }
+        return valor;
+    }
+
+    private Integer tablaDeVidaOZeon(Integer característica)
+    {
+        Integer valor = 20;
+        switch (característica)
+        {
+            case 0:  valor = 20; break;
+            case 1:  valor = 5; break;
+            case 2:  valor = 20; break;
+            case 3:  valor = 40; break;
+            case 4:  valor = 55; break;
+            case 5:  valor = 70; break;
+            case 6:  valor = 85; break;
+            case 7:  valor = 95; break;
+            case 8:  valor = 110; break;
+            case 9:  valor = 120; break;
+            case 10:  valor = 135; break;
+            case 11:  valor = 150; break;
+            case 12:  valor = 160; break;
+            case 13:  valor = 175; break;
+            case 14:  valor = 185; break;
+            case 15:  valor = 205; break;
+            case 16:  valor = 215; break;
+            case 17:  valor = 225; break;
+            case 18:  valor = 240; break;
+            case 19:  valor = 250; break;
+            case 20:  valor = 265; break;
+        }
+        if (característica>20)
+        {
+            valor = 265;
+        }
+        return valor;
+
+    }
+
+    private Integer calcularBonoCaracteristica(Integer caracteristica)
+    {
+        Integer bono = 0;
+
+        if (caracteristica <= 0)
+        {
+            bono = 0;
+        } else if (caracteristica<=3) {
+            bono = -40 + 10 * caracteristica;
+        } else if (caracteristica==4)
+        {
+            bono = -5;
+        } else if (caracteristica==5)
+        {
+            bono = 0;
+        } else if (caracteristica>=6)
+        {
+            bono = 5+5*((caracteristica-6)/2);
+        }
+        return bono;
     }
 
     public String toString() {
