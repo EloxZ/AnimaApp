@@ -2,6 +2,8 @@ package com.example.characterapp;
 
 import com.example.characterapp.clases.Guerrero;
 
+import java.util.Locale;
+
 public class Personaje {
 
     private Integer id;
@@ -500,10 +502,18 @@ public class Personaje {
     }
 
     public String toString() {
+        String strClase = "";
+        if (Locale.getDefault().getLanguage().compareTo("es") == 0 && clase != null)
+        {
+            strClase = clase.toString();
+        } else
+        {
+            strClase = clase.toStringIngles();
+        }
         if (nombre.length() > 42) {
 
-            return nombre.substring(0, 42) + "..." + " (Lvl " + nivel + ")\n" + raza;
+            return nombre.substring(0, 42) + "..." + " (Lvl " + nivel + ")\n" + raza + "\n" + strClase;
         }
-        return nombre + " (Lvl " + nivel + ")\n" + raza;
+        return nombre + " (Lvl " + nivel + ")\n" + raza + "\n" + strClase;
     }
 }
