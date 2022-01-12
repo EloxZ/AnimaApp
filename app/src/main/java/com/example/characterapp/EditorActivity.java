@@ -59,6 +59,7 @@ public class EditorActivity extends AppCompatActivity {
         classSpinner = (Spinner) findViewById(R.id.classSpinner);
         spinnerWeapon = (Spinner) findViewById(R.id.spinnerWeapon);
         spinnerArmor = (Spinner) findViewById(R.id.spinnerArmor);
+        pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
         buttonPd = (Button) findViewById(R.id.buttonPd);
         btnAccept = (Button) findViewById(R.id.btnAccept);
@@ -168,9 +169,9 @@ public class EditorActivity extends AppCompatActivity {
 
             }
         });
-        lvlNumber.setText(p.getNivel().toString());
 
-        pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
+
+
         Integer pdsdisponibles = calcularPDsDisponibles(p);
         pdsDisponibles.setText(pdsdisponibles.toString());
         if (pdsdisponibles < 0)
@@ -1384,6 +1385,7 @@ public class EditorActivity extends AppCompatActivity {
             }
         });
 
+        lvlNumber.setText(p.getNivel().toString());
         PDsVida.setText(p.getPdVida().toString());
         PDsValoracionMagica.setText(p.getPdValoracionMagica().toString());
         PDsSigilo.setText(p.getPdSigilo().toString());
