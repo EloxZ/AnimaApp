@@ -27,14 +27,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private Context context;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 7);
+        super(context, DATABASE_NAME, null, 8);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            db.execSQL("CREATE TABLE Personaje (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR, Raza VARCHAR, Nivel INTEGER, Clase VARCHAR, Agilidad INTEGER, Fuerza INTEGER, Constitucion INTEGER, Destreza INTEGER, Inteligencia INTEGER, Percepcion INTEGER, Poder INTEGER, Voluntad INTEGER, PD INTEGER, PDVida INTEGER, PDHA INTEGER, PDHD INTEGER, PDLlevarArmadura INTEGER, PDZeon INTEGER, PDACT INTEGER, PDProyMagica INTEGER, PDNivelMagia INTEGER, PDCV INTEGER, PDproyPsiquica INTEGER, PDSigilo INTEGER, PDAvertir INTEGER, PDConocimiento INTEGER, PDArte INTEGER, PDCapFisica INTEGER, Arma INTEGER, Armadura INTEGER)");
+            db.execSQL("CREATE TABLE Personaje (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR, Raza VARCHAR, Nivel INTEGER, Clase VARCHAR, Agilidad INTEGER, Fuerza INTEGER, Constitucion INTEGER, Destreza INTEGER, Inteligencia INTEGER, Percepcion INTEGER, Poder INTEGER, Voluntad INTEGER, PD INTEGER, PDVida INTEGER, PDHA INTEGER, PDHD INTEGER, PDLlevarArmadura INTEGER, PDZeon INTEGER, PDACT INTEGER, PDProyMagica INTEGER, PDNivelMagia INTEGER, PDCV INTEGER, PDproyPsiquica INTEGER, PDSigilo INTEGER, PDAvertir INTEGER, PDConocimiento INTEGER, PDArte INTEGER, PDCapFisica INTEGER, Arma INTEGER, Armadura INTEGER,  PDValMagica INTEGER)");
 
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
@@ -62,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("Fuerza", p.getFuerza());
         contentValues.put("Percepcion", p.getPercepcion());
         contentValues.put("Poder", p.getPoder());
+        contentValues.put("PDHD", p.getPdHd());
         contentValues.put("Voluntad", p.getVoluntad());
         contentValues.put("PD", p.getPd());
         contentValues.put("PDVida", p.getPdVida());
@@ -72,7 +73,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("PDProyMagica", p.getPdProyMagica());
         contentValues.put("PDNivelMagia", p.getPdNivelMagia());
         contentValues.put("PDproyPsiquica", p.getPdProyPsiquica());
+        contentValues.put("PDArte", p.getPdArte());
+        contentValues.put("PDCV", p.getPdCv());
         contentValues.put("PDSigilo", p.getPdSigilo());
+        contentValues.put("PDValMagica", p.getPdValoracionMagica());
         contentValues.put("PDAvertir", p.getPdAdvertir());
         contentValues.put("PDConocimiento", p.getPdConocimiento());
         contentValues.put("PDCapFisica", p.getPdCapFisica());
@@ -139,6 +143,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 pj.setFuerza(cursor.getInt(cursor.getColumnIndexOrThrow("Fuerza")));
                 pj.setConstitucion(cursor.getInt(cursor.getColumnIndexOrThrow("Constitucion")));
                 pj.setDestreza(cursor.getInt(cursor.getColumnIndexOrThrow("Destreza")));
+                pj.setPdHd(cursor.getInt(cursor.getColumnIndexOrThrow("PDHD")));
+                pj.setPdValoracionMagica(cursor.getInt(cursor.getColumnIndexOrThrow("PDValMagica")));
                 pj.setInteligencia(cursor.getInt(cursor.getColumnIndexOrThrow("Inteligencia")));
                 pj.setPercepcion(cursor.getInt(cursor.getColumnIndexOrThrow("Percepcion")));
                 pj.setPoder(cursor.getInt(cursor.getColumnIndexOrThrow("Poder")));
@@ -149,6 +155,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 pj.setPdLlevarArmadura(cursor.getInt(cursor.getColumnIndexOrThrow("PDLlevarArmadura")));
                 pj.setPdZeon(cursor.getInt(cursor.getColumnIndexOrThrow("PDZeon")));
                 pj.setPdAct(cursor.getInt(cursor.getColumnIndexOrThrow("PDACT")));
+                pj.setPdArte(cursor.getInt(cursor.getColumnIndexOrThrow("PDArte")));
+                pj.setPdCv(cursor.getInt(cursor.getColumnIndexOrThrow("PDCV")));
                 pj.setPdProyMagica(cursor.getInt(cursor.getColumnIndexOrThrow("PDProyMagica")));
                 pj.setPdNivelMagia(cursor.getInt(cursor.getColumnIndexOrThrow("PDNivelMagia")));
                 pj.setPdProyPsiquica(cursor.getInt(cursor.getColumnIndexOrThrow("PDproyPsiquica")));
