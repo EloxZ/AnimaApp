@@ -59,6 +59,11 @@ public class EditorActivity extends AppCompatActivity {
         classSpinner = (Spinner) findViewById(R.id.classSpinner);
         spinnerWeapon = (Spinner) findViewById(R.id.spinnerWeapon);
         spinnerArmor = (Spinner) findViewById(R.id.spinnerArmor);
+
+
+
+
+
         pdsDisponibles = (TextView) findViewById(R.id.pdsDisponibles);
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
         buttonPd = (Button) findViewById(R.id.buttonPd);
@@ -69,9 +74,11 @@ public class EditorActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.razas, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.armas, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.armaduras, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        int posR = adapter2.getPosition(p.getRaza());
         classSpinner.setAdapter(adapter);
         razaSpinner.setAdapter(adapter2);
         spinnerWeapon.setAdapter(adapter3);
@@ -80,6 +87,83 @@ public class EditorActivity extends AppCompatActivity {
         nameField.setText(p.getNombre());
         lvlNumber = (EditText) findViewById(R.id.lvlNumber);
         lvlNumber.setTransformationMethod(null);
+
+        String clase = p.getClase().getNombre();
+        int arma = p.getArma();
+        int armor = p.getArmadura();
+        int sel = 0;
+        switch (clase) {
+            case "Guerrero":
+                sel = 0;
+                break;
+            case "Ladron":
+                sel = 1;
+                break;
+            case "Hechicero":
+                sel = 2;
+                break;
+            case "Mentalista":
+                sel = 3;
+        }
+        classSpinner.setSelection(sel);
+
+        switch (arma) {
+            case R.string.vara:
+                sel = 0;
+                break;
+            case R.string.lanza:
+                sel = 1;
+                break;
+            case R.string.martillo:
+                sel = 2;
+                break;
+            case R.string.daga:
+                sel = 3;
+                break;
+            case R.string.ballesta:
+                sel = 4;
+                break;
+            case R.string.arco:
+                sel = 5;
+                break;
+            case R.string.espada:
+                sel = 6;
+        }
+        spinnerWeapon.setSelection(sel);
+
+        switch (armor) {
+            case R.string.cuero:
+                sel = 0;
+                break;
+            case R.string.piezas:
+                sel = 1;
+                break;
+            case R.string.completaPesada:
+                sel = 2;
+                break;
+            case R.string.completa:
+                sel = 3;
+                break;
+            case R.string.semicompleta:
+                sel = 4;
+                break;
+            case R.string.placas:
+                sel = 5;
+                break;
+            case R.string.mallas:
+                sel = 6;
+                break;
+            case R.string.cueroTachonado:
+                sel = 7;
+                break;
+            case R.string.piel:
+                sel = 8;
+                break;
+            case R.string.acolchada:
+                sel = 9;
+        }
+        spinnerArmor.setSelection(sel);
+        razaSpinner.setSelection(posR);
 
         //Cada vez que cambiamos una label se tienen que hacer los cambios correspondientes, hay un montón de label, vamos a explicar el funcionamiento de esta ya que todas funcionan igual
         lvlNumber.addTextChangedListener(new TextWatcher() {
