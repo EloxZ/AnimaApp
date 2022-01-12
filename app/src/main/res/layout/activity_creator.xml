@@ -492,7 +492,7 @@
                     android:id="@+id/textView62"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:text="Zeón"
+                    android:text="Zeon"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -1458,7 +1458,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:text="Advertir"
+                    android:text="@string/notice"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -2278,7 +2278,7 @@
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+                    android:layout_height="350dp" />
 
             </LinearLayout>
         </ScrollView>

@@ -1335,12 +1335,10 @@ public class EditorActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     String name = nameField.getText().toString();
-                    if (name.isEmpty()) throw new RuntimeException("Nombre vacío, por favor escriba un nombre");
-                    if (Integer.parseInt(pdsDisponibles.getText().toString())<0) throw new RuntimeException("PDs negativos, borra algunos PDs");
+                    if (name.isEmpty()) throw new RuntimeException(getResources().getString(R.string.errorName));
+                    if (Integer.parseInt(pdsDisponibles.getText().toString())<0) throw new RuntimeException(getResources().getString(R.string.errorPDs));
                     Personaje pFinal = new Personaje(name);
                     pFinal.setRaza(razaSpinner.getSelectedItem().toString());
-                    //p.setClase(classSpinner.getSelectedItem().toString());
-                    pFinal.setClase(new Guerrero());
                     if (!lvlNumber.getText().toString().isEmpty() && Integer.parseInt(lvlNumber.getText().toString()) > 0) pFinal.setNivel(Integer.parseInt(lvlNumber.getText().toString()));
                     if (!agilidadNumber.getText().toString().isEmpty()) pFinal.setAgilidad(Integer.parseInt(agilidadNumber.getText().toString()));
                     if (!constNumber.getText().toString().isEmpty()) pFinal.setConstitucion(Integer.parseInt(constNumber.getText().toString()));
@@ -1458,9 +1456,9 @@ public class EditorActivity extends AppCompatActivity {
 
                     boolean b = db.editarPersonaje(pFinal);
                     if (!b) {
-                        throw new RuntimeException("Error al subir a la base de datos");
+                        throw new RuntimeException(getResources().getString(R.string.errorDB));
                     } else {
-                        Toast.makeText(getApplicationContext(), "Se ha editado su personaje", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.okEditar), Toast.LENGTH_LONG).show();
                     }
                     finish();
                 } catch (Exception e) {

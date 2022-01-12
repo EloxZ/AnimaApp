@@ -699,7 +699,7 @@
                     android:layout_width="79dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="Advertir:  "
+                    android:text="@string/notice2"
                     android:textAlignment="textEnd"
                     android:textSize="20sp" />
 

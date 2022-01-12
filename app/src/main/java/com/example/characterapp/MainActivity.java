@@ -135,10 +135,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 boolean q = db.removePersonaje(p.getId());
                  if (q) {
-                     Toast.makeText(this, "El personaje ha eliminado correctamente", Toast.LENGTH_LONG).show();
+                     Toast.makeText(this, getResources().getString(R.string.okBorrar), Toast.LENGTH_LONG).show();
                      cogerDatos();
                  } else {
-                     Toast.makeText(this, "Hubo un error al eliminar el personaje", Toast.LENGTH_LONG).show();
+                     Toast.makeText(this, getResources().getString(R.string.errorDB), Toast.LENGTH_LONG).show();
                 }
 
             } catch (Exception e) {

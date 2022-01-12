@@ -80,6 +80,14 @@
     <string name="cueroTachonado">Cuero Tachonado</string>
     <string name="armaLabel">Arma</string>
     <string name="armaduraLabel">Armadura</string>
+    <string name="notice">Advertir</string>
+    <string name="notice2">Advertir:</string>
     <string name="piel">Piel</string>
     <string name="acolchada">Acolchada</string>
+    <string name="errorName">Nombre no puede estar vacío</string>
+    <string name="errorPDs">Los PDs no pueden ser negativos</string>
+    <string name="errorDB">Error al subir a la base de datos</string>
+    <string name="okCrear">Se ha creado su personaje</string>
+    <string name="okEditar">Se ha editado su personaje</string>
+    <string name="okBorrar">Se ha borrado su personaje</string>
 </resources>

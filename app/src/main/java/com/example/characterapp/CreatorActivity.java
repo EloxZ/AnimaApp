@@ -1274,8 +1274,8 @@ public class CreatorActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     String name = nameField.getText().toString();
-                    if (name.isEmpty()) throw new RuntimeException("Nombre vacío, por favor escriba un nombre");
-                    if (Integer.parseInt(pdsDisponibles.getText().toString())<0) throw new RuntimeException("PDs negativos, borra algunos PDs");
+                    if (name.isEmpty()) throw new RuntimeException(getResources().getString(R.string.errorName));
+                    if (Integer.parseInt(pdsDisponibles.getText().toString())<0) throw new RuntimeException(getResources().getString(R.string.errorPDs));
                     Personaje pFinal = new Personaje(name);
                     pFinal.setRaza(razaSpinner.getSelectedItem().toString());
                     //p.setClase(classSpinner.getSelectedItem().toString());
@@ -1395,9 +1395,9 @@ public class CreatorActivity extends AppCompatActivity {
 
                     boolean b = db.addPersonaje(pFinal);
                     if (!b) {
-                        throw new RuntimeException("Error al subir a la base de datos");
+                        throw new RuntimeException(getResources().getString(R.string.errorDB));
                     } else {
-                        Toast.makeText(getApplicationContext(), "Se ha creado su personaje", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.okCrear), Toast.LENGTH_LONG).show();
                     }
                     finish();
                 } catch (Exception e) {

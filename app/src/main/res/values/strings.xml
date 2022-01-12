@@ -111,7 +111,7 @@
     <string name="knowledgeOV">Knowledge:</string>
     <string name="physAbOV">Phys.Cap:</string>
     <string name="magicRatingOV">MagicRating:</string>
-    <string name="DP">Devlopment Points</string>
+    <string name="DP">Development Points</string>
     <string name="RemainingDPs">Remaining DPs:</string>
     <string name="abilities">Abilities</string>
     <string name="offAb">Offensive Abilities</string>
@@ -126,9 +126,17 @@
     <string name="stealth">Stealth</string>
     <string name="knowledge">Knowledge</string>
     <string name="Art">Art</string>
+    <string name="notice">Notice</string>
+    <string name="notice2">Notice:</string>
     <string name="physAb">Physical Capacity</string>
     <string name="magicRating">Magic Rating</string>
     <string name="Health">Health</string>
     <string name="race">Race</string>
     <string name="attributes">Attributes</string>
+    <string name="errorName">Name can\'t be empty</string>
+    <string name="errorPDs">DPs can\'t be negative</string>
+    <string name="errorDB">Error updating database</string>
+    <string name="okCrear">Your character has been created</string>
+    <string name="okEditar">Your character has been modified</string>
+    <string name="okBorrar">Your character has been deleted</string>
 </resources>
