@@ -31,7 +31,7 @@
                     android:layout_width="126dp"
                     android:layout_height="47dp"
                     android:text="@string/name"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="24sp" />
 
                 <TextView
@@ -372,7 +372,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/combat.abOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -413,7 +413,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/weapOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -444,7 +444,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/ArmorOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -508,11 +508,11 @@
 
                 <TextView
                     android:id="@+id/textView271"
-                    android:layout_width="56dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="Zeon:  "
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -525,16 +525,16 @@
 
                 <TextView
                     android:id="@+id/textView272"
-                    android:layout_width="79dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="Act:  "
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Act"
-                    android:layout_width="0dp"
+                    android:layout_width="12dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="textStart"
@@ -549,7 +549,7 @@
 
                 <TextView
                     android:id="@+id/textView274"
-                    android:layout_width="56dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/magicProyOV"
@@ -558,7 +558,7 @@
 
                 <TextView
                     android:id="@+id/ProyMagica"
-                    android:layout_width="0dp"
+                    android:layout_width="41dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="textStart"
@@ -566,16 +566,16 @@
 
                 <TextView
                     android:id="@+id/textView275"
-                    android:layout_width="79dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/MagicLvOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/NivMagia"
-                    android:layout_width="0dp"
+                    android:layout_width="52dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAlignment="textStart"
@@ -617,8 +617,8 @@
                     android:layout_width="56dp"
                     android:layout_height="47dp"
                     android:layout_weight="1"
-                    android:text="CV:  "
-                    android:textAlignment="textEnd"
+                    android:text="   CV:"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -635,7 +635,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/PsychicProyOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -683,7 +683,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/stealthOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -700,7 +700,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/notice2"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -724,7 +724,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/artOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -741,7 +741,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/knowledgeOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -765,7 +765,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/physAbOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView
@@ -782,7 +782,7 @@
                     android:layout_height="47dp"
                     android:layout_weight="1"
                     android:text="@string/magicRatingOV"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
                 <TextView

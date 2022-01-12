@@ -33,12 +33,12 @@ public class OverviewActivity extends AppCompatActivity {
 
         clase = (TextView) findViewById(R.id.Clase);
         String nombre;
-        if (Locale.getDefault().getLanguage() == "en")
-        {
-            nombre = p.getClase().toStringIngles();
-        } else
+        if (Locale.getDefault().getLanguage().compareTo("es") == 0)
         {
             nombre = p.getClase().toString();
+        } else
+        {
+            nombre = p.getClase().toStringIngles();
         }
         clase.setText(nombre);
 
