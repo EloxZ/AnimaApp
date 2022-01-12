@@ -4,7 +4,9 @@ import com.example.characterapp.clases.Guerrero;
 
 import java.util.Locale;
 
+//Esta clase nos permitirá adaptar los datos almacenados sobre personajes de manera ordenada.
 public class Personaje {
+    //hemos almacenado todos los atributos de personaje en una sola clase, esto hace que la clase Personaje sea bastante extensa. Vayamos por partes:
 
     private Integer id;
     private String nombre;
@@ -44,7 +46,7 @@ public class Personaje {
     private Integer pdValoracionMagica;
 
 
-
+    //Tenemos dos constructores, el constructor por defecto que usaremos para personajes recien creados y el constructor con atributos para inicializar un Personaje de la base de Datos.
     public Personaje(String nombre) {
         this.nombre = nombre;
         this.raza = "";
@@ -134,27 +136,12 @@ public class Personaje {
         return valor;
     }
 
-    private Integer calcularBonoCaracteristica(Integer caracteristica)
-    {
-        Integer bono = 0;
+    /*
+     Las Habilidades de Ataque y Defensa, Llevar Armadura, Proyecciones Mágicas y Psiquicas y todas las Habilidades secundarias (Advertir, Arte, Capacidad Física, etc)
+     se calculan con la misma fórmula, lo único que cambia son los parámetros de entrada, hemos creado las funciones calcularValorPdsHabilidad, calcularBonoHabilidad y
+     calcularHabilidadFinal para todas ellas
 
-        if (caracteristica <= 0)
-        {
-            bono = 0;
-        } else if (caracteristica<=3) {
-            bono = -40 + 10 * caracteristica;
-        } else if (caracteristica==4)
-        {
-            bono = -5;
-        } else if (caracteristica==5)
-        {
-            bono = 0;
-        } else if (caracteristica>=6)
-        {
-            bono = 5+5*((caracteristica-6)/2);
-        }
-        return bono;
-    }
+     El valor que generan los PDs viene dado por PDsInvertidos / CosteDeHabilidad donde CosteHabilidad es el coste de esa clase en esa habilidad, normalmente vale 2. */
 
     public Integer calcularValorPdsHabilidad(Integer pdshabilidad, Integer costehabilidad)
     {
@@ -174,7 +161,36 @@ public class Personaje {
         Integer habilidadFinal = calcularValorPdsHabilidad(pdshabilidad, costehabilidad) + calcularBonoHabilidad(caracteristica, bonoClaseXNivel);
         return habilidadFinal;
     }
+    private Integer calcularBonoCaracteristica(Integer caracteristica)
+    {
+        Integer bono = 0;
+        /* El bono de la habilidad se calcula obteniendo el bono de la característica de la tabla calcularBonoCaracterística, a esto le sumamos el bono que tiene por nivel la
+        clase del personaje a esa habilidad si lo tiene. Por ejemplo, un guerrero gana 5 de Habilidad de Ataque por nivel, si es nivel 4 este bono será de 20 + el bono de
+        habilidad. */
+        if (caracteristica <= 0)
+        {
+            bono = 0;
+        } else if (caracteristica<=3) {
+            bono = -40 + 10 * caracteristica;
+        } else if (caracteristica==4)
+        {
+            bono = -5;
+        } else if (caracteristica==5)
+        {
+            bono = 0;
+        } else if (caracteristica>=6)
+        {
+            bono = 5+5*((caracteristica-6)/2);
+        }
+        return bono;
+        /*La habilidad final es la suma del valor de los PDs invertidos y el bono de la habilidad.
+         */
+    }
 
+
+
+    //Las Tablas que se usan para calcular distintos bonos. En Anima casi ninguna tabla se calcula con una formula que englobe todos los valores, así que tuvimos que separar
+    //Las distintas secciones de valores en distintos ifs.
     public Integer tablaDeNivelDeMagia(Integer inteligencia)
     {
         Integer valor = 0;
@@ -261,6 +277,11 @@ public class Personaje {
 
     }
 
+    /*
+    La vida se calcula de su propia manera, obtenemos el valor base de vida según la constitución de la tabla de Vida o Zeon. A esto le sumamos el valor de PDs dividido por el
+    coste de la clase, multiplicado por el valor de constitución. A esto se suma el bono de clase por nivel. Anima Beyond Fantasy tiene una manera muy específica de calcular cada valor, comentamos como funciona cada una por si quereis saber que estamos haciendo por dentro de la App.
+    No os lo recomiendo la verdad, yo tengo que escribir estos comentarios por si me viene alguien con el Manual de Juego a reclamarme que no hemos hecho las mates bien.
+    */
     public Integer calcularVida()
     {
         Integer pv = 0;
@@ -271,7 +292,7 @@ public class Personaje {
     }
 
 
-
+    //El Zeon se calcula de manera similar a la vida solo que se usa poder en vez de constitución.
     public Integer calcularZeon()
     {
         Integer zeon = 0;
@@ -282,12 +303,14 @@ public class Personaje {
 
     }
 
-
+    /*
+    El Act (Acumulación de Zeon por Turno) viene dada por el valor de los PDs invertidos * el bono de act según tu poder en la tabla de Act, a esto le sumas una vez el bono.
+    */
     public Integer calcularAct()
     {
         return tablaDeAct(this.poder) + this.calcularValorPdsHabilidad(this.pdAct, this.getClase().getCosteAct()) * tablaDeAct(this.poder);
     }
-
+    // Todas estas habilidades se calculan con la formula de habilidad final, así que llamamos a esa función.
     public Integer calcularHabilidadAtaque()
     {
         return calcularHabilidadFinal(this.pdHa, this.clase.getCosteHa(), this.destreza, this.clase.getHaNivel());
@@ -304,14 +327,26 @@ public class Personaje {
     {
         return calcularHabilidadFinal(this.pdProyMagica, this.clase.getCosteProyMagica(),this.destreza, 0);
     }
+
+    /*
+   Nivel de Magia se calcula obteniendo el valor de PDs en paquetes de 5.
+   Por ejemplo, si inviertes 100 PDs en Nivel de Magia obtienes 100 de Nivel de Magia, si inviertes 102 tambien obtienes 100 de Nivel de Magia, hasta que no llegues
+   a 105 no obtendrás mas de 100 de Nivel de Magia
+
+   A esto hay que sumarle el bono que genera tu inteligencia que viene dado por la tabla de Nivel de Magia.
+   */
     public Integer calcularNivelMagia()
     {
         return this.getPdNivelMagia() - (this.getPdNivelMagia() % this.getClase().getCosteNivelMagia()) + tablaDeNivelDeMagia(this.getInteligencia());
     }
+    /*
+   Los CVs se calculan viendo el valor final de los PDs invertidos en el mismo, la diferencia con el resto de habilidades es que ganas 1 CV cada X niveles, dependiendo de tu clase.
+   */
     public Integer calcularCVs()
     {
         return calcularValorPdsHabilidad(this.getPdCv(), this.getClase().getCosteCv()) + this.nivel / this.getClase().getCvCadaXNiveles();
     }
+    // Todas estas habilidades se calculan con la formula de habilidad final, así que llamamos a esa función.
     public Integer calcularProyPsiquica()
     {
         return calcularHabilidadFinal(this.pdProyPsiquica, this.clase.getCosteProyPsiquica(),this.destreza, 0);
