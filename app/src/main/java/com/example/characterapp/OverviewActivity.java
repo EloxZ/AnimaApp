@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
+import java.util.Locale;
+
 public class OverviewActivity extends AppCompatActivity {
     private TextView nombrePJ, clase, nivel, raza, pv, agilidad, destreza, constitucion, percepcion,
             fuerza, inteligencia, poder, voluntad, hataque, hdefensa, arma, armadura, zeon, act,
@@ -23,13 +25,22 @@ public class OverviewActivity extends AppCompatActivity {
         Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class);
 
         nombrePJ = (TextView) findViewById(R.id.NombrePJ);
+
         nombrePJ.setText(p.getNombre());
 
         pdArmadura = (TextView) findViewById(R.id.armaduraPd);
         pdArmadura.setText(p.getPdLlevarArmadura().toString());
 
         clase = (TextView) findViewById(R.id.Clase);
-        clase.setText(p.getClase().toString());
+        String nombre;
+        if (Locale.getDefault().getLanguage() == "en")
+        {
+            nombre = p.getClase().toStringIngles();
+        } else
+        {
+            nombre = p.getClase().toString();
+        }
+        clase.setText(nombre);
 
         nivel = (TextView) findViewById(R.id.Nivel);
         nivel.setText(p.getNivel().toString());
@@ -73,8 +84,6 @@ public class OverviewActivity extends AppCompatActivity {
         arma = (TextView) findViewById(R.id.Arma);
         arma.setText(getResources().getString(p.getArma()));
 
-        clase = (TextView) findViewById(R.id.Clase);
-        clase.setText(p.getClase().toString());
 
         armadura = (TextView) findViewById(R.id.armadura);
         armadura.setText(getResources().getString(p.getArmadura()));

@@ -2,6 +2,7 @@ package com.example.characterapp;
 
 public class Clase {
     private String nombre;
+    private String nombreIngles;
 
     private Integer costeVida;
 
@@ -41,8 +42,9 @@ public class Clase {
     private Integer sigiloNivel;
     private Integer visionMagicaNivel;
 
-    public Clase(String nombre, Integer costeVida, Integer costeHa, Integer costeHd, Integer costeLlevarArmadura, Integer costeZeon, Integer costeAct, Integer costeProyMagica, Integer costeNivelMagia, Integer costeCv, Integer costeProyPsiquica, Integer costeAdvertir, Integer costeArte, Integer costeCapFisica, Integer costeConocimiento, Integer costeSigilo, Integer costeVisionMágica, Integer vidaNivel, Integer haNivel, Integer hdNivel, Integer llevarArmaduraNivel, Integer zeonNivel, Integer cvCadaXNiveles, Integer advertirNivel, Integer arteNivel, Integer capFisicaNivel, Integer conocimientoNivel, Integer sigiloNivel, Integer visionMagicaNivel) {
+    public Clase(String nombre, String nombreIngles, Integer costeVida, Integer costeHa, Integer costeHd, Integer costeLlevarArmadura, Integer costeZeon, Integer costeAct, Integer costeProyMagica, Integer costeNivelMagia, Integer costeCv, Integer costeProyPsiquica, Integer costeAdvertir, Integer costeArte, Integer costeCapFisica, Integer costeConocimiento, Integer costeSigilo, Integer costeVisionMágica, Integer vidaNivel, Integer haNivel, Integer hdNivel, Integer llevarArmaduraNivel, Integer zeonNivel, Integer cvCadaXNiveles, Integer advertirNivel, Integer arteNivel, Integer capFisicaNivel, Integer conocimientoNivel, Integer sigiloNivel, Integer visionMagicaNivel) {
         this.nombre = nombre;
+        this.nombreIngles = nombreIngles;
         this.costeVida = costeVida;
         this.costeHa = costeHa;
         this.costeHd = costeHd;
@@ -79,6 +81,14 @@ public class Clase {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNombreIngles() {
+        return nombreIngles;
+    }
+
+    public void setNombreIngles(String nombreIngles) {
+        this.nombreIngles = nombreIngles;
     }
 
     public Integer getCosteVida() {
@@ -308,4 +318,6 @@ public class Clase {
     public String toString(){
         return nombre;
     }
+
+    public String toStringIngles() { return nombreIngles; }
 }
