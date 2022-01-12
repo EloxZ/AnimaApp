@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -190,66 +191,45 @@ public class EditorActivity extends AppCompatActivity {
                 Integer pdsdisponibles = calcularPDsDisponibles(p);
                 pdsDisponibles.setText(pdsdisponibles.toString());
 
-                baseSigilo.setText(p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo()).toString());
-                bonoSigilo.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getSigiloNivel()).toString());
-                totalSigilo.setText(p.calcularSigilo().toString());
-
-                baseDefensa.setText(p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd()).toString());
-                bonoDefensa.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getHdNivel()).toString());
-                totalDefensa.setText(p.calcularHabilidadDefensa().toString());
-
-                baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
-                bonoAdvertir.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
-                totalAdvertir.setText(p.calcularAdvertir().toString());
-
-                baseZeon.setText(p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon()).toString());
-                Integer valorBonoHabilidad = p.calcularZeon() - p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon());
-                bonoZeon.setText(valorBonoHabilidad.toString());
-                totalZeon.setText(p.calcularZeon().toString());
-
-                baseValoracionMagica.setText(p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica()).toString());
-                bonoValoracionMagica.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getVisionMagicaNivel()).toString());
-                totalValoracionMagica.setText(p.calcularValoracionMagica().toString());
-
-                baseArte.setText(p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteVisionMágica()).toString());
-                bonoArte.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getArteNivel()).toString());
-                totalArte.setText(p.calcularArte().toString());
-
-                Integer base = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
-                baseVida.setText(base.toString());
-                bonoVida.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getVidaNivel()).toString());
-                totalVida.setText(p.calcularVida().toString());
-
-                baseCapFisica.setText(p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica()).toString());
-                bonoCapFisica.setText(p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getCapFisicaNivel()).toString());
-                totalCapFisica.setText(p.calcularCapFisica().toString());
-
-                baseConocimiento.setText(p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento()).toString());
-                bonoConocimiento.setText(p.calcularBonoHabilidad(p.getInteligencia(),p.getClase().getConocimientoNivel()).toString());
-                totalConocimiento.setText(p.calcularConocimiento().toString());
-
-                baseNivelMagia.setText(p.calcularValorPdsHabilidad(p.getPdNivelMagia(),p.getClase().getCosteNivelMagia()).toString());
-                bonoNivelMagia.setText(p.tablaDeNivelDeMagia(p.getInteligencia()).toString());
-                totalNivelMagia.setText(p.calcularNivelMagia().toString());
-
-                baseAtaque.setText(p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa()).toString());
-                bonoAtaque.setText(p.calcularBonoHabilidad(p.getDestreza(),p.getClase().getHaNivel()).toString());
-                totalAtaque.setText(p.calcularHabilidadAtaque().toString());
-
-                baseProyMagica.setText(p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica()).toString());
-                bonoProyMagica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
-                totalProyMagica.setText(p.calcularProyMagica().toString());
-
-                baseProyPsiquica.setText(p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica()).toString());
-                bonoProyPsiquica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
-                totalProyPsiquica.setText(p.calcularProyPsiquica().toString());
-
-
+                calcularTodasLasHabilidades(p);
 
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String s = classSpinner.getSelectedItem().toString();
+                Clase c = new Guerrero();
+
+                switch (s) {
+                    case "Warrior":
+                    case "Guerrero":
+                        c = new Guerrero();
+                        break;
+                    case "Hechicero":
+                    case "Sorcerer":
+                        c = new Hechicero();
+                        break;
+                    case "Ladron":
+                    case "Thief":
+                        c = new Ladron();
+                        break;
+                    case "Mentalista":
+                    case "Mentalist":
+                        c = new Mentalista();
+                }
+                p.setClase(c);
+                calcularTodasLasHabilidades(p);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
@@ -1337,34 +1317,34 @@ public class EditorActivity extends AppCompatActivity {
                     String name = nameField.getText().toString();
                     if (name.isEmpty()) throw new RuntimeException(getResources().getString(R.string.errorName));
                     if (Integer.parseInt(pdsDisponibles.getText().toString())<0) throw new RuntimeException(getResources().getString(R.string.errorPDs));
-                    Personaje pFinal = new Personaje(name);
-                    pFinal.setRaza(razaSpinner.getSelectedItem().toString());
-                    if (!lvlNumber.getText().toString().isEmpty() && Integer.parseInt(lvlNumber.getText().toString()) > 0) pFinal.setNivel(Integer.parseInt(lvlNumber.getText().toString()));
-                    if (!agilidadNumber.getText().toString().isEmpty()) pFinal.setAgilidad(Integer.parseInt(agilidadNumber.getText().toString()));
-                    if (!constNumber.getText().toString().isEmpty()) pFinal.setConstitucion(Integer.parseInt(constNumber.getText().toString()));
-                    if (!percepNumber.getText().toString().isEmpty()) pFinal.setPercepcion(Integer.parseInt(percepNumber.getText().toString()));
-                    if (!fuerzaNumber.getText().toString().isEmpty()) pFinal.setFuerza(Integer.parseInt(fuerzaNumber.getText().toString()));
-                    if (!intNumber.getText().toString().isEmpty()) pFinal.setInteligencia(Integer.parseInt(intNumber.getText().toString()));
-                    if (!poderNumber.getText().toString().isEmpty()) pFinal.setPoder(Integer.parseInt(poderNumber.getText().toString()));
-                    if (!destrezaNumber.getText().toString().isEmpty()) pFinal.setDestreza(Integer.parseInt(destrezaNumber.getText().toString()));
-                    if (!volNumber.getText().toString().isEmpty()) pFinal.setVoluntad(Integer.parseInt(volNumber.getText().toString()));
+                    p.setNombre(name);
+                    p.setRaza(razaSpinner.getSelectedItem().toString());
+                    if (!lvlNumber.getText().toString().isEmpty() && Integer.parseInt(lvlNumber.getText().toString()) > 0) p.setNivel(Integer.parseInt(lvlNumber.getText().toString()));
+                    if (!agilidadNumber.getText().toString().isEmpty()) p.setAgilidad(Integer.parseInt(agilidadNumber.getText().toString()));
+                    if (!constNumber.getText().toString().isEmpty()) p.setConstitucion(Integer.parseInt(constNumber.getText().toString()));
+                    if (!percepNumber.getText().toString().isEmpty()) p.setPercepcion(Integer.parseInt(percepNumber.getText().toString()));
+                    if (!fuerzaNumber.getText().toString().isEmpty()) p.setFuerza(Integer.parseInt(fuerzaNumber.getText().toString()));
+                    if (!intNumber.getText().toString().isEmpty()) p.setInteligencia(Integer.parseInt(intNumber.getText().toString()));
+                    if (!poderNumber.getText().toString().isEmpty()) p.setPoder(Integer.parseInt(poderNumber.getText().toString()));
+                    if (!destrezaNumber.getText().toString().isEmpty()) p.setDestreza(Integer.parseInt(destrezaNumber.getText().toString()));
+                    if (!volNumber.getText().toString().isEmpty()) p.setVoluntad(Integer.parseInt(volNumber.getText().toString()));
 
-                    if (!PDsAct.getText().toString().isEmpty()) pFinal.setPdAct(Integer.parseInt(PDsAct.getText().toString()));
-                    if (!PDsAdvertir.getText().toString().isEmpty()) pFinal.setPdAdvertir(Integer.parseInt(PDsAdvertir.getText().toString()));
-                    if (!PDsArmadura.getText().toString().isEmpty()) pFinal.setPdLlevarArmadura(Integer.parseInt(PDsArmadura.getText().toString()));
-                    if (!PDsArte.getText().toString().isEmpty()) pFinal.setPdArte(Integer.parseInt(PDsArte.getText().toString()));
-                    if (!PDsAtaque.getText().toString().isEmpty()) pFinal.setPdHa(Integer.parseInt(PDsAtaque.getText().toString()));
-                    if (!PDsCapFisica.getText().toString().isEmpty()) pFinal.setPdCapFisica(Integer.parseInt(PDsCapFisica.getText().toString()));
-                    if (!PDsConocimiento.getText().toString().isEmpty()) pFinal.setPdConocimiento(Integer.parseInt(PDsConocimiento.getText().toString()));
-                    if (!PDsCV.getText().toString().isEmpty()) pFinal.setPdCv(Integer.parseInt(PDsCV.getText().toString()));
-                    if (!PDsDefensa.getText().toString().isEmpty()) pFinal.setPdHd(Integer.parseInt(PDsDefensa.getText().toString()));
-                    if (!PDsNivelMagia.getText().toString().isEmpty()) pFinal.setPdNivelMagia(Integer.parseInt(PDsNivelMagia.getText().toString()));
-                    if (!PDsProyMagica.getText().toString().isEmpty()) pFinal.setPdProyMagica(Integer.parseInt(PDsProyMagica.getText().toString()));
-                    if (!PDsProyPsiquica.getText().toString().isEmpty()) pFinal.setPdProyPsiquica(Integer.parseInt(PDsProyPsiquica.getText().toString()));
-                    if (!PDsSigilo.getText().toString().isEmpty()) pFinal.setPdSigilo(Integer.parseInt(PDsSigilo.getText().toString()));
-                    if (!PDsValoracionMagica.getText().toString().isEmpty()) pFinal.setPdValoracionMagica(Integer.parseInt(PDsValoracionMagica.getText().toString()));
-                    if (!PDsVida.getText().toString().isEmpty()) pFinal.setPdVida(Integer.parseInt(PDsVida.getText().toString()));
-                    if (!PDsZeon.getText().toString().isEmpty()) pFinal.setPdZeon(Integer.parseInt(PDsZeon.getText().toString()));
+                    if (!PDsAct.getText().toString().isEmpty()) p.setPdAct(Integer.parseInt(PDsAct.getText().toString()));
+                    if (!PDsAdvertir.getText().toString().isEmpty()) p.setPdAdvertir(Integer.parseInt(PDsAdvertir.getText().toString()));
+                    if (!PDsArmadura.getText().toString().isEmpty()) p.setPdLlevarArmadura(Integer.parseInt(PDsArmadura.getText().toString()));
+                    if (!PDsArte.getText().toString().isEmpty()) p.setPdArte(Integer.parseInt(PDsArte.getText().toString()));
+                    if (!PDsAtaque.getText().toString().isEmpty()) p.setPdHa(Integer.parseInt(PDsAtaque.getText().toString()));
+                    if (!PDsCapFisica.getText().toString().isEmpty()) p.setPdCapFisica(Integer.parseInt(PDsCapFisica.getText().toString()));
+                    if (!PDsConocimiento.getText().toString().isEmpty()) p.setPdConocimiento(Integer.parseInt(PDsConocimiento.getText().toString()));
+                    if (!PDsCV.getText().toString().isEmpty()) p.setPdCv(Integer.parseInt(PDsCV.getText().toString()));
+                    if (!PDsDefensa.getText().toString().isEmpty()) p.setPdHd(Integer.parseInt(PDsDefensa.getText().toString()));
+                    if (!PDsNivelMagia.getText().toString().isEmpty()) p.setPdNivelMagia(Integer.parseInt(PDsNivelMagia.getText().toString()));
+                    if (!PDsProyMagica.getText().toString().isEmpty()) p.setPdProyMagica(Integer.parseInt(PDsProyMagica.getText().toString()));
+                    if (!PDsProyPsiquica.getText().toString().isEmpty()) p.setPdProyPsiquica(Integer.parseInt(PDsProyPsiquica.getText().toString()));
+                    if (!PDsSigilo.getText().toString().isEmpty()) p.setPdSigilo(Integer.parseInt(PDsSigilo.getText().toString()));
+                    if (!PDsValoracionMagica.getText().toString().isEmpty()) p.setPdValoracionMagica(Integer.parseInt(PDsValoracionMagica.getText().toString()));
+                    if (!PDsVida.getText().toString().isEmpty()) p.setPdVida(Integer.parseInt(PDsVida.getText().toString()));
+                    if (!PDsZeon.getText().toString().isEmpty()) p.setPdZeon(Integer.parseInt(PDsZeon.getText().toString()));
 
                     int weapon = R.string.vara;
                     int armor = R.string.cuero;
@@ -1428,8 +1408,8 @@ public class EditorActivity extends AppCompatActivity {
                             armor = R.string.acolchada;
                     }
 
-                    pFinal.setArma(weapon);
-                    pFinal.setArmadura(armor);
+                    p.setArma(weapon);
+                    p.setArmadura(armor);
                     String s = classSpinner.getSelectedItem().toString();
                     Clase c = new Guerrero();
 
@@ -1450,11 +1430,15 @@ public class EditorActivity extends AppCompatActivity {
                         case "Mentalist":
                             c = new Mentalista();
                     }
-                    pFinal.setClase(c);
+                    p.setClase(c);
 
-                    pFinal.setId(p.getId());
+                    calcularTodasLasHabilidades(p);
 
-                    boolean b = db.editarPersonaje(pFinal);
+                    calcularTodasLasHabilidades(p);
+
+                    p.setId(p.getId());
+
+                    boolean b = db.editarPersonaje(p);
                     if (!b) {
                         throw new RuntimeException(getResources().getString(R.string.errorDB));
                     } else {
@@ -1503,6 +1487,95 @@ public class EditorActivity extends AppCompatActivity {
         valor = valor - p.getPdCv()-p.getPdProyPsiquica();
         valor = valor - p.getPdArte()-p.getPdAdvertir()-p.getPdCapFisica()-p.getPdConocimiento()-p.getPdSigilo()-p.getPdValoracionMagica();
         return valor;
+
+    }
+    private void calcularTodasLasHabilidades(Personaje p)
+    {
+
+        baseSigilo.setText(p.calcularValorPdsHabilidad(p.getPdSigilo(),p.getClase().getCosteSigilo()).toString());
+        bonoSigilo.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getSigiloNivel()).toString());
+        totalSigilo.setText(p.calcularSigilo().toString());
+        costeSigilo.setText(p.getClase().getCosteSigilo().toString());
+
+        baseDefensa.setText(p.calcularValorPdsHabilidad(p.getPdHd(),p.getClase().getCosteHd()).toString());
+        bonoDefensa.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getHdNivel()).toString());
+        totalDefensa.setText(p.calcularHabilidadDefensa().toString());
+        costeDefensa.setText(p.getClase().getCosteHd().toString());
+
+        baseAdvertir.setText(p.calcularValorPdsHabilidad(p.getPdAdvertir(),p.getClase().getCosteAdvertir()).toString());
+        bonoAdvertir.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+        totalAdvertir.setText(p.calcularAdvertir().toString());
+        costeAdvertir.setText(p.getClase().getCosteAdvertir().toString());
+
+        baseZeon.setText(p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon()).toString());
+        Integer valorBonoHabilidad = p.calcularZeon() - p.calcularValorPdsHabilidad(p.getPdZeon(),p.getClase().getCosteZeon());
+        bonoZeon.setText(valorBonoHabilidad.toString());
+        totalZeon.setText(p.calcularZeon().toString());
+        costeZeon.setText(p.getClase().getCosteZeon().toString());
+
+        baseValoracionMagica.setText(p.calcularValorPdsHabilidad(p.getPdValoracionMagica(),p.getClase().getCosteVisionMágica()).toString());
+        bonoValoracionMagica.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getVisionMagicaNivel()).toString());
+        totalValoracionMagica.setText(p.calcularValoracionMagica().toString());
+        costeValoracionMagica.setText(p.getClase().getCosteVisionMágica().toString());
+
+        baseArte.setText(p.calcularValorPdsHabilidad(p.getPdArte(),p.getClase().getCosteVisionMágica()).toString());
+        bonoArte.setText(p.calcularBonoHabilidad(p.getPoder(),p.getClase().getArteNivel()).toString());
+        totalArte.setText(p.calcularArte().toString());
+        costeArte.setText(p.getClase().getCosteArte().toString());
+
+        Integer base = (p.getPdVida() / p.getClase().getCosteVida())*p.getConstitucion();
+        baseVida.setText(base.toString());
+        bonoVida.setText(p.calcularBonoHabilidad(p.getAgilidad(),p.getClase().getVidaNivel()).toString());
+        totalVida.setText(p.calcularVida().toString());
+        costeVida.setText(p.getClase().getCosteVida().toString());
+
+        baseCapFisica.setText(p.calcularValorPdsHabilidad(p.getPdCapFisica(),p.getClase().getCosteCapFisica()).toString());
+        bonoCapFisica.setText(p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getCapFisicaNivel()).toString());
+        totalCapFisica.setText(p.calcularCapFisica().toString());
+        costeCapFisica.setText(p.getClase().getCosteCapFisica().toString());
+
+        baseConocimiento.setText(p.calcularValorPdsHabilidad(p.getPdConocimiento(),p.getClase().getCosteConocimiento()).toString());
+        bonoConocimiento.setText(p.calcularBonoHabilidad(p.getInteligencia(),p.getClase().getConocimientoNivel()).toString());
+        totalConocimiento.setText(p.calcularConocimiento().toString());
+        costeConocimiento.setText(p.getClase().getCosteConocimiento().toString());
+
+        baseNivelMagia.setText(p.calcularValorPdsHabilidad(p.getPdNivelMagia(),p.getClase().getCosteNivelMagia()).toString());
+        bonoNivelMagia.setText(p.tablaDeNivelDeMagia(p.getInteligencia()).toString());
+        totalNivelMagia.setText(p.calcularNivelMagia().toString());
+        costeNivelMagia.setText(p.getClase().getCosteNivelMagia().toString());
+
+        baseAtaque.setText(p.calcularValorPdsHabilidad(p.getPdHa(),p.getClase().getCosteHa()).toString());
+        bonoAtaque.setText(p.calcularBonoHabilidad(p.getDestreza(),p.getClase().getHaNivel()).toString());
+        totalAtaque.setText(p.calcularHabilidadAtaque().toString());
+        costeAtaque.setText(p.getClase().getCosteHa().toString());
+
+        baseProyMagica.setText(p.calcularValorPdsHabilidad(p.getPdProyMagica(),p.getClase().getCosteProyMagica()).toString());
+        bonoProyMagica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+        totalProyMagica.setText(p.calcularProyMagica().toString());
+        costeProyMagica.setText(p.getClase().getCosteProyMagica().toString());
+
+        baseProyPsiquica.setText(p.calcularValorPdsHabilidad(p.getPdProyPsiquica(),p.getClase().getCosteProyPsiquica()).toString());
+        bonoProyPsiquica.setText(p.calcularBonoHabilidad(p.getDestreza(),0).toString());
+        totalProyPsiquica.setText(p.calcularProyPsiquica().toString());
+        costeProyPsiquica.setText(p.getClase().getCosteProyPsiquica().toString());
+
+        baseArmadura.setText(p.calcularValorPdsHabilidad(p.getPdLlevarArmadura(),p.getClase().getCosteLlevarArmadura()).toString());
+        bonoArmadura.setText(p.calcularBonoHabilidad(p.getFuerza(),p.getClase().getLlevarArmaduraNivel()).toString());
+        totalArmadura.setText(p.calcularLlevarArmadura().toString());
+        costeArmadura.setText(p.getClase().getCosteLlevarArmadura().toString());
+
+
+        baseAct.setText(p.calcularValorPdsHabilidad(p.getPdAct(),p.getClase().getCosteAct()).toString());
+        bonoAct.setText(p.tablaDeAct(p.getPoder()).toString());
+        totalAct.setText(p.calcularAct().toString());
+        costeAct.setText(p.getClase().getCosteAct().toString());
+
+        baseCV.setText(p.calcularValorPdsHabilidad(p.getPdCv(),p.getClase().getCosteCv()).toString());
+        Integer bono = p.getNivel() / p.getClase().getCvCadaXNiveles();
+        bonoCV.setText(bono.toString());
+        totalCV.setText(p.calcularCVs().toString());
+        costeCV.setText(p.getClase().getCosteCv().toString());
+
 
     }
 }
