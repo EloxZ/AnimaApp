@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        menu.add(Menu.NONE, 0, Menu.NONE, "Edit");
-        menu.add(Menu.NONE, 1, Menu.NONE, "Delete");
+        menu.add(Menu.NONE, 0, Menu.NONE, getResources().getString(R.string.editar));
+        menu.add(Menu.NONE, 1, Menu.NONE, getResources().getString(R.string.borrar));
     }
     //Aquí se asigna el funcionamiento a cada elemento del menú contextual
 

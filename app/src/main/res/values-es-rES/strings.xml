@@ -3,6 +3,12 @@
     <string name="charactername">Nombre del personaje</string>
     <string name="classname">Clase</string>
     <string name="lvl">Nivel</string>
+    <string name="editar">Editar</string>
+    <string name="borrar">Borrar</string>
+    <string name="guardar">Guardar</string>
+    <string name="editorChr">Editor de personaje</string>
+    <string name="creatorChr">Creador de personaje</string>
+    <string name="overChr">Ver personaje</string>
     <string name="name">Nombre:</string>
     <string name="classOverview">Clase:</string>
     <string name="raceOverview">Raza:</string>

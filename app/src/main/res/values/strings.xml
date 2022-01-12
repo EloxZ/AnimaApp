@@ -2,11 +2,18 @@
     <string name="app_name" translatable="false">CharacterApp</string>
     <string name="charactername">Character name</string>
     <string name="classname">Class</string>
+    <string name="editar">Edit</string>
+    <string name="borrar">Delete</string>
+    <string name="guardar">Save</string>
     <string name="lvl">Level</string>
     <string name="guerrero">Warrior</string>
     <string name="ladron">Thief</string>
     <string name="hechicero">Sorcerer</string>
     <string name="mentalista">Mentalist</string>
+    <string name="editorChr">Character editor</string>
+    <string name="creatorChr">Character creator</string>
+    <string name="overChr">Character overview</string>
+
 
 
     <string name="armaLabel">Weapon</string>

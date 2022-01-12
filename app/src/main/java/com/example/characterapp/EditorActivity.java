@@ -48,7 +48,7 @@ public class EditorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creator);
-        setTitle("Editor de personaje");
+        setTitle(getResources().getString(R.string.editorChr));
         back = false;
         DatabaseHelper db = new DatabaseHelper(this);
         Intent intent = getIntent();
@@ -68,7 +68,7 @@ public class EditorActivity extends AppCompatActivity {
         razaSpinner = (Spinner) findViewById(R.id.razaSpinner);
         buttonPd = (Button) findViewById(R.id.buttonPd);
         btnAccept = (Button) findViewById(R.id.btnAccept);
-        btnAccept.setText("Save");
+        btnAccept.setText(getResources().getString(R.string.editar));
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clases, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.razas, android.R.layout.simple_spinner_item);

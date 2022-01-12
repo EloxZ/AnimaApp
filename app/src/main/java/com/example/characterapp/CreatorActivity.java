@@ -44,7 +44,7 @@ public class CreatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creator);
-        setTitle("Creador de personaje");
+        setTitle(getResources().getString(R.string.creatorChr));
         back = false;
         DatabaseHelper db = new DatabaseHelper(this);
 

@@ -17,7 +17,7 @@ public class OverviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
-        setTitle("Ver personaje");
+        setTitle(getResources().getString(R.string.overChr));
         Intent intent = getIntent();
         Gson gson = new Gson();
         Personaje p = (Personaje) gson.fromJson(intent.getStringExtra("personaje"), Personaje.class);
